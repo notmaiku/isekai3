@@ -19,11 +19,16 @@ var _last_movement_direction := Vector3.BACK
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %GobotSkin
 
+signal spawn_me
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif event.is_action_pressed("reset"):
+		spawn_me.emit(0)
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
