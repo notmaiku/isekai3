@@ -4,5 +4,6 @@ extends Node
 
 
 func _on_player_spawn_me(_location):
-	player.position = get_child(_location).position
+	var loc = _location if _location is int else int(_location)
+	player.position = get_child(loc).position
 	player.up_direction = Vector3.UP

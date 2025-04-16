@@ -12,7 +12,7 @@ signal global_timer_start
 
 var body_exited_zone = true
 
-func _process(delta):
+func _process(_delta):
 	if !body_exited_zone:
 		Refs._on_global_timer_start()
 

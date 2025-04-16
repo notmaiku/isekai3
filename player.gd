@@ -18,14 +18,15 @@ var _last_movement_direction := Vector3.BACK
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %GobotSkin
+@onready var menu: Control = %Menu
 
 signal spawn_me
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif event.is_action_pressed("left_click"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
+		menu._on_refs_show_menu()
 	elif event.is_action_pressed("reset"):
 		spawn_me.emit(Refs.checkpoint)
 		
@@ -107,3 +108,8 @@ func _physics_process(delta: float) -> void:
 func _on_timer_g_reset_velo():
 	velocity = Vector3.ZERO
 	up_direction = Vector3.UP
+
+func _mouse_mode_change(_event):
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+	

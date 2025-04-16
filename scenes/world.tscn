@@ -1,20 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=18 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
-[ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://player.tscn" id="5_036b0"]
-[ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://shape_slope_2.tscn" id="5_dwbse"]
+[ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://scenes/player.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_dwbse"]
-[ext_resource type="PackedScene" uid="uid://d4bvot7tsjiio" path="res://pipe_2.tscn" id="6_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://d0kcy6ojduptm" path="res://shape_hollow_cylinder_2.tscn" id="7_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://d4bvot7tsjiio" path="res://scenes/objects/pipe_2.tscn" id="6_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://d0kcy6ojduptm" path="res://scenes/objects/shape_hollow_cylinder_2.tscn" id="7_gbfbk"]
 [ext_resource type="Script" uid="uid://ljxom1r7uv7p" path="res://timer_g.gd" id="7_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://jaapslabu57v" path="res://floor_square_2.tscn" id="8_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://c7ji4pi8p1sne" path="res://number_12.tscn" id="8_ioo17"]
-[ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://wall_2.tscn" id="10_wse8f"]
+[ext_resource type="PackedScene" uid="uid://jaapslabu57v" path="res://scenes/objects/floor_square_2.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://c7ji4pi8p1sne" path="res://scenes/objects/number_12.tscn" id="8_ioo17"]
+[ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://scenes/objects/wall_2.tscn" id="10_wse8f"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="12_k3n1d"]
-[ext_resource type="PackedScene" uid="uid://cimex0y5fttpq" path="res://number_double_8.tscn" id="13_2o6r5"]
-[ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://target.tscn" id="14_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://bhtgbtg41l5bg" path="res://stairs_2.tscn" id="14_70uel"]
-[ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://flag.tscn" id="14_hiqwa"]
+[ext_resource type="PackedScene" uid="uid://cimex0y5fttpq" path="res://scenes/objects/number_double_8.tscn" id="13_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://scenes/objects/target.tscn" id="14_2u3nc"]
+[ext_resource type="Script" uid="uid://bomd6uh1mftst" path="res://scenes/menu.gd" id="14_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://bhtgbtg41l5bg" path="res://scenes/objects/stairs_2.tscn" id="14_70uel"]
+[ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
+[ext_resource type="Script" uid="uid://brw6ieg0302op" path="res://level_button.gd" id="15_ikiii"]
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643363, 0.167442, 0.381648)
@@ -31,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 0.488484, 0.872573, 0, -0.872573, 0.488484, 
 
 [node name="Player" parent="." instance=ExtResource("5_036b0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.100049, 0, 0.994983, 0, 1, 0, -0.994983, 0, -0.100049, 0, 0.579047, 0)
+transform = Transform3D(-0.979904, 0, -0.19947, 0, 1, 0, 0.19947, 0, -0.979904, 0, 0.579047, 0)
 
 [node name="floor-square2" parent="." instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-4.37114e-07, -20.04, 0, 10, -8.75976e-07, 0, 0, 0, 20.04, 10.0068, 3.51375, -0.413892)
@@ -85,7 +87,7 @@ transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223
 transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 26.4508, 14.7024, 6.14599)
 
 [node name="Spawn3" type="Marker3D" parent="Spawner" groups=["spawn"]]
-transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 13.8899, 31.3713, 58.1555)
+transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 13.8899, 31.3713, 60.4917)
 
 [node name="number-double-83" parent="." instance=ExtResource("13_2o6r5")]
 transform = Transform3D(3.7679, 0, 9.26299, 9.21893, 0.974092, -3.74998, -0.9023, 9.95244, 0.367028, 9.56421, 32.6554, -31.7865)
@@ -96,69 +98,72 @@ transform = Transform3D(2.91848, 0.636803, -0.277378, -0.669386, 2.8984, -0.3888
 [node name="number-13" parent="." instance=ExtResource("8_ioo17")]
 transform = Transform3D(7.37685, -6.74689, 0.248092, -1.01968, -1.47663, -9.83767, 6.67399, 7.23181, -1.77726, 13.6808, 23.1246, -30.0622)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
+[node name="Label" type="Label" parent="UI"]
 offset_left = 19.446
 offset_top = 18.2081
-offset_right = 59.446
+offset_right = 94.446
 offset_bottom = 41.2081
 text = "R to reset"
 
-[node name="pipe3" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
-transform = Transform3D(8, 0, 0, 0, -1.79879, -7.79515, 0, 7.79515, -1.79879, 26.4265, 17.1781, 13.7972)
+[node name="Menu" type="Control" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("14_7t5mc")
 
-[node name="pipe4" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
-transform = Transform3D(15, 0, 0, 0, 5.61619, -13.9089, 0, 13.9089, 5.61619, 26.9913, 17.2918, 30.408)
+[node name="Level Buttons" type="GridContainer" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -50.5
+offset_right = 31.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="target" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
-transform = Transform3D(2.58819, 9.65926, 0, -9.35428, 2.50647, 2.49298, 2.40804, -0.645232, 9.68427, 23.2092, 16.0414, 26.0557)
+[node name="0" type="Button" parent="UI/Menu/Level Buttons"]
+layout_mode = 2
+text = "Level 0"
+script = ExtResource("15_ikiii")
 
-[node name="shape-slope2" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
-transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 27.4127, 22.7755, 46.8704)
+[node name="1" type="Button" parent="UI/Menu/Level Buttons"]
+layout_mode = 2
+text = "Level 1"
+script = ExtResource("15_ikiii")
 
-[node name="shape-slope3" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
-transform = Transform3D(0.26869, -2.05218e-08, -1.16835, 0.00965309, 3.60941, 0.000388343, 2.7935, -0.0124731, 0.112376, 21.1808, 26.4441, 55.2741)
-
-[node name="shape-slope6" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
-transform = Transform3D(-2.79293, -0.165963, 0.101463, -0.118313, 3.60248, 0.0534452, -0.248005, 0.150407, -1.16813, 15.3992, 31.3055, 56.1582)
-
-[node name="shape-slope4" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
-transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 24.5804, 24.9201, 53.2766)
-
-[node name="target2" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
-transform = Transform3D(-0.280961, 0, -9.99605, 0, 10, 0, 9.99605, 0, -0.280961, 21.9126, 30.1465, 59.5993)
-
-[node name="target3" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
-transform = Transform3D(-4.99698, 0.102357, 0.140451, 0.140481, -8.13129e-09, 4.99803, 0.102316, 4.99895, -0.00287581, 12.9858, 33.7563, 56.9108)
-
-[node name="pipe2" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
-transform = Transform3D(2.0313, -4.56872, -0.0245754, 4.5685, 2.03144, -0.0448597, 0.050975, -0.00422981, 4.99974, 22.0283, 30.0088, 57.9319)
-
-[node name="pipe5" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
-transform = Transform3D(-1.50118, 3.44874, 3.29434, 4.5685, 2.03144, -0.0448597, -1.36939, 2.99657, -3.76102, 14.4502, 31.1875, 60.0057)
-
-[node name="wall2" parent="CanvasLayer" instance=ExtResource("10_wse8f")]
-transform = Transform3D(-0.0114491, 0.999935, 0, -0.999935, -0.0114491, 0, 0, 0, 1, 13.4035, 31.2736, 58.1989)
+[node name="2" type="Button" parent="UI/Menu/Level Buttons"]
+layout_mode = 2
+text = "Level 2"
+script = ExtResource("15_ikiii")
 
 [node name="shape-slope3" parent="." instance=ExtResource("5_dwbse")]
-transform = Transform3D(-0.118185, 0.00116676, -1.9965, -0.95128, 1.75835, 0.0573394, 1.75531, 0.953006, -0.10335, 26.3409, 14.7742, 11.0005)
+transform = Transform3D(-0.118185, 0.00116675, -1.9965, -0.0232516, 1.99986, 0.00254512, 1.99637, 0.0233611, -0.118163, 26.3409, 15.4578, 11.5215)
 
 [node name="1" parent="." instance=ExtResource("14_hiqwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4339, 14.4802, 5.73696)
 
-[node name="Instructions" type="Label3D" parent="."]
+[node name="Gravity" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93844, 7.59213, -26.8573)
 text = "Green objects will change your gravity into the direction you land on it.
 
 Try walking up this slope"
+
+[node name="Menu" type="Label3D" parent="."]
+transform = Transform3D(0.996748, 0, 0.0805816, 0, 1, 0, -0.0805816, 0, 0.996748, -0.236838, 2.92087, -4.0513)
+text = "Welcome to Flip up.
+
+Access and leave the menu  by pressing escape"
 
 [node name="pipe4" parent="." instance=ExtResource("6_pkg7o")]
 transform = Transform3D(0.0274011, -4.99992, 0, 4.99992, 0.0274011, 0, 0, 0, 5, 29.1848, 14.4802, 7.96862)
@@ -173,8 +178,45 @@ transform = Transform3D(0.968707, 0, -9.95297, 0, 10, 0, 9.95297, 0, 0.968707, 2
 transform = Transform3D(1.06542, 9.94308, 0, -9.94308, 1.06542, 0, 0, 0, 10, 19.381, 23.1836, 49.3762)
 
 [node name="2" parent="." instance=ExtResource("14_hiqwa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8899, 31.1887, 57.8324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8899, 31.1887, 60.125)
 
+[node name="pipe6" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(8, 0, 0, 0, -1.79879, -7.79515, 0, 7.79515, -1.79879, 26.3622, 17.0107, 13.4156)
+
+[node name="pipe7" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(15, 0, 0, 0, 6.95153, -13.292, 0, 13.292, 6.95153, 26.927, 16.1675, 26.5153)
+
+[node name="target3" parent="." instance=ExtResource("14_2u3nc")]
+transform = Transform3D(2.57915, 9.62551, 0, -9.3216, 2.49772, 2.48427, 2.39963, -0.642978, 9.65043, 24.1449, 15.4844, 24.0354)
+
+[node name="shape-slope5" parent="." instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 27.3484, 22.6081, 46.4888)
+
+[node name="shape-slope6" parent="." instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, -2.05218e-08, -1.16835, 0.00965309, 3.60941, 0.000388343, 2.7935, -0.0124731, 0.112376, 21.1165, 26.2767, 54.8925)
+
+[node name="shape-slope7" parent="." instance=ExtResource("5_dwbse")]
+transform = Transform3D(-2.79293, -0.165963, 0.101463, -0.118313, 3.60248, 0.0534452, -0.248005, 0.150407, -1.16813, 13.7257, 30.6284, 57.2973)
+
+[node name="shape-slope8" parent="." instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 24.5161, 24.7527, 52.895)
+
+[node name="target4" parent="." instance=ExtResource("14_2u3nc")]
+transform = Transform3D(-0.280961, 0, -9.99605, 0, 10, 0, 9.99605, 0, -0.280961, 21.8483, 29.9791, 59.2177)
+
+[node name="target5" parent="." instance=ExtResource("14_2u3nc")]
+transform = Transform3D(-4.99698, 0.102357, 0.140451, 0.140481, -8.13129e-09, 4.99803, 0.102316, 4.99895, -0.00287581, 12.9215, 34.0522, 58.8217)
+
+[node name="pipe8" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(2.0313, -4.56872, -0.0245754, 4.5685, 2.03144, -0.0448597, 0.050975, -0.00422981, 4.99974, 21.964, 29.8414, 57.5503)
+
+[node name="pipe9" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(-1.50118, 3.44874, 3.29434, 4.5685, 2.03144, -0.0448597, -1.36939, 2.99657, -3.76102, 14.3859, 31.0201, 61.7189)
+
+[node name="wall4" parent="." instance=ExtResource("10_wse8f")]
+transform = Transform3D(-0.0114491, 0.999935, 0, -0.999935, -0.0114491, 0, 0, 0, 1, 13.3392, 31.1062, 60.1099)
+
+[connection signal="spawn_me" from="Player" to="Player" method="_on_spawn_me"]
 [connection signal="spawn_me" from="Player" to="Spawner" method="_on_player_spawn_me"]
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]

@@ -10,6 +10,8 @@ var timer_stopped = true
 var exited_gravity_zone = true
 var checkpoint = 1
 
+var mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _on_global_timer_start():
 	emit_signal("start_timerg")
 	timer_stopped = false

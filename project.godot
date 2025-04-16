@@ -17,12 +17,7 @@ config/icon="uid://dhjwk5ln7q6qg"
 
 [autoload]
 
-PhantomCameraManager="res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Refs="*res://refs.gd"
-
-[editor_plugins]
-
-enabled=PackedStringArray()
 
 [global_group]
 
