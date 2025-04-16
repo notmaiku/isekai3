@@ -1,18 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=16 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://player.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://shape_slope_2.tscn" id="5_dwbse"]
-[ext_resource type="Script" path="res://refs.gd" id="6_dwbse"]
+[ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://d4bvot7tsjiio" path="res://pipe_2.tscn" id="6_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://d0kcy6ojduptm" path="res://shape_hollow_cylinder_2.tscn" id="7_gbfbk"]
-[ext_resource type="Script" path="res://timer_g.gd" id="7_pkg7o"]
+[ext_resource type="Script" uid="uid://ljxom1r7uv7p" path="res://timer_g.gd" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://jaapslabu57v" path="res://floor_square_2.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://c7ji4pi8p1sne" path="res://number_12.tscn" id="8_ioo17"]
 [ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://wall_2.tscn" id="10_wse8f"]
-[ext_resource type="PackedScene" uid="uid://crhatphulfc37" path="res://assets/proto/GLB format/flag.glb" id="11_ic0uy"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="12_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://cimex0y5fttpq" path="res://number_double_8.tscn" id="13_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://target.tscn" id="14_2u3nc"]
+[ext_resource type="PackedScene" uid="uid://bhtgbtg41l5bg" path="res://stairs_2.tscn" id="14_70uel"]
+[ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://flag.tscn" id="14_hiqwa"]
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643363, 0.167442, 0.381648)
@@ -29,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 0.488484, 0.872573, 0, -0.872573, 0.488484, 
 
 [node name="Player" parent="." instance=ExtResource("5_036b0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.100049, 0, 0.994983, 0, 1, 0, -0.994983, 0, -0.100049, -1.46926, 0.57996, 0.65632)
+transform = Transform3D(-0.100049, 0, 0.994983, 0, 1, 0, -0.994983, 0, -0.100049, 0, 0.579047, 0)
 
 [node name="floor-square2" parent="." instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-4.37114e-07, -20.04, 0, 10, -8.75976e-07, 0, 0, 0, 20.04, 10.0068, 3.51375, -0.413892)
@@ -59,7 +61,6 @@ visible = false
 
 [node name="CollisionShape3D" parent="shape-slope2/shape-slope/GravityBody" index="0"]
 visible = false
-debug_color = Color(0.957204, 0, 0.533834, 0.42)
 
 [node name="pipe3" parent="." instance=ExtResource("6_pkg7o")]
 transform = Transform3D(-15.4624, 10.3577, -7.32349, -10.9583, -5.09027, 15.9375, 6.38986, 16.3342, 9.61053, 13.7087, 22.0766, -27.973)
@@ -68,25 +69,111 @@ transform = Transform3D(-15.4624, 10.3577, -7.32349, -10.9583, -5.09027, 15.9375
 transform = Transform3D(17.3456, -4.10385, 1.18533, 2.70601, 14.6397, 1.08989, -8.18004, -3.85918, 2.87399, 29.5767, 2.33333, -3.61479)
 
 [node name="shape-slope4" parent="." instance=ExtResource("5_dwbse")]
-transform = Transform3D(0.0604996, -0.115734, 2.39648, -0.842948, -5.81578, 0.091471, 0.640771, -7.63985, -0.105936, 29.3096, 14.1327, 4.49776)
+transform = Transform3D(0.549196, -1.24364, -2.02997, -0.693963, 5.5386, -1.17395, 0.584471, 7.74475, 0.513575, 33.4383, 12.1012, -0.618006)
 
 [node name="wall3" parent="." instance=ExtResource("10_wse8f")]
-transform = Transform3D(-2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0, 5, 31.8139, 13.9802, 7.11031)
-
-[node name="flag2" parent="." instance=ExtResource("11_ic0uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9343, 14.4802, 7.22225)
+transform = Transform3D(-2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0, 5, 29.2566, 13.9802, 5.56088)
 
 [node name="Spawner" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("12_k3n1d")
 
 [node name="Spawn1" type="Marker3D" parent="Spawner" groups=["spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643363, 0.710948, 0.381648)
+transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 0, 0.865073, 0)
 
-[node name="number-double-82" parent="." instance=ExtResource("13_2o6r5")]
-transform = Transform3D(3.7679, 0, 9.26299, 9.21893, 0.974092, -3.74998, -0.9023, 9.95244, 0.367028, 13.3377, 31.2439, -31.7865)
+[node name="Spawn2" type="Marker3D" parent="Spawner" groups=["spawn"]]
+transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 26.4508, 14.7024, 6.14599)
+
+[node name="Spawn3" type="Marker3D" parent="Spawner" groups=["spawn"]]
+transform = Transform3D(-0.803223, 0, -0.595679, 0, 1, 0, 0.595679, 0, -0.803223, 13.8899, 31.3713, 58.1555)
 
 [node name="number-double-83" parent="." instance=ExtResource("13_2o6r5")]
 transform = Transform3D(3.7679, 0, 9.26299, 9.21893, 0.974092, -3.74998, -0.9023, 9.95244, 0.367028, 9.56421, 32.6554, -31.7865)
+
+[node name="stairs2" parent="." instance=ExtResource("14_70uel")]
+transform = Transform3D(2.91848, 0.636803, -0.277378, -0.669386, 2.8984, -0.388879, 0.185434, 0.440204, 2.96173, 26.7233, 9.9228, -2.40025)
+
+[node name="number-13" parent="." instance=ExtResource("8_ioo17")]
+transform = Transform3D(7.37685, -6.74689, 0.248092, -1.01968, -1.47663, -9.83767, 6.67399, 7.23181, -1.77726, 13.6808, 23.1246, -30.0622)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 19.446
+offset_top = 18.2081
+offset_right = 59.446
+offset_bottom = 41.2081
+text = "R to reset"
+
+[node name="pipe3" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
+transform = Transform3D(8, 0, 0, 0, -1.79879, -7.79515, 0, 7.79515, -1.79879, 26.4265, 17.1781, 13.7972)
+
+[node name="pipe4" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
+transform = Transform3D(15, 0, 0, 0, 5.61619, -13.9089, 0, 13.9089, 5.61619, 26.9913, 17.2918, 30.408)
+
+[node name="target" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
+transform = Transform3D(2.58819, 9.65926, 0, -9.35428, 2.50647, 2.49298, 2.40804, -0.645232, 9.68427, 23.2092, 16.0414, 26.0557)
+
+[node name="shape-slope2" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 27.4127, 22.7755, 46.8704)
+
+[node name="shape-slope3" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, -2.05218e-08, -1.16835, 0.00965309, 3.60941, 0.000388343, 2.7935, -0.0124731, 0.112376, 21.1808, 26.4441, 55.2741)
+
+[node name="shape-slope6" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
+transform = Transform3D(-2.79293, -0.165963, 0.101463, -0.118313, 3.60248, 0.0534452, -0.248005, 0.150407, -1.16813, 15.3992, 31.3055, 56.1582)
+
+[node name="shape-slope4" parent="CanvasLayer" instance=ExtResource("5_dwbse")]
+transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 24.5804, 24.9201, 53.2766)
+
+[node name="target2" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
+transform = Transform3D(-0.280961, 0, -9.99605, 0, 10, 0, 9.99605, 0, -0.280961, 21.9126, 30.1465, 59.5993)
+
+[node name="target3" parent="CanvasLayer" instance=ExtResource("14_2u3nc")]
+transform = Transform3D(-4.99698, 0.102357, 0.140451, 0.140481, -8.13129e-09, 4.99803, 0.102316, 4.99895, -0.00287581, 12.9858, 33.7563, 56.9108)
+
+[node name="pipe2" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
+transform = Transform3D(2.0313, -4.56872, -0.0245754, 4.5685, 2.03144, -0.0448597, 0.050975, -0.00422981, 4.99974, 22.0283, 30.0088, 57.9319)
+
+[node name="pipe5" parent="CanvasLayer" instance=ExtResource("6_pkg7o")]
+transform = Transform3D(-1.50118, 3.44874, 3.29434, 4.5685, 2.03144, -0.0448597, -1.36939, 2.99657, -3.76102, 14.4502, 31.1875, 60.0057)
+
+[node name="wall2" parent="CanvasLayer" instance=ExtResource("10_wse8f")]
+transform = Transform3D(-0.0114491, 0.999935, 0, -0.999935, -0.0114491, 0, 0, 0, 1, 13.4035, 31.2736, 58.1989)
+
+[node name="shape-slope3" parent="." instance=ExtResource("5_dwbse")]
+transform = Transform3D(-0.118185, 0.00116676, -1.9965, -0.95128, 1.75835, 0.0573394, 1.75531, 0.953006, -0.10335, 26.3409, 14.7742, 11.0005)
+
+[node name="1" parent="." instance=ExtResource("14_hiqwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4339, 14.4802, 5.73696)
+
+[node name="Instructions" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93844, 7.59213, -26.8573)
+text = "Green objects will change your gravity into the direction you land on it.
+
+Try walking up this slope"
+
+[node name="pipe4" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(0.0274011, -4.99992, 0, 4.99992, 0.0274011, 0, 0, 0, 5, 29.1848, 14.4802, 7.96862)
+
+[node name="target" parent="." instance=ExtResource("14_2u3nc")]
+transform = Transform3D(9.29132, 0.00453143, 3.69748, -0.00342157, 10, -0.00365768, -3.69748, 0.00213351, 9.29132, 13.5162, 24.0545, -28.7302)
+
+[node name="target2" parent="." instance=ExtResource("14_2u3nc")]
+transform = Transform3D(0.968707, 0, -9.95297, 0, 10, 0, 9.95297, 0, 0.968707, 27.3396, 26.0518, 50.0995)
+
+[node name="pipe5" parent="." instance=ExtResource("6_pkg7o")]
+transform = Transform3D(1.06542, 9.94308, 0, -9.94308, 1.06542, 0, 0, 0, 10, 19.381, 23.1836, 49.3762)
+
+[node name="2" parent="." instance=ExtResource("14_hiqwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8899, 31.1887, 57.8324)
 
 [connection signal="spawn_me" from="Player" to="Spawner" method="_on_player_spawn_me"]
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]

@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("reset"):
-		spawn_me.emit(0)
+		spawn_me.emit(Refs.checkpoint)
 		
 
 func _unhandled_input(event: InputEvent) -> void:
