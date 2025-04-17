@@ -19,6 +19,7 @@ var _last_movement_direction := Vector3.BACK
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %GobotSkin
 @onready var menu: Control = %Menu
+@onready var timer_g: Timer = %Timer_G
 
 signal spawn_me
 
@@ -40,7 +41,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
-	if Refs.timer_stopped && Refs.exited_gravity_zone:
+	# print(timer_g.time_left)
+	if Refs.exited_gravity_zone && Refs.timer_stopped:
 		up_direction = Vector3.UP
 		Refs.flip_direction(Vector3.UP, self)
 	if !Refs.exited_gravity_zone:
