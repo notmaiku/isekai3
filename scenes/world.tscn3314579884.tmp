@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=27 format=4 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://scenes/player.tscn" id="5_036b0"]
@@ -18,6 +18,55 @@
 [ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
 [ext_resource type="Script" uid="uid://brw6ieg0302op" path="res://level_button.gd" id="15_ikiii"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
+[ext_resource type="Texture2D" uid="uid://ct4d13ctxcgq1" path="res://assets/proto/GLB format/Textures/colormap.png" id="19_2lf6f"]
+[ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="20_7iits"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0ggr"]
+albedo_color = Color(0.26313, 0.741883, 0.452133, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d2mc"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("19_2lf6f")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7aegq"]
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.5, 0.2, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAgAEAAAAAAAFAAMAAwAGAAIABwAFAAAAAwAFAAcAAAAEAAcABwAGAAMABwAEAAIAAgAGAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAD/////AAAAAP//AAAAAAAAAAD//wAAAAD//wAA//8AAAAA/////wAAAAAAAAAAAAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yok0c"]
+resource_name = "wall_wall"
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.5, 0.2, 1, 1),
+"attribute_data": PackedByteArray("/3dlxv93Zcb/d5j5/3eY+f93Zcb/d5j5/3eY+f93Zcb/d5j5/3eY+f93Zcb/d2XG/3dlxv93mPn/d5j5/3dlxv93mPn/d5j5/3eY+f93mPn/d2XG/3dlxv93Zcb/d2XG"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_6d2mc"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////////7//////AAD/v///AAAAAP+///8AAP///78AAP//AAD//wAAAAAAAP////8AAAAA////////AAD//wAAAAD///+/AAAAAAAA/78AAP//AAD/vwAA//////+/////////AID//wAA//8AgAAAAAD//wCAAAD/////AIAAAAAA////v///AAD///+///8AAAAA/78AAAAAAAD/vwAA//8AAP///////wAA/////////////wAA/////////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7aegq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
+size = Vector3(0.273865, 1.00478, 0.96405)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
+points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643363, 0.167442, 0.381648)
@@ -231,25 +280,22 @@ transform = Transform3D(-2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0, 5, 29.256
 transform = Transform3D(-1.31133e-07, -2.99999, 0.00523598, 2.99999, -1.54846e-05, -0.0087969, 0.00879692, 0.00523596, 2.99998, 21.3098, 29.8637, 66.0158)
 
 [node name="wall" parent="wall2" index="0"]
-transform = Transform3D(-0.955035, -0.296201, -0.0132219, -0.296347, 0.955018, 0.0108962, 0.00939979, 0.0143245, -0.999854, 0.170272, 0.000133991, 0.0768261)
+transform = Transform3D(-0.998974, 7.9139e-05, 0.0452932, -7.89642e-05, 0.999994, -0.00348886, -0.0452932, -0.00348886, -0.998968, 0, 0, 0)
 
 [node name="wall4" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(7.54122, -0.427628, 0.0905759, -1.08604, -2.96937, -0.0130441, 0.232515, -8.00008e-09, -2.9986, 24.3009, 35.1777, 66.1049)
-
-[node name="wall5" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(4.80323, -2.32727, -0.101065, -5.91862, -1.88748, -0.106715, 0.0487811, 0.145717, -2.9964, 23.682, 31.8304, 66.0943)
+transform = Transform3D(3, -2.62268e-07, -2.62269e-07, -2.62268e-07, -3, 0, -2.62268e-07, 2.29282e-14, -3, 23.9221, 35.1777, 66.1049)
 
 [node name="wall6" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(5.10571, 0.743419, -0.1494, 1.11451, -3.41318, -0.0040156, -0.256074, -0.0324939, -2.99627, 23.4614, 37.6037, 66.1049)
+transform = Transform3D(2.9293, 0.647426, -2.56088e-07, 0.647426, -2.9293, -5.66e-08, -2.62268e-07, 2.29282e-14, -3, 23.3279, 37.5415, 66.1049)
 
 [node name="wall7" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(7.13538, 1.65372, -2.27683e-07, 4.07953, -2.89247, -1.30174e-07, -7.18552e-07, 1.96854e-14, -3, 22.0488, 40.6899, 66.1049)
+transform = Transform3D(2.60438, 1.48901, -2.27683e-07, 1.48901, -2.60438, -1.30174e-07, -2.62268e-07, 1.77247e-14, -3, 21.832, 40.1862, 66.1049)
 
 [node name="wall8" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(4.96979, 2.39671, 0.121786, 7.05655, -1.68752, 0.181711, 0.631565, -0.00493705, -2.98862, 19.6706, 42.3438, 65.9499)
+transform = Transform3D(1.45964, 2.62096, -1.27607e-07, 2.62096, -1.45964, -2.29132e-07, -2.62268e-07, 8.47207e-15, -3, 19.3981, 41.5985, 66.1049)
 
 [node name="wall9" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(3.72864, 2.65842, 0.215082, 6.03477, -1.6479, 0.276358, 0.828907, 0.0390563, -2.97949, 16.8624, 43.8595, 65.8756)
+transform = Transform3D(2.00371, 1.89207, -9.68495e-08, 5.04251, -0.75184, -2.43731e-07, -4.74359e-07, 1.30144e-14, -3, 17.662, 42.5408, 66.1049)
 
 [node name="wall10" parent="." instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.0224624, 2.99991, -1.96371e-09, 2.99991, -0.0224622, -2.62261e-07, -2.62268e-07, 1.88435e-14, -3, 12.6312, 45.894, 66.1049)
@@ -268,6 +314,51 @@ transform = Transform3D(1.84781, 2.36338, -1.61541e-07, 2.36338, -1.84781, -2.06
 
 [node name="wall15" parent="." instance=ExtResource("18_lakw3")]
 transform = Transform3D(2.99999, 2.62268e-07, 2.62268e-07, 2.62268e-07, -2.99999, 0, 2.62268e-07, 2.29282e-14, -3, -1.60739, 51.1223, 66.1218)
+
+[node name="wall5" parent="." instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.26426, -2.71956, -0.0751888, -2.71583, -1.26647, 0.142635, -0.161043, 0.00795746, -2.99566, 24.1439, 31.0357, 66.0257)
+
+[node name="wall" parent="wall5" index="0"]
+transform = Transform3D(0.5, 1.08324e-07, -1.11759e-08, 4.06726e-09, 0.5, 6.98492e-10, 3.72529e-09, -1.39698e-09, 0.5, -0.0948124, 0.586032, 0.00665283)
+
+[node name="wall2" type="MeshInstance3D" parent="wall5"]
+transform = Transform3D(0.478979, 0.143445, 0.00151105, -0.14345, 0.478918, 0.00765572, 0.000748999, -0.00776739, 0.499938, -0.2089, 0.232708, 0.0247765)
+material_override = SubResource("StandardMaterial3D_k0ggr")
+mesh = SubResource("ArrayMesh_yok0c")
+skeleton = NodePath("")
+
+[node name="GravityBody" type="Area3D" parent="wall5/wall2"]
+unique_name_in_owner = true
+script = ExtResource("20_7iits")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall5/wall2/GravityBody"]
+transform = Transform3D(1.964, -1.06226e-12, 0, -2.10321e-12, 1, 0, 0, -1.16415e-10, 0.999993, 0.164605, 0.494797, 0.0112609)
+shape = SubResource("BoxShape3D_k0ggr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall5/wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall5/wall2/StaticBody3D"]
+transform = Transform3D(1, -5.40347e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qpegl")
+
+[node name="wall3" type="MeshInstance3D" parent="wall5"]
+transform = Transform3D(0.385892, 0.317865, 0.00697863, -0.317898, 0.385562, 0.0167858, 0.00528987, -0.017392, 0.499669, -0.530952, -0.140575, 0.0421944)
+material_override = SubResource("StandardMaterial3D_k0ggr")
+mesh = SubResource("ArrayMesh_yok0c")
+skeleton = NodePath("")
+
+[node name="GravityBody" type="Area3D" parent="wall5/wall3"]
+script = ExtResource("20_7iits")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall5/wall3/GravityBody"]
+transform = Transform3D(1.964, -1.06226e-12, 0, -2.10321e-12, 1, 0, 0, -1.16415e-10, 0.999993, 0.164605, 0.494797, 0.0112609)
+shape = SubResource("BoxShape3D_k0ggr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall5/wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall5/wall3/StaticBody3D"]
+transform = Transform3D(1, -5.40347e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qpegl")
 
 [node name="pipe2" parent="." instance=ExtResource("6_pkg7o")]
 transform = Transform3D(0.0794089, -4.99937, 0, 4.99937, 0.0794089, 0, 0, 0, 5, 3.26191, 48.6722, 63.799)
@@ -305,6 +396,11 @@ transform = Transform3D(-2.62268e-07, -17.803, 0, 6, -7.78194e-07, 0, 0, 0, 6, 3
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
 [connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]
 [connection signal="timeout" from="Refs/Timer_G" to="Refs" method="_on_timer_g_timeout"]
+[connection signal="body_entered" from="wall5/wall2/GravityBody" to="wall5/wall2/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="wall5/wall2/GravityBody" to="wall5/wall2/GravityBody" method="_on_body_exited"]
+[connection signal="body_entered" from="wall5/wall3/GravityBody" to="wall5/wall3/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="wall5/wall3/GravityBody" to="wall5/wall3/GravityBody" method="_on_body_exited"]
 
 [editable path="World Objects/shape-slope2"]
 [editable path="wall2"]
+[editable path="wall5"]

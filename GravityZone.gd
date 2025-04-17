@@ -21,4 +21,6 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D):
 	if body is CharacterBody3D:
+		if body.get_slide_collision_count() > 0:
+			return
 		Refs.exited_gravity_zone = true 

@@ -7,7 +7,7 @@
 albedo_color = Color(0.26313, 0.741883, 0.452133, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
-size = Vector3(0.273865, 1.00478, 0.96405)
+size = Vector3(0.437836, 1.00478, 0.96405)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
 points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
@@ -24,7 +24,7 @@ unique_name_in_owner = true
 script = ExtResource("2_qpegl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall/GravityBody" index="0"]
-transform = Transform3D(1.964, -1.06226e-12, 0, -2.10321e-12, 1, 0, 0, -1.16415e-10, 0.999993, 0.164605, 0.494797, 0.0112609)
+transform = Transform3D(3.3388, -9.91207e-13, 0, -3.56692e-12, 0.931499, 0, 0, -1.08441e-10, 1.02114, -0.024432, 0.494797, 0.0112609)
 shape = SubResource("BoxShape3D_k0ggr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall" index="1"]
