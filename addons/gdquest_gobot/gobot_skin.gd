@@ -5,7 +5,7 @@ extends Node3D
 signal foot_step
 ## Gobot's MeshInstance3D model.
 @export var gobot_model: MeshInstance3D
-## Determines whether blinking is enabled or disabled.
+
 @export var blink = true : set = _set_blink
 @export var _left_eye_mat_override: String
 @export var _right_eye_mat_override: String

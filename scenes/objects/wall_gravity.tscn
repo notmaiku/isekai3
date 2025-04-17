@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dij6dwqdv8k54"]
+
+[ext_resource type="PackedScene" uid="uid://b6tqp5vtelf72" path="res://assets/proto/GLB format/wall.glb" id="1_k0ggr"]
+[ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="2_qpegl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0ggr"]
+albedo_color = Color(0.26313, 0.741883, 0.452133, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
+size = Vector3(0.273865, 1.00478, 0.96405)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
+points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
+
+[node name="wall2" instance=ExtResource("1_k0ggr")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="wall" parent="." index="0"]
+transform = Transform3D(1, -5.40349e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_k0ggr")
+
+[node name="GravityBody" type="Area3D" parent="wall" index="0"]
+unique_name_in_owner = true
+script = ExtResource("2_qpegl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/GravityBody" index="0"]
+transform = Transform3D(1.964, -1.06226e-12, 0, -2.10321e-12, 1, 0, 0, -1.16415e-10, 0.999993, 0.164605, 0.494797, 0.0112609)
+shape = SubResource("BoxShape3D_k0ggr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D" index="0"]
+transform = Transform3D(1, -5.40347e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qpegl")
+
+[connection signal="body_entered" from="wall/GravityBody" to="wall/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="wall/GravityBody" to="wall/GravityBody" method="_on_body_exited"]

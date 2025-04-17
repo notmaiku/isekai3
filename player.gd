@@ -4,12 +4,12 @@ extends CharacterBody3D
 @export var move_speed := 8.0
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
-@export var jump_impulse := 12.0
+@export var jump_impulse := 6.5
 
 @export_group("Camera")
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
-@export var tilt_upper_limit := PI / 3.0
-@export var tilt_lower_limit := -PI / 8.0
+@export var tilt_upper_limit := 180
+@export var tilt_lower_limit := -180
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
@@ -24,7 +24,7 @@ signal spawn_me
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_exit"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 		menu._on_refs_show_menu()
 	elif event.is_action_pressed("reset"):
@@ -40,6 +40,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
+	if Refs.timer_stopped && Refs.exited_gravity_zone:
+		up_direction = Vector3.UP
+		Refs.flip_direction(Vector3.UP, self)
+	if !Refs.exited_gravity_zone:
+		Refs._on_global_timer_start()
 	_camera_pivot.rotation.x += _camera_input_direction.y * delta
 	_camera_pivot.rotation.x = clamp(
 		_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit
@@ -47,9 +52,7 @@ func _physics_process(delta: float) -> void:
 	_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 
 	_camera_input_direction = Vector2.ZERO
-	
-	if Refs.timer_stopped && Refs.exited_gravity_zone:
-		up_direction = Vector3.UP
+
 
 	velocity += up_direction * _gravity * delta
 
@@ -100,10 +103,6 @@ func _physics_process(delta: float) -> void:
 			_skin.run()
 		else:
 			_skin.idle()
-			
-			
-
-
 
 func _on_timer_g_reset_velo():
 	velocity = Vector3.ZERO
