@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
-[ext_resource type="Script" uid="uid://drab15ombxhn2" path="res://scenes/dev_log_logan_multi.gd" id="1_pm21f"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://d4bvot7tsjiio" path="res://scenes/objects/pipe_2.tscn" id="6_pkg7o"]
@@ -17,8 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
 
+[sub_resource type="GDScript" id="GDScript_xo05s"]
+script/source = "extends Node3D
+"
+
 [node name="Game" type="Node3D"]
-script = ExtResource("1_pm21f")
+script = SubResource("GDScript_xo05s")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_036b0")
