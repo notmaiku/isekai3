@@ -8,3 +8,4 @@ func _on_player_spawn_me(_location, player):
 	print(get_child(loc).get("position"))
 	player.position = get_child(loc).get("position")
 	player.up_direction = Vector3.UP
+	

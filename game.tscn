@@ -15,10 +15,13 @@ _spawnable_scenes = PackedStringArray("uid://cx5rdb300w5m7")
 spawn_path = NodePath("../Game")
 
 [node name="Net" type="VBoxContainer" parent="."]
-offset_left = 976.0
-offset_top = 4.0
-offset_right = 1151.0
-offset_bottom = 44.0
+anchors_preset = -1
+anchor_left = 0.848
+anchor_right = 1.0
+anchor_bottom = 0.062
+offset_left = 0.103943
+offset_bottom = -0.176003
+grow_horizontal = 0
 
 [node name="Options" type="HBoxContainer" parent="Net"]
 layout_mode = 2
@@ -49,11 +52,11 @@ script = ExtResource("5_rvswv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="JoinGame"]
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
 [connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]

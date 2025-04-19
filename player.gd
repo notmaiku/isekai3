@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 		menu._on_refs_show_menu()
 	elif event.is_action_pressed("reset"):
-		spawn_me.emit(Refs.checkpoint)
+		Refs._spawn_player(Refs.checkpoint, self)
 		
 
 func _unhandled_input(event: InputEvent) -> void:

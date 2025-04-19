@@ -2,7 +2,7 @@ extends Node
 
 @export var player_scene: PackedScene
 
-const DEFAULT_PORT = 25575
+const DEFAULT_PORT = 6969
 
 var players = {}
 
