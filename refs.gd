@@ -5,11 +5,15 @@ signal global_timer_timeout
 signal start_timerg
 signal stop_timerg
 signal reset_timerg
+signal spawn_player
 
 var timer_stopped = true
 var exited_gravity_zone = true
 var checkpoint = 1
 const EPSILON: float = 0.0001
+@export var World: PackedScene
+
+
 
 var mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -24,6 +28,10 @@ func _on_timer_g_timeout():
 
 func _on_reset_timer():
 	emit_signal("reset_timerg")
+	
+func _spawn_player(location):
+	World.get_node
+	emit_signal("spawn_player", location)
 
 
 func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:

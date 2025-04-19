@@ -3,29 +3,25 @@
 [ext_resource type="Script" uid="uid://g0ikutd5i33x" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://bomd6uh1mftst" path="res://menu.gd" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://addons/gdquest_gobot/gobot_skin.tscn" id="3_i3pqv"]
-[ext_resource type="Script" uid="uid://cktosseft5fjy" path="res://PlayerNet.cs" id="3_smehm"]
 [ext_resource type="Script" uid="uid://brw6ieg0302op" path="res://level_button.gd" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_fjrip"]
 [ext_resource type="PackedScene" uid="uid://dfscpwvua44q" path="res://scenes/world.tscn" id="6_smehm"]
 [ext_resource type="Script" uid="uid://ljxom1r7uv7p" path="res://timer_g.gd" id="7_smehm"]
+[ext_resource type="Script" uid="uid://ocf1oxvy7k4o" path="res://scenes/player_net.gd" id="8_smehm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2els"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qhqgy"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
-properties/0/path = NodePath(".:rotation")
+properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:position")
+properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("GobotSkin:rotation")
-properties/2/spawn = true
-properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
-process_mode = 1
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -50,8 +46,8 @@ near = 0.007
 unique_name_in_owner = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../PlayerNet")
 replication_config = SubResource("SceneReplicationConfig_g2els")
-script = ExtResource("3_smehm")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -108,6 +104,30 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Net" type="VBoxContainer" parent="UI"]
+offset_left = 976.0
+offset_top = 4.0
+offset_right = 1151.0
+offset_bottom = 44.0
+
+[node name="Options" type="HBoxContainer" parent="UI/Net"]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Join
+"
+
+[node name="HostButton" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Host
+"
+
+[node name="Remote" type="TextEdit" parent="UI/Net/Options"]
+layout_mode = 2
+text = "127.0.0.1"
+scroll_fit_content_width = true
+
 [node name="Refs" type="Node" parent="."]
 script = ExtResource("6_fjrip")
 World = ExtResource("6_smehm")
@@ -118,6 +138,7 @@ wait_time = 0.75
 script = ExtResource("7_smehm")
 
 [node name="PlayerNet" type="Node3D" parent="."]
+script = ExtResource("8_smehm")
 
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]

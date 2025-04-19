@@ -22,7 +22,12 @@ var _last_movement_direction := Vector3.BACK
 @onready var timer_g: Timer = %Timer_G
 
 signal spawn_me
-
+#
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+	
+func _ready() -> void:
+	_camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_exit"):
@@ -33,78 +38,79 @@ func _input(event: InputEvent) -> void:
 		
 
 func _unhandled_input(event: InputEvent) -> void:
-	var is_camera_motion := (
-		event is InputEventMouseMotion and
-		Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	)
-	if is_camera_motion:
-		_camera_input_direction = event.screen_relative * mouse_sensitivity
+	if is_multiplayer_authority():
+		var is_camera_motion := (
+			event is InputEventMouseMotion and
+			Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+		)
+		if is_camera_motion:
+			_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
-	# print(timer_g.time_left)
-	if Refs.exited_gravity_zone && Refs.timer_stopped:
-		up_direction = Vector3.UP
-		Refs.flip_direction(Vector3.UP, self)
-	if !Refs.exited_gravity_zone:
-		Refs._on_global_timer_start()
-	_camera_pivot.rotation.x += _camera_input_direction.y * delta
-	_camera_pivot.rotation.x = clamp(
-		_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit
-	)
-	_camera_pivot.rotation.y -= _camera_input_direction.x * delta
+	if is_multiplayer_authority():
+		if Refs.exited_gravity_zone && Refs.timer_stopped:
+			up_direction = Vector3.UP
+			Refs.flip_direction(Vector3.UP, self)
+		if !Refs.exited_gravity_zone:
+			Refs._on_global_timer_start()
+		_camera_pivot.rotation.x += _camera_input_direction.y * delta
+		_camera_pivot.rotation.x = clamp(
+			_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit
+		)
+		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 
-	_camera_input_direction = Vector2.ZERO
+		_camera_input_direction = Vector2.ZERO
 
 
-	velocity += up_direction * _gravity * delta
+		velocity += up_direction * _gravity * delta
 
-	var raw_input := Input.get_vector(
-		"move_left", "move_right", "move_forward", "move_backward"
-	)
-	var forward := _camera.global_basis.z
-	var right := _camera.global_basis.x
-	var move_direction := forward * raw_input.y + right * raw_input.x
-	move_direction = move_direction.slide(up_direction).normalized()
+		var raw_input := Input.get_vector(
+			"move_left", "move_right", "move_forward", "move_backward"
+		)
+		var forward := _camera.global_basis.z
+		var right := _camera.global_basis.x
+		var move_direction := forward * raw_input.y + right * raw_input.x
+		move_direction = move_direction.slide(up_direction).normalized()
 
-	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
+		var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
 
-	var vertical_velocity_component := velocity.project(up_direction)
-	var horizontal_velocity_component := velocity - vertical_velocity_component
-	var target_horizontal_velocity := move_direction * move_speed
+		var vertical_velocity_component := velocity.project(up_direction)
+		var horizontal_velocity_component := velocity - vertical_velocity_component
+		var target_horizontal_velocity := move_direction * move_speed
 
-	horizontal_velocity_component = horizontal_velocity_component.move_toward(
-		target_horizontal_velocity, acceleration * delta
-	)
-
-	velocity = horizontal_velocity_component + vertical_velocity_component
-
-	if is_starting_jump:
-		velocity = horizontal_velocity_component + up_direction * jump_impulse
-
-	move_and_slide()
-
-	if move_direction.length_squared() > 0.01:
-		_last_movement_direction = move_direction
-
-	if _last_movement_direction.length_squared() > 0.01:
-		var local_move_direction = transform.basis.inverse() * _last_movement_direction.normalized()
-		var target_angle = Vector3.BACK.signed_angle_to(local_move_direction, Vector3.UP)
-		_skin.rotation.y = lerp_angle(
-			_skin.rotation.y, target_angle, rotation_speed * delta
+		horizontal_velocity_component = horizontal_velocity_component.move_toward(
+			target_horizontal_velocity, acceleration * delta
 		)
 
-	var horizontal_velocity_for_anim := velocity - velocity.project(up_direction)
-	var ground_speed := horizontal_velocity_for_anim.length()
+		velocity = horizontal_velocity_component + vertical_velocity_component
 
-	if is_starting_jump:
-		_skin.jump()
-	elif not is_on_floor() and velocity.dot(up_direction) < 0:
-		_skin.fall()
-	elif is_on_floor():
-		if ground_speed > 0.1:
-			_skin.run()
-		else:
-			_skin.idle()
+		if is_starting_jump:
+			velocity = horizontal_velocity_component + up_direction * jump_impulse
+		
+		move_and_slide()
+
+		if move_direction.length_squared() > 0.01:
+			_last_movement_direction = move_direction
+
+		if _last_movement_direction.length_squared() > 0.01:
+			var local_move_direction = transform.basis.inverse() * _last_movement_direction.normalized()
+			var target_angle = Vector3.BACK.signed_angle_to(local_move_direction, Vector3.UP)
+			_skin.rotation.y = lerp_angle(
+				_skin.rotation.y, target_angle, rotation_speed * delta
+			)
+
+		var horizontal_velocity_for_anim := velocity - velocity.project(up_direction)
+		var ground_speed := horizontal_velocity_for_anim.length()
+
+		if is_starting_jump:
+			_skin.jump()
+		elif not is_on_floor() and velocity.dot(up_direction) < 0:
+			_skin.fall()
+		elif is_on_floor():
+			if ground_speed > 0.1:
+				_skin.run()
+			else:
+				_skin.idle()
 
 func _on_timer_g_reset_velo():
 	velocity = Vector3.ZERO
@@ -112,5 +118,3 @@ func _on_timer_g_reset_velo():
 
 func _mouse_mode_change(_event):
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-	

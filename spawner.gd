@@ -2,6 +2,8 @@ extends Node
 
 @onready var player :CharacterBody3D= %Player
 
+func _ready():
+	$"/root/Refs".connect("spawn_player", _on_player_spawn_me)
 
 func _on_player_spawn_me(_location):
 	var loc = _location if _location is int else int(_location)
