@@ -22,12 +22,17 @@ var _last_movement_direction := Vector3.BACK
 @onready var timer_g: Timer = %Timer_G
 
 signal spawn_me
-#
+var is_multi
+
 func _enter_tree():
-	set_multiplayer_authority(name.to_int())
+	if is_multi:
+		set_multiplayer_authority(name.to_int())
 	
 func _ready() -> void:
-	_camera.current = is_multiplayer_authority()
+	Refs.player_group = get_groups()[0]
+	print(Refs.player_group)
+	if is_multi:
+		_camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_exit"):
@@ -38,7 +43,7 @@ func _input(event: InputEvent) -> void:
 		
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_multiplayer_authority():
+	if !is_multi || is_multiplayer_authority():
 		var is_camera_motion := (
 			event is InputEventMouseMotion and
 			Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -47,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
+	if !is_multi || is_multiplayer_authority():
 		if Refs.exited_gravity_zone && Refs.timer_stopped:
 			up_direction = Vector3.UP
 			Refs.flip_direction(Vector3.UP, self)

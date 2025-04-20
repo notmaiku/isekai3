@@ -11,6 +11,7 @@ var timer_stopped = true
 var exited_gravity_zone = true
 var checkpoint = 1
 const EPSILON: float = 0.0001
+var player_group
 @export var World: PackedScene
 
 

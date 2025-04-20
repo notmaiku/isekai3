@@ -52,11 +52,11 @@ script = ExtResource("5_rvswv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="JoinGame"]
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
 [connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]
@@ -65,3 +65,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [editable path="Game"]
 [editable path="Game/World Objects/shape-slope2"]
 [editable path="Game/World Objects/wall22"]
+[editable path="Game/World Objects/WallGravity"]

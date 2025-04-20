@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=16 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
@@ -16,12 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
 
-[sub_resource type="GDScript" id="GDScript_xo05s"]
-script/source = "extends Node3D
-"
-
 [node name="Game" type="Node3D"]
-script = SubResource("GDScript_xo05s")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_036b0")
@@ -223,8 +218,14 @@ transform = Transform3D(-2.62268e-07, -17.803, 0, 6, -7.78194e-07, 0, 0, 0, 6, 3
 [node name="wall22" parent="World Objects" instance=ExtResource("18_lakw3")]
 transform = Transform3D(-1.31133e-07, -2.99999, 0.00523598, 2.99999, -1.54846e-05, -0.0087969, 0.00879692, 0.00523596, 2.99998, 21.3098, 29.8637, 66.0158)
 
-[node name="wall" parent="World Objects/wall22" index="0"]
+[node name="wall" parent="World Objects/wall22" index="0" groups=["green"]]
 transform = Transform3D(-0.955035, -0.296201, -0.0132219, -0.296347, 0.955018, 0.0108962, 0.00939979, 0.0143245, -0.999854, 0.170272, 0.000133991, 0.0768261)
+
+[node name="WallGravity" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.6288, 0.603613, 4.07296)
+
+[node name="wall" parent="World Objects/WallGravity" index="0"]
+transform = Transform3D(0.801755, 8.66557e-09, 0.597653, 8.66558e-09, 1, -2.61243e-08, -0.597653, 2.61243e-08, 0.801755, 0.939824, -1.19209e-07, 0)
 
 [node name="Spawner" type="Node" parent="."]
 unique_name_in_owner = true
@@ -255,3 +256,4 @@ script = ExtResource("7_pkg7o")
 
 [editable path="World Objects/shape-slope2"]
 [editable path="World Objects/wall22"]
+[editable path="World Objects/WallGravity"]
