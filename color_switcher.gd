@@ -10,9 +10,7 @@ var colors = {
 
 #
 func _ready():
-	var has_groups = get_parent().get_groups().size() > 0
+	var has_groups = get_groups().size() > 0
 	if has_groups:
-		material_override =  colors[get_parent().get_groups()[0]]
-		set_surface_override_material(0, green)
-
+		material_override =  colors[get_groups().filter(func(group): return colors.has(group))[0]]
 	

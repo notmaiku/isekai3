@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://g0ikutd5i33x" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://bomd6uh1mftst" path="res://menu.gd" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://addons/gdquest_gobot/gobot_skin.tscn" id="3_i3pqv"]
-[ext_resource type="Script" uid="uid://cktosseft5fjy" path="res://PlayerNet.cs" id="3_smehm"]
+[ext_resource type="Script" uid="uid://ocf1oxvy7k4o" path="res://player_net.gd" id="3_smehm"]
 [ext_resource type="Script" uid="uid://brw6ieg0302op" path="res://level_button.gd" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_fjrip"]
 [ext_resource type="PackedScene" uid="uid://dfscpwvua44q" path="res://scenes/world.tscn" id="6_smehm"]
