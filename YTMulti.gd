@@ -123,6 +123,12 @@ func add_player(id):
 	print("Adding player: ", id)
 	var player_instance = player_scene.instantiate()
 	player_instance.name = str(id)
+	if id == 1:
+		player_instance.add_to_group('red')
+	else:
+		player_instance.add_to_group('green')
+	player_instance.add_to_group('players')
+	print('add player groups: ', player_instance.get_groups())
 	player_instance.set_multiplayer_authority(id)
 	players[id] = player_instance
 	add_child(player_instance)

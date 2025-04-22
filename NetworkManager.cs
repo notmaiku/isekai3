@@ -2,8 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic; // For Dictionary
 
-public partial class NetworkManager : Node
-{
+public partial class NetworkManager : Node {
 	[Export] // Assign the Player.tscn scene in the Godot editor
 	public PackedScene PlayerScene { get; set; }
 
@@ -16,8 +15,7 @@ public partial class NetworkManager : Node
 	private Button _hostButton;
 	private Button _joinButton;
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		// Get UI Nodes
 		_hostButton = GetNode<Button>("HostButton"); // Adjust path if needed
 		_joinButton = GetNode<Button>("JoinButton"); // Adjust path if needed
@@ -34,22 +32,19 @@ public partial class NetworkManager : Node
 		Multiplayer.ServerDisconnected += OnServerDisconnected;
 
 		// Ensure PlayerScene is assigned
-		if (PlayerScene == null)
-		{
+		if (PlayerScene == null) {
 			GD.PushError("NetworkManager: PlayerScene is not set! Assign Player.tscn in the editor.");
 		}
 	}
 
-	private void OnHostButtonPressed()
-	{
+	private void OnHostButtonPressed() {
 		GD.Print("Starting server...");
 		DisableButtons();
 
 		var peer = new ENetMultiplayerPeer();
 		Error error = peer.CreateServer(DefaultPort);
 
-		if (error != Error.Ok)
-		{
+		if (error != Error.Ok) {
 			GD.PrintErr($"Failed to create server: {error}");
 			EnableButtons();
 			return;
@@ -62,16 +57,14 @@ public partial class NetworkManager : Node
 		AddPlayer(Multiplayer.GetUniqueId());
 	}
 
-	private void OnJoinButtonPressed()
-	{
+	private void OnJoinButtonPressed() {
 		GD.Print("Joining server...");
 		DisableButtons();
 
 		var peer = new ENetMultiplayerPeer();
 		Error error = peer.CreateClient(DefaultAddress, DefaultPort);
 
-		if (error != Error.Ok)
-		{
+		if (error != Error.Ok) {
 			GD.PrintErr($"Failed to create client: {error}");
 			EnableButtons();
 			return;
@@ -83,33 +76,28 @@ public partial class NetworkManager : Node
 		// and via RPC from the server in OnPeerConnected
 	}
 
-	private void DisableButtons()
-	{
+	private void DisableButtons() {
 		_hostButton.Disabled = true;
 		_joinButton.Disabled = true;
 	}
 
-	private void EnableButtons()
-	{
+	private void EnableButtons() {
 		_hostButton.Disabled = false;
 		_joinButton.Disabled = false;
 	}
 
 	// --- Multiplayer Signal Handlers ---
 
-	private void OnPeerConnected(long id)
-	{
+	private void OnPeerConnected(long id) {
 		GD.Print($"Peer connected: {id}");
 		// This signal is only emitted on the server (and clients for other clients).
 		// The server is responsible for spawning players for new clients.
-		if (Multiplayer.IsServer())
-		{
+		if (Multiplayer.IsServer()) {
 			// Tell the new client to spawn itself
 			RpcId(id, nameof(AddPlayer), id);
 
 			// Tell the new client about all existing players (including the host)
-			foreach (var kvp in _players)
-			{
+			foreach (var kvp in _players) {
 				RpcId(id, nameof(AddPlayer), kvp.Key);
 			}
 
@@ -118,25 +106,21 @@ public partial class NetworkManager : Node
 		}
 	}
 
-	private void OnPeerDisconnected(long id)
-	{
+	private void OnPeerDisconnected(long id) {
 		GD.Print($"Peer disconnected: {id}");
-		if (_players.TryGetValue(id, out Node playerNode))
-		{
+		if (_players.TryGetValue(id, out Node playerNode)) {
 			playerNode.QueueFree(); // Remove the player node
 			_players.Remove(id);
 
 			// Tell remaining clients to remove this player
 			// Ensure this RPC exists if you want clients to despawn others
-			if (Multiplayer.IsServer())
-			{
-				 Rpc(nameof(RemovePlayer), id);
+			if (Multiplayer.IsServer()) {
+				Rpc(nameof(RemovePlayer), id);
 			}
 		}
 	}
 
-	private void OnConnectedToServer()
-	{
+	private void OnConnectedToServer() {
 		GD.Print("Successfully connected to server!");
 		// The server will tell us (via RPC) which players to spawn, including our own.
 		// We request our own player spawn here just in case the server's PeerConnected signal
@@ -146,21 +130,18 @@ public partial class NetworkManager : Node
 		// Let's rely on the server's OnPeerConnected logic for spawning.
 	}
 
-	private void OnConnectionFailed()
-	{
+	private void OnConnectionFailed() {
 		GD.PrintErr("Connection failed!");
 		Multiplayer.MultiplayerPeer = null; // Reset peer
 		EnableButtons();
 	}
 
-	private void OnServerDisconnected()
-	{
+	private void OnServerDisconnected() {
 		GD.Print("Disconnected from server!");
 		Multiplayer.MultiplayerPeer = null; // Reset peer
 		EnableButtons();
 		// Clean up all player nodes
-		foreach (var kvp in _players)
-		{
+		foreach (var kvp in _players) {
 			kvp.Value.QueueFree();
 		}
 		_players.Clear();
@@ -171,18 +152,15 @@ public partial class NetworkManager : Node
 	// This RPC is called by the server on clients (and locally on the server)
 	// to spawn a player representation.
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void AddPlayer(long id)
-	{
-		if (PlayerScene == null)
-		{
+	private void AddPlayer(long id) {
+		if (PlayerScene == null) {
 			GD.PrintErr("Cannot add player: PlayerScene is null.");
 			return;
 		}
 		// Avoid adding duplicates if messages arrive strangely
-		if (_players.ContainsKey(id))
-		{
-			 GD.Print($"Player {id} already exists. Skipping spawn.");
-			 return;
+		if (_players.ContainsKey(id)) {
+			GD.Print($"Player {id} already exists. Skipping spawn.");
+			return;
 		}
 
 		GD.Print($"Adding player: {id}");
@@ -199,23 +177,18 @@ public partial class NetworkManager : Node
 
 	// RPC called by the server on clients to remove a player node
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void RemovePlayer(long id)
-	{
-		 GD.Print($"Removing player: {id}");
-		 if (_players.TryGetValue(id, out Node playerNode))
-		 {
-			 playerNode.QueueFree();
-			 _players.Remove(id);
-		 }
+	private void RemovePlayer(long id) {
+		GD.Print($"Removing player: {id}");
+		if (_players.TryGetValue(id, out Node playerNode)) {
+			playerNode.QueueFree();
+			_players.Remove(id);
+		}
 	}
 
 	// Gracefully disconnect when the game closes
-	public override void _Notification(int what)
-	{
-		if (what == NotificationWMCloseRequest)
-		{
-			if (Multiplayer.MultiplayerPeer != null)
-			{
+	public override void _Notification(int what) {
+		if (what == NotificationWMCloseRequest) {
+			if (Multiplayer.MultiplayerPeer != null) {
 				Multiplayer.MultiplayerPeer.Close();
 				Multiplayer.MultiplayerPeer = null;
 				GD.Print("Multiplayer peer closed.");

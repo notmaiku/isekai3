@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FlipGoUp"
-run/main_scene="uid://dfscpwvua44q"
+run/main_scene="uid://cjxb4wc40jvh2"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="uid://dhjwk5ln7q6qg"
 
@@ -29,6 +29,7 @@ gravity_zone=""
 spawn=""
 green=""
 red=""
+players=""
 
 [input]
 

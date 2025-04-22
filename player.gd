@@ -21,7 +21,6 @@ var _last_movement_direction := Vector3.BACK
 @onready var menu: Control = %Menu
 @onready var timer_g: Timer = %Timer_G
 
-signal spawn_me
 var is_multi
 
 func _enter_tree():
@@ -30,13 +29,12 @@ func _enter_tree():
 	
 func _ready() -> void:
 	Refs.player_group = get_groups()[0]
-	print(Refs.player_group)
 	if is_multi:
 		_camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_exit"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 		menu._on_refs_show_menu()
 	elif event.is_action_pressed("reset"):
 		Refs._spawn_player(Refs.checkpoint, self)
@@ -123,3 +121,8 @@ func _on_timer_g_reset_velo():
 
 func _mouse_mode_change(_event):
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+@rpc("any_peer")
+func TeleportPlayer(new_position: Vector3) -> void:
+	print('caleld')
+	global_position = new_position
