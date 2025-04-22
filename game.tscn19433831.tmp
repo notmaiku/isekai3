@@ -63,12 +63,12 @@ transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e
 [node name="CharacterBody3D" parent="Game/MovingPlatform2" index="2"]
 transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 8.00283, 0)
 
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="JoinGame"]
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
 [connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]

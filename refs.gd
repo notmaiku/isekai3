@@ -15,7 +15,6 @@ var player_group
 @export var World: PackedScene
 
 
-
 var mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_global_timer_start():
@@ -25,13 +24,13 @@ func _on_global_timer_start():
 
 func _on_timer_g_timeout():
 	emit_signal("stop_timerg")
-	print("timer stopped")
 
 func _on_reset_timer():
 	emit_signal("reset_timerg")
 	
 func _spawn_player(location, player):
-	emit_signal("spawn_player", location, player)
+	print('spawnplayer: ', player)
+	emit_signal("spawn_player", location, player, int(player.name))
 
 
 func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
@@ -42,12 +41,11 @@ func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
 	# print("Angle Between: ", rad_to_deg(angle_between))
 
 	var rotation_axis: Vector3
-	if abs(angle_between - PI) < EPSILON: 
-	
+	if abs(angle_between - PI) < EPSILON:
 		rotation_axis = current_up_direction.cross(Vector3.UP)
 		if rotation_axis.length_squared() < EPSILON:
 			rotation_axis = current_up_direction.cross(Vector3.RIGHT)
-		if rotation_axis.length_squared() > EPSILON: 
+		if rotation_axis.length_squared() > EPSILON:
 			rotation_axis = rotation_axis.normalized()
 		else:
 			rotation_axis = Vector3.FORWARD

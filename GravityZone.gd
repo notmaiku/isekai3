@@ -11,7 +11,6 @@ var colors = [
 ]
 
 func _ready():
-	print(await Refs.player_group)
 	if Refs.player_group == 'green':
 		$"../StaticBody3D".hide()
 

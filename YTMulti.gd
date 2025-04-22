@@ -79,12 +79,11 @@ func _on_join_pressed():
 # --- Multiplayer Signal Handlers ---
 func _on_peer_connected(id):
 	print("Peer connected: ", id)
-	if multiplayer.is_server():
-		rpc_id(id, "add_player", id)
-		for existing_id in players:
-			rpc_id(id, "add_player", existing_id)
-		rpc("add_player", id)
-		_disable_buttons()
+	rpc("add_player", id)
+	for existing_id in players:
+		rpc_id(id, "add_player", existing_id)
+	rpc("add_player", id)
+	_disable_buttons()
 
 func _on_peer_disconnected(id):
 	print("Peer disconnected: ", id)

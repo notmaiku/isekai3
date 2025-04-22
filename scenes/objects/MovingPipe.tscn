@@ -2,6 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://ct4d13ctxcgq1" path="res://assets/proto/GLB format/Textures/colormap.png" id="1_5v52r"]
 
+[sub_resource type="Animation" id="Animation_kwaf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_5v52r"]
 resource_name = "moving_platform"
 length = 4.0
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_kwaf8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jv0wd"]
@@ -103,13 +103,13 @@ autoplay = "moving_platform"
 curve = SubResource("Curve3D_5v52r")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37114e-08, 0.999998, -4.37113e-08, 0, -4.37113e-08, -0.999998, -1, -4.37113e-08, 1.91068e-15, 0.0148087, -0.00430357, 0)
+transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226595)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 remote_path = NodePath("../../../CharacterBody3D")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.999998, -4.37113e-08, 0, -4.37113e-08, -0.999998, -1, -4.37113e-08, 1.91068e-15, 0.0148087, -0.00430357, 0)
+transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226595)
 
 [node name="pipe" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(5.03814, 0, 0, 0, 2, 0, 0, 0, 5.71618, 0, -1.00552, 0)
