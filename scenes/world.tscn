@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=21 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
@@ -14,9 +14,26 @@
 [ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://scenes/objects/target.tscn" id="14_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://bhtgbtg41l5bg" path="res://scenes/objects/stairs_2.tscn" id="14_70uel"]
 [ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
+[ext_resource type="PackedScene" uid="uid://cewcslhd0xm22" path="res://scenes/moving_gravity_platform.tscn" id="14_lakw3"]
 [ext_resource type="PackedScene" uid="uid://b60p63gxyx6yx" path="res://scenes/objects/PlayerTP.tscn" id="16_dss4m"]
 [ext_resource type="PackedScene" uid="uid://dmr23xwcakjxr" path="res://scenes/objects/MovingPipe.tscn" id="17_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
+
+[sub_resource type="Curve3D" id="Curve3D_lakw3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0148087, 1.83421, 0.226595, 0, 0, 0, 0, 0, 0, 0.0148087, 8.00283, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_pm21f"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0148087, 1.83421, 0.226595, 0, 0, 0, 0, 0, 0, 0.0148087, 8.00283, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Game" type="Node3D"]
 
@@ -214,6 +231,54 @@ transform = Transform3D(-2.62268e-07, -17.803, 0, 6, -7.78194e-07, 0, 0, 0, 6, 3
 [node name="wall22" parent="World Objects" instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.959623, -2.83975, 0.122213, -2.82748, -0.966898, -0.265502, 0.290709, -0.0302572, -2.98573, 21.3098, 30.4674, 66.2396)
 
+[node name="WallGravity" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(0.904527, -1.78377, 0.000622788, -1.78375, -0.904518, -0.00993702, 0.00914433, 0.0039387, -1.99998, 44.706, 60.6708, 58.8329)
+
+[node name="WallGravity2" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.79771, -0.876465, 0.00649345, -0.876442, -1.79772, -0.00754767, 0.00914433, 0.0039387, -1.99998, 45.4435, 62.1618, 58.8329)
+
+[node name="WallGravity3" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.97206, -0.333028, 0.00836084, -0.333008, -1.97207, -0.00540634, 0.00914433, 0.0039387, -1.99998, 45.6393, 63.8755, 58.8329)
+
+[node name="WallGravity4" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.54556, 1.26932, 0.00956639, 1.26932, -1.54558, 0.00275979, 0.00914433, 0.0039387, -1.99998, 44.6338, 65.4892, 58.8329)
+
+[node name="WallGravity5" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.02104, 1.71972, 0.00805517, 1.71971, -1.02106, 0.00585205, 0.00914433, 0.0039387, -1.99998, 43.1889, 66.3261, 58.8329)
+
+[node name="WallGravity6" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(0.620109, 1.90143, 0.0065799, 1.90142, -0.620131, 0.00747243, 0.00914433, 0.0039387, -1.99998, 41.5327, 66.8672, 58.8329)
+
+[node name="MovingPlatform" parent="World Objects" instance=ExtResource("17_7t5mc")]
+transform = Transform3D(-1, 1.50996e-07, 0, 6.45745e-08, 0.427658, -0.903941, -1.36491e-07, -0.903941, -0.427658, 25.4873, 13.8038, -2.69329)
+
+[node name="Path3D" parent="World Objects/MovingPlatform" index="1"]
+curve = SubResource("Curve3D_lakw3")
+
+[node name="PathFollow3D" parent="World Objects/MovingPlatform/Path3D" index="0"]
+transform = Transform3D(3.68982e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 1.83421, 0.226595)
+
+[node name="CharacterBody3D" parent="World Objects/MovingPlatform" index="2"]
+transform = Transform3D(3.68983e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 1.83421, 0.226595)
+
+[node name="pipe" parent="World Objects/MovingPlatform/CharacterBody3D" index="0"]
+transform = Transform3D(12.3634, -2.84217e-14, -2.38419e-06, 0, 5.22433, -2.6148e-12, -4.76837e-07, -3.97904e-13, 11.6125, 0, -2.49, 0)
+
+[node name="CollisionShape3D" parent="World Objects/MovingPlatform/CharacterBody3D" index="1"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="target6" parent="World Objects" instance=ExtResource("14_2u3nc")]
+transform = Transform3D(-0.20354, 8.9977, 3.70201e-08, -8.9977, -0.20354, 2.13981e-05, 2.14279e-05, 6.24917e-07, 9, 33.6192, 61.557, 58.695)
+
+[node name="MovingPlatform2" parent="World Objects" instance=ExtResource("17_7t5mc")]
+transform = Transform3D(1, 0, 0, 0, -0.999903, -0.0139273, 0, 0.0139273, -0.999903, 41.658, 61.491, 58.7757)
+
+[node name="Path3D" parent="World Objects/MovingPlatform2" index="1"]
+curve = SubResource("Curve3D_pm21f")
+
+[node name="CharacterBody3D" parent="World Objects/MovingPlatform2" index="2"]
+transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226593)
+
 [node name="Spawner" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("12_k3n1d")
@@ -241,34 +306,34 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26.468, 16.1401, 5.60812)
 [node name="coin2" parent="." instance=ExtResource("16_dss4m")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.6995, 28.9518, 59.8646)
 
-[node name="wall2" parent="." instance=ExtResource("10_wse8f")]
-transform = Transform3D(-0.015812, 0.999875, 0, -0.999875, -0.015812, 0, 0, 0, 1, 42.8055, 60.3324, 58.7615)
+[node name="MovingGravityPlatform" parent="." instance=ExtResource("14_lakw3")]
+transform = Transform3D(1, 0, 0, 0, 0.973944, 0.226787, 0, -0.226787, 0.973944, 0.381259, 0.84224, 3.11847)
 
-[node name="MovingPlatform" parent="." instance=ExtResource("17_7t5mc")]
-transform = Transform3D(-1, 1.50996e-07, 0, 6.45745e-08, 0.427658, -0.903941, -1.36491e-07, -0.903941, -0.427658, 25.4873, 13.8038, -2.69329)
+[node name="AnimatableBody3D" parent="MovingGravityPlatform/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 1.19209e-07, 0.0151587)
 
-[node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
-transform = Transform3D(3.68982e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 8.00283, 0)
-progress = 6.17278
+[node name="GravityBody" parent="MovingGravityPlatform/Path3D/AnimatableBody3D/wall" index="0"]
+use_x_or_z = "y"
 
-[node name="CharacterBody3D" parent="MovingPlatform" index="2"]
-transform = Transform3D(1.59334e-08, 0.999996, 2.18802e-09, -0.0367092, 2.77146e-09, -0.999322, -0.999326, 1.58423e-08, 0.0367091, 0.0148106, 3.6672, 0.159265)
+[node name="MovingGravityPlatform2" parent="." instance=ExtResource("14_lakw3")]
+transform = Transform3D(-0.0518656, 0, -1.99933, -0.0131551, -1.99996, 0.000341262, -1.99928, 0.0131595, 0.0518644, 41.8471, 66.6061, 59.2159)
 
-[node name="pipe" parent="MovingPlatform/CharacterBody3D" index="0"]
-transform = Transform3D(12.3634, -2.84217e-14, -2.38419e-06, 0, 5.22433, -2.6148e-12, -4.76837e-07, -3.97904e-13, 11.6125, 0, -2.49, 0)
+[node name="AnimatableBody3D" parent="MovingGravityPlatform2/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 1.45519e-11, 0.00305776, 0, -0.999964, 0.00487137, 0, 0.0151577)
 
-[node name="CollisionShape3D" parent="MovingPlatform/CharacterBody3D" index="1"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+[node name="wall" parent="MovingGravityPlatform2/Path3D/AnimatableBody3D" index="0"]
+transform = Transform3D(-4.65661e-10, -4.28408e-08, 0.999998, -1, -4.36994e-08, 0, 4.36848e-08, -0.999999, -4.28408e-08, -0.167013, -0.142239, -0.0589409)
 
-[node name="MovingPlatform2" parent="." instance=ExtResource("17_7t5mc")]
-transform = Transform3D(1, 0, 0, 0, -0.999903, -0.0139273, 0, 0.0139273, -0.999903, 41.658, 61.491, 58.7757)
+[node name="GravityBody" parent="MovingGravityPlatform2/Path3D/AnimatableBody3D/wall" index="0"]
+transform = Transform3D(-1.45519e-11, -4.37722e-08, 1, -1, -4.28408e-08, 0, 4.28408e-08, -1, -4.47035e-08, -0.443604, 0.233341, 0.43926)
+priority = 1
+use_x_or_z = "z"
 
-[node name="PathFollow3D" parent="MovingPlatform2/Path3D" index="0"]
-transform = Transform3D(3.68982e-09, 0.999998, 5.95652e-08, -0.0367092, 5.96605e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 8.00283, 0)
-progress = 6.17278
+[node name="CollisionShape3D" parent="MovingGravityPlatform2/Path3D/AnimatableBody3D/wall/GravityBody" index="0"]
+transform = Transform3D(1.2666e-07, -4.07163e-08, 1.02116, -3.33881, -4.09782e-08, 8.00937e-08, 1.45286e-07, -0.93151, -4.46453e-08, -0.309067, 0.381187, -0.0132904)
 
-[node name="CharacterBody3D" parent="MovingPlatform2" index="2"]
-transform = Transform3D(3.68982e-09, 0.999998, 5.95652e-08, -0.0367092, 5.96605e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 8.00283, 0)
+[node name="CollisionShape3D" parent="MovingGravityPlatform2/Path3D/AnimatableBody3D" index="1"]
+transform = Transform3D(-4.65661e-10, -4.28408e-08, 0.999998, -1, -4.3714e-08, -1.39698e-09, 4.36848e-08, -0.999998, -4.84288e-08, -0.160873, -0.145103, -0.0560246)
 
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="spawn_player" from="Refs" to="Spawner" method="_on_player_spawn_me"]
@@ -277,5 +342,7 @@ transform = Transform3D(3.68982e-09, 0.999998, 5.95652e-08, -0.0367092, 5.96605e
 [connection signal="timeout" from="Refs/Timer_G" to="Refs" method="_on_timer_g_timeout"]
 
 [editable path="World Objects/shape-slope2"]
-[editable path="MovingPlatform"]
-[editable path="MovingPlatform2"]
+[editable path="World Objects/MovingPlatform"]
+[editable path="World Objects/MovingPlatform2"]
+[editable path="MovingGravityPlatform"]
+[editable path="MovingGravityPlatform2"]

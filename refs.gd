@@ -12,6 +12,7 @@ var exited_gravity_zone = true
 var checkpoint = 1
 const EPSILON: float = 0.0001
 var player_group
+var player_id
 @export var World: PackedScene
 
 
@@ -28,9 +29,9 @@ func _on_timer_g_timeout():
 func _on_reset_timer():
 	emit_signal("reset_timerg")
 	
-func _spawn_player(location, player):
+func _spawn_player(location, player, is_author = true):
 	print('spawnplayer: ', player)
-	emit_signal("spawn_player", location, player, int(player.name))
+	emit_signal("spawn_player", location, player, is_author)
 
 
 func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:

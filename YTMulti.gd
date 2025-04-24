@@ -26,7 +26,6 @@ func _ready():
 
 	remote.text = "68.100.94.109"
 
-
 func _on_host_pressed():
 	print("Starting server...")
 	_disable_buttons()
@@ -37,7 +36,6 @@ func _on_host_pressed():
 		print("UPnP discovery successful.")
 		var map_result_udp = upnp_node.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "godot_udp", "UDP", 0)
 		var map_result_tcp = upnp_node.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "godot_tcp", "TCP", 0)
-		print(map_result_tcp, 'did work? or ')
 		if map_result_udp == UPNP.UPNP_RESULT_SUCCESS or map_result_tcp == UPNP.UPNP_RESULT_SUCCESS:
 			upnp_mapped = true
 			print("UPnP port mapping successful!")
@@ -54,12 +52,13 @@ func _on_host_pressed():
 	var error = peer.create_server(DEFAULT_PORT)
 	if error != OK:
 		printerr("Failed to create server: ", error)
-		#_enable_buttons()
 		return
 
 	multiplayer.multiplayer_peer = peer
 	print("Server started on port ", DEFAULT_PORT)
-	add_player(multiplayer.get_unique_id())
+
+	# Host always spawns itself as player 1
+	add_player(1)
 
 func _on_join_pressed():
 	print("Joining server...", remote.text)
@@ -71,7 +70,6 @@ func _on_join_pressed():
 		printerr("Failed to create client: ", error)
 		_enable_buttons()
 		return
-	_disable_buttons()
 
 	multiplayer.multiplayer_peer = peer
 	# Client player spawning is handled by the server via RPC
@@ -79,10 +77,14 @@ func _on_join_pressed():
 # --- Multiplayer Signal Handlers ---
 func _on_peer_connected(id):
 	print("Peer connected: ", id)
-	rpc("add_player", id)
-	for existing_id in players:
-		rpc_id(id, "add_player", existing_id)
-	rpc("add_player", id)
+	# Only the server should handle spawning players
+	if multiplayer.is_server():
+		# Tell all peers to add the new player
+		rpc("add_player", id)
+		# Tell the new peer to add all existing players
+		for existing_id in players:
+			if existing_id != id:
+				rpc_id(id, "add_player", existing_id)
 	_disable_buttons()
 
 func _on_peer_disconnected(id):
@@ -127,10 +129,12 @@ func add_player(id):
 	else:
 		player_instance.add_to_group('green')
 	player_instance.add_to_group('players')
-	print('add player groups: ', player_instance.get_groups())
 	player_instance.set_multiplayer_authority(id)
 	players[id] = player_instance
 	add_child(player_instance)
+	print("Player node name:", player_instance.name, 
+		"Authority:", player_instance.get_multiplayer_authority(), 
+		"My peer id:", multiplayer.get_unique_id())
 	_disable_buttons()
 
 @rpc("any_peer", "call_remote", "unreliable_ordered")

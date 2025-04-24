@@ -3,13 +3,19 @@ extends Node
 func _ready():
 	$"/root/Refs".connect("spawn_player", _on_player_spawn_me)
 	
-
-func _on_player_spawn_me(_location, player, name):
-	print("player signal", player)
-	if player is not CharacterBody3D: return
+	
+func _on_player_spawn_me(_location, player, is_author):
+	var uid = multiplayer.get_unique_id()
 	var loc = _location if _location is int else int(_location)
 	var new_pos = get_child(loc).get("position")
-	print('is authority?', player.is_multiplayer_authority())
-	print(get_tree().get_nodes_in_group("player").filter(func(p): p == name))
-	player.position = new_pos
-	player.up_direction = Vector3.UP
+	var players = get_tree().get_nodes_in_group("players")
+	var multi_p = players.find(get_instance_id())
+	teleport_player(player, new_pos)
+
+func teleport_player(player, new_position):
+	if player.is_multiplayer_authority():
+		print("Calling TeleportPlayerLocal on", player.name)
+		player.TeleportPlayerLocal(new_position)
+	else:
+		print("Calling TeleportPlayerRemote via rpc_id to", player.get_multiplayer_authority())
+		player.rpc_id(player.get_multiplayer_authority(), "TeleportPlayerRemote", new_position)

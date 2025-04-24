@@ -13,7 +13,7 @@ extends CharacterBody3D
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
-@export var _gravity := -15.0
+@export var _gravity := -18.0
 
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
@@ -21,13 +21,15 @@ var _last_movement_direction := Vector3.BACK
 @onready var menu: Control = %Menu
 @onready var timer_g: Timer = %Timer_G
 
+
 var is_multi = true
 
 func _enter_tree():
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(int(name))
 	
 func _ready() -> void:
 	Refs.player_group = get_groups()[0]
+	Refs.player_id = multiplayer.get_unique_id()
 	_camera.current = is_multiplayer_authority()
 
 
@@ -50,6 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
+	if !is_multiplayer_authority(): return
 	if Refs.exited_gravity_zone && Refs.timer_stopped:
 		up_direction = Vector3.UP
 		Refs.flip_direction(Vector3.UP, self)
@@ -64,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	_camera_input_direction = Vector2.ZERO
 
 
-	if !is_multiplayer_authority(): return
+
 	velocity += up_direction * _gravity * delta
 
 	var raw_input := Input.get_vector(
@@ -122,8 +125,14 @@ func _on_timer_g_reset_velo():
 func _mouse_mode_change(_event):
 	if !is_multiplayer_authority(): return
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func _player_spawner(loc):
+	global_position = loc
 
-@rpc("any_peer")
-func TeleportPlayer(new_position: Vector3) -> void:
-	print('caleld')
+@rpc("any_peer", "call_local", "reliable")
+func TeleportPlayerLocal(new_position: Vector3) -> void:
+	global_position = new_position
+
+@rpc("any_peer", "call_remote", "reliable")
+func TeleportPlayerRemote(new_position: Vector3) -> void:
 	global_position = new_position

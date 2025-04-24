@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://iedw6p6woo1y" path="res://color_switcher.gd" id="3_rtct4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
-size = Vector3(0.437836, 1.00478, 0.96405)
+size = Vector3(0.437099, 1.10979, 1.34349)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
 points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)

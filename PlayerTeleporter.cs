@@ -25,7 +25,7 @@ public partial class PlayerTeleporter : Area3D {
 			GD.Print("calling teleport");
 			Node3D world = GetParentNode3D().GetParentOrNull<Node3D>();
 			world.GetTree().GetNodesInGroup("players").OfType<CharacterBody3D>().ToList().ForEach(player => {
-				if (player.IsMultiplayerAuthority()) player.GlobalPosition = GlobalPosition; else player.Rpc("TeleportPlayer", GlobalPosition);
+				if (player.IsMultiplayerAuthority()) player.GlobalPosition = GlobalPosition; else player.Rpc("TeleportPlayerRemote", GlobalPosition);
 			});
 		}
 	}
