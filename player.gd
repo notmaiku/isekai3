@@ -18,8 +18,9 @@ var _last_movement_direction := Vector3.BACK
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %GobotSkin
-@onready var menu: Control = %Menu
+@onready var ui = preload("res://ui.tscn")
 @onready var timer_g: Timer = %Timer_G
+@onready var cooldown: Timer = %Timer_C
 
 
 var is_multi = true
@@ -31,16 +32,19 @@ func _ready() -> void:
 	Refs.player_group = get_groups()[0]
 	Refs.player_id = multiplayer.get_unique_id()
 	_camera.current = is_multiplayer_authority()
+	check_condition_every_second()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event: InputEvent) -> void:
+	if !is_multiplayer_authority(): return
 	if event.is_action_pressed("ui_exit"):
-		menu._on_refs_show_menu()
-		if !is_multiplayer_authority(): return
+		add_child(ui.instantiate()) if !get_node_or_null("UI") else get_node("UI").queue_free()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("reset"):
 		if !is_multiplayer_authority(): return
 		Refs._spawn_player(Refs.checkpoint, self)
+		velocity = Vector3.ZERO
 		
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -52,12 +56,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority(): return
-	if Refs.exited_gravity_zone && Refs.timer_stopped:
-		up_direction = Vector3.UP
-		Refs.flip_direction(Vector3.UP, self)
-	if !Refs.exited_gravity_zone:
-		Refs._on_global_timer_start()
 	_camera_pivot.rotation.x += _camera_input_direction.y * delta
 	_camera_pivot.rotation.x = clamp(
 		_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit
@@ -66,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 	_camera_input_direction = Vector2.ZERO
 
-
+	if !is_multiplayer_authority(): return
 
 	velocity += up_direction * _gravity * delta
 
@@ -118,9 +116,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			_skin.idle()
 
-func _on_timer_g_reset_velo():
-	velocity = Vector3.ZERO
-	up_direction = Vector3.UP
+func flip_player():
+	Refs.flip_direction(Vector3.UP, self)
 
 func _mouse_mode_change(_event):
 	if !is_multiplayer_authority(): return
@@ -128,6 +125,18 @@ func _mouse_mode_change(_event):
 	
 func _player_spawner(loc):
 	global_position = loc
+	up_direction = Vector3.UP
+
+
+func check_condition_every_second() -> void:
+	while true:
+		await get_tree().create_timer(1.0).timeout
+		if Refs.exited_gravity_zone && Refs.timer_stopped:
+			up_direction = Vector3.UP
+			Refs.flip_direction(Vector3.UP, self)
+		await get_tree().create_timer(.9).timeout
+		if !Refs.exited_gravity_zone:
+			Refs._on_global_timer_start()
 
 @rpc("any_peer", "call_local", "reliable")
 func TeleportPlayerLocal(new_position: Vector3) -> void:

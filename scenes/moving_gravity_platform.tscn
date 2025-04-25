@@ -51,7 +51,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7aegq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
-size = Vector3(0.437099, 1.10979, 1.34349)
+size = Vector3(0.965219, 0.937248, 0.656279)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
 points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
@@ -103,32 +103,34 @@ curve = SubResource("Curve3D_e80p5")
 transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
-remote_path = NodePath("../../AnimatableBody3D")
+remote_path = NodePath("../../Gravity")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D"]
+[node name="Gravity" type="AnimatableBody3D" parent="Path3D"]
 transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
 
-[node name="wall" type="MeshInstance3D" parent="Path3D/AnimatableBody3D"]
+[node name="wall" type="MeshInstance3D" parent="Path3D/Gravity"]
 transform = Transform3D(1.8735e-15, -4.30737e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999999, -4.37722e-08, -0.167815, -0.0204345, -0.0589229)
 material_override = ExtResource("2_lo75d")
 mesh = SubResource("ArrayMesh_yok0c")
 skeleton = NodePath("")
 script = ExtResource("4_nv7e7")
 
-[node name="GravityBody" type="Area3D" parent="Path3D/AnimatableBody3D/wall"]
+[node name="GravityBody" type="Area3D" parent="Path3D/Gravity/wall"]
 unique_name_in_owner = true
 transform = Transform3D(-1.77636e-14, -4.37114e-08, 1, -1, -4.37722e-08, 0, 4.37722e-08, -1, -4.37114e-08, -0.496428, 0.187341, 0.439966)
+collision_mask = 129
 script = ExtResource("5_wdxp2")
+use_x_or_z = "z"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/AnimatableBody3D/wall/GravityBody"]
-transform = Transform3D(1.31316e-07, -4.07172e-08, 1.02116, -3.33881, -4.07131e-08, 7.86968e-08, 1.45952e-07, -0.931509, -4.46363e-08, -0.309064, 0.381346, -0.0376519)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity/wall/GravityBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162462, 0.0137811, 0.56999)
 shape = SubResource("BoxShape3D_k0ggr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity"]
 transform = Transform3D(1.85962e-15, -4.23752e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999998, -4.37722e-08, -0.161847, 0.00272136, -0.0559998)
 shape = SubResource("ConvexPolygonShape3D_qpegl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/AnimatableBody3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/Gravity"]
 process_mode = 3
 physics_interpolation_mode = 1
 libraries = {
@@ -136,5 +138,5 @@ libraries = {
 }
 autoplay = "moving_platform"
 
-[connection signal="body_entered" from="Path3D/AnimatableBody3D/wall/GravityBody" to="Path3D/AnimatableBody3D/wall/GravityBody" method="_on_body_entered"]
-[connection signal="body_exited" from="Path3D/AnimatableBody3D/wall/GravityBody" to="Path3D/AnimatableBody3D/wall/GravityBody" method="_on_body_exited"]
+[connection signal="body_entered" from="Path3D/Gravity/wall/GravityBody" to="Path3D/Gravity/wall/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="Path3D/Gravity/wall/GravityBody" to="Path3D/Gravity/wall/GravityBody" method="_on_body_exited"]

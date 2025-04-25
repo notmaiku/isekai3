@@ -88,12 +88,14 @@ func _on_peer_connected(id):
 	_disable_buttons()
 
 func _on_peer_disconnected(id):
-	print("Peer disconnected: ", id)
+	print("Peer disconnected: ", id, " at ", Time.get_datetime_string_from_system())
+	print("Players before removal: ", players.keys())
 	if players.has(id):
 		players[id].queue_free()
 		players.erase(id)
-		if multiplayer.is_server():
-			rpc("remove_player", id)
+	print("Players after removal: ", players.keys())
+	if multiplayer.is_server():
+		rpc("remove_player", id)
 
 func _on_connected_to_server():
 	print("Successfully connected to server!")
@@ -124,10 +126,12 @@ func add_player(id):
 	print("Adding player: ", id)
 	var player_instance = player_scene.instantiate()
 	player_instance.name = str(id)
-	if id == 1:
-		player_instance.add_to_group('red')
+	randomize()  # Seeds the random number generator
+
+	if randi() % 2 == 0:
+		add_to_group("green")
 	else:
-		player_instance.add_to_group('green')
+		add_to_group("red")
 	player_instance.add_to_group('players')
 	player_instance.set_multiplayer_authority(id)
 	players[id] = player_instance

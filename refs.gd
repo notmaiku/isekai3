@@ -15,7 +15,6 @@ var player_group
 var player_id
 @export var World: PackedScene
 
-
 var mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_global_timer_start():
@@ -34,12 +33,14 @@ func _spawn_player(location, player, is_author = true):
 	emit_signal("spawn_player", location, player, is_author)
 
 
+
 func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
 	var current_up_direction: Vector3 = body.global_transform.basis.y.normalized()
 	# print("Current Up: ", current_up_direction)
 
 	var angle_between: float = current_up_direction.angle_to(new_up_direction)
 	# print("Angle Between: ", rad_to_deg(angle_between))
+	print('called flip direction')
 
 	var rotation_axis: Vector3
 	if abs(angle_between - PI) < EPSILON:

@@ -12,3 +12,6 @@ func _on_refs_start_timerg():
 func _on_refs_stop_timerg():
 	Refs.timer_stopped = true
 	stop()
+
+func _process(delta: float) -> void:
+	print(time_left)

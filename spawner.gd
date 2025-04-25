@@ -4,7 +4,7 @@ func _ready():
 	$"/root/Refs".connect("spawn_player", _on_player_spawn_me)
 	
 	
-func _on_player_spawn_me(_location, player, is_author):
+func _on_player_spawn_me(_location, player: CharacterBody3D, is_author):
 	var uid = multiplayer.get_unique_id()
 	var loc = _location if _location is int else int(_location)
 	var new_pos = get_child(loc).get("position")
@@ -13,6 +13,8 @@ func _on_player_spawn_me(_location, player, is_author):
 	teleport_player(player, new_pos)
 
 func teleport_player(player, new_position):
+	player.rotation = Vector3.UP
+	player.velocity = Vector3.ZERO
 	if player.is_multiplayer_authority():
 		print("Calling TeleportPlayerLocal on", player.name)
 		player.TeleportPlayerLocal(new_position)
