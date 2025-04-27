@@ -73,7 +73,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5v52r"]
 resource_name = "moving_platform"
-length = 8.0
+length = 4.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -82,7 +82,7 @@ tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2, 6),
+"times": PackedFloat32Array(-0.166667, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
