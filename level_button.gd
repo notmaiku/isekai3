@@ -7,7 +7,7 @@ func _pressed():
 		Refs._spawn_player(self.name, local_player, true)
 	else:
 		print("No local player found!")
-
+	
 func get_local_player():
 	for p in get_tree().get_nodes_in_group("players"):
 		if p.is_multiplayer_authority():

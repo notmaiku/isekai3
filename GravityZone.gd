@@ -11,7 +11,12 @@ var colors = [
 	"green"
 ]
 
+var check_timer: Timer
+
+var platform
+
 func _ready():
+	platform = $".."
 	if Refs.player_group == 'green':
 		$"../StaticBody3D".hide()
 
@@ -23,16 +28,19 @@ func _process(_delta):
 			found = true
 			break
 	if found:
-		print('found')
-		body_exited_zone = false
+		Refs.exited_gravity_zone = false
 		Refs._on_global_timer_start()
+	else:
+		Refs.exited_gravity_zone = true
 		
 func _on_body_entered(body: Node3D) -> void:
-	print('enter')
+	if !body.is_multiplayer_authority(): return
+	var player = get_local_player()
 	if body is CharacterBody3D:
-		if body.get_groups().size() > 0 && get_parent().get_groups().size() > 0 && !is_correct_group_platform(body.get_groups(), get_parent().get_groups()):
-			get_parent_node_3d().hide()
-			$"../StaticBody3D".collision_layer = 0
+		var obj = get_parent().get_parent()
+		var obj_groups = obj.get_groups()
+		if obj_groups.size() > 1 && not obj_groups[1] in body.get_groups():
+			remove_platform(body, obj)
 		Refs._on_global_timer_start()
 		var target_up_direction: Vector3
 		if use_x_or_z == 'x':
@@ -43,9 +51,16 @@ func _on_body_entered(body: Node3D) -> void:
 		body.up_direction = target_up_direction
 
 
+func remove_platform(body, obj_hide):
+	get_parent().get_child(1).collision_layer = 0
+	get_parent().get_parent().hide()
+	body.rpc("HideObject", obj_hide.name)
+	await get_tree().create_timer(1.5).timeout
+	obj_hide.show()
+	obj_hide.get_child(0).get_child(1).collision_layer = 1
+
 
 func _on_body_exited(body: Node3D):
-	print('exit')
 	if body is CharacterBody3D:
 		Refs.exited_gravity_zone = true
 
@@ -53,3 +68,15 @@ func is_correct_group_platform(player_groups, platform_groups):
 	var player_color = player_groups.filter(func(c): return colors.has(str(c)))
 	var platform_color = platform_groups.filter(func(c): return colors.has(str(c)))
 	return platform_color == player_color
+
+
+func _on_timer_timeout() -> void:
+	platform.hide()
+	$"../Gravity".collision_layer = 1
+	
+@rpc("any_peer", "call_remote", "reliable")
+func get_local_player():
+	for p in get_tree().get_nodes_in_group("players"):
+		if p.is_multiplayer_authority():
+			return p
+	return null

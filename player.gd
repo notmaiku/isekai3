@@ -44,7 +44,6 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("reset"):
 		if !is_multiplayer_authority(): return
 		Refs._spawn_player(Refs.checkpoint, self)
-		velocity = Vector3.ZERO
 		
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -93,6 +92,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider is Area3D and collider.name == "gravity":
+			print("Collided with an Area3D named:", collider.name)
+
 	if move_direction.length_squared() > 0.01:
 		_last_movement_direction = move_direction
 
@@ -134,9 +140,17 @@ func check_condition_every_second() -> void:
 		if Refs.exited_gravity_zone && Refs.timer_stopped:
 			up_direction = Vector3.UP
 			Refs.flip_direction(Vector3.UP, self)
-		await get_tree().create_timer(.9).timeout
-		if !Refs.exited_gravity_zone:
-			Refs._on_global_timer_start()
+
+			
+@rpc("any_peer", "call_remote", "reliable")
+func HideObject(o_name: StringName):
+	var obj_to_hide = Refs.find_node_by_name(get_tree().current_scene, o_name)
+	obj_to_hide.hide()
+	obj_to_hide.get_child(0).get_child(1).collision_layer = 0
+	await get_tree().create_timer(1.5).timeout
+	obj_to_hide.show()
+	obj_to_hide.get_child(0).get_child(1).collision_layer = 1
+
 
 @rpc("any_peer", "call_local", "reliable")
 func TeleportPlayerLocal(new_position: Vector3) -> void:
@@ -144,4 +158,8 @@ func TeleportPlayerLocal(new_position: Vector3) -> void:
 
 @rpc("any_peer", "call_remote", "reliable")
 func TeleportPlayerRemote(new_position: Vector3) -> void:
+	global_position = new_position
+	
+@rpc("authority", "call_local", "reliable")
+func TeleportAuthority(new_position: Vector3) -> void:
 	global_position = new_position

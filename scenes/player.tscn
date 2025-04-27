@@ -61,6 +61,7 @@ script = ExtResource("6_fjrip")
 [node name="Timer_G" type="Timer" parent="Refs"]
 unique_name_in_owner = true
 wait_time = 0.5
+ignore_time_scale = true
 script = ExtResource("7_smehm")
 
 [node name="Timer_C" type="Timer" parent="Refs"]
@@ -68,4 +69,5 @@ script = ExtResource("7_smehm")
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
 [connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]
+[connection signal="timeout" from="Refs/Timer_G" to="." method="_on_timer_g_timeout"]
 [connection signal="timeout" from="Refs/Timer_G" to="Refs" method="_on_timer_g_timeout"]

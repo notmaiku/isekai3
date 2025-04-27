@@ -32,6 +32,19 @@ func _spawn_player(location, player, is_author = true):
 	print('spawnplayer: ', player)
 	emit_signal("spawn_player", location, player, is_author)
 
+func _stop_timer():
+	%Timer_G.stop()
+
+func find_node_by_name(node: Node, name: StringName) -> Node:
+	print('node: ', node)
+	print('name: ',str(name))
+	if node.name == name:
+		return node
+	for child in node.get_children():
+		var result = find_node_by_name(child, name)
+		if result:
+			return result
+	return null
 
 
 func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
@@ -40,7 +53,7 @@ func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
 
 	var angle_between: float = current_up_direction.angle_to(new_up_direction)
 	# print("Angle Between: ", rad_to_deg(angle_between))
-	print('called flip direction')
+	#print('called flip direction')
 
 	var rotation_axis: Vector3
 	if abs(angle_between - PI) < EPSILON:

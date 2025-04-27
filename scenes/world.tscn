@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=20 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cewcslhd0xm22" path="res://scenes/moving_gravity_platform.tscn" id="14_lakw3"]
 [ext_resource type="PackedScene" uid="uid://b60p63gxyx6yx" path="res://scenes/objects/PlayerTP.tscn" id="16_dss4m"]
 [ext_resource type="PackedScene" uid="uid://dmr23xwcakjxr" path="res://scenes/objects/MovingPipe.tscn" id="17_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://dn3nr8j1amp58" path="res://lava.tscn" id="17_lakw3"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
 
 [sub_resource type="Curve3D" id="Curve3D_lakw3"]
@@ -103,9 +104,6 @@ transform = Transform3D(2.57915, 9.62551, 0, -9.3216, 2.49772, 2.48427, 2.39963,
 [node name="shape-slope10" parent="World Objects" groups=["green"] instance=ExtResource("5_dwbse")]
 transform = Transform3D(0.0163133, -0.0150947, -0.999753, 0.00919704, 0.999846, -0.014946, 0.999825, -0.00895095, 0.0164496, 26.9253, 24.7337, 41.9156)
 
-[node name="shape-slope7" parent="World Objects" groups=["green"] instance=ExtResource("5_dwbse")]
-transform = Transform3D(-1.99759, -0.0946215, 0.026269, -0.0950324, 1.99749, -0.0315891, -0.0247416, -0.0327992, -1.99958, 17.159, 27.6575, 59.9788)
-
 [node name="shape-slope8" parent="World Objects" groups=["green"] instance=ExtResource("5_dwbse")]
 transform = Transform3D(0.26869, 0, -1.16835, 0, 3.60943, 0, 2.79352, 0, 0.112376, 24.5161, 24.7527, 52.895)
 
@@ -163,40 +161,40 @@ transform = Transform3D(0.549196, -1.24364, -2.02997, -0.693963, 5.5386, -1.1739
 [node name="wall3" parent="World Objects" instance=ExtResource("10_wse8f")]
 transform = Transform3D(-2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0, 5, 29.2566, 13.9802, 5.56088)
 
-[node name="wall5" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall5" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(7.54122, -0.427628, 0.0905759, -1.08604, -2.96937, -0.0130441, 0.232515, -8.00008e-09, -2.9986, 24.3009, 35.1777, 66.1049)
 
-[node name="wall6" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall6" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(4.80323, -2.32727, -0.101065, -5.91862, -1.88748, -0.106715, 0.0487811, 0.145717, -2.9964, 23.682, 31.8304, 66.0943)
 
-[node name="wall7" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall7" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(5.10571, 0.743419, -0.1494, 1.11764, -3.4125, 0.0335837, -0.242068, -0.0753219, -2.99608, 23.4614, 37.6037, 66.1049)
 
-[node name="wall8" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall8" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(7.13538, 1.65372, -2.27683e-07, 4.07953, -2.89247, -1.30174e-07, -7.18552e-07, 1.96854e-14, -3, 22.0488, 40.6899, 66.1049)
 
-[node name="wall9" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
-transform = Transform3D(4.96979, 2.39671, 0.121786, 7.05655, -1.68752, 0.181711, 0.631565, -0.00493705, -2.98862, 19.6706, 42.3438, 65.9499)
+[node name="wall9" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(4.97175, 2.39668, 0.112396, 7.05655, -1.68752, 0.181711, 0.615949, -0.0124665, -2.98899, 19.6706, 42.3438, 65.9499)
 
-[node name="wall10" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall10" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(3.72864, 2.65842, 0.215082, 6.03477, -1.6479, 0.276358, 0.828907, 0.0390563, -2.97949, 16.8624, 43.8595, 65.8756)
 
-[node name="wall11" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall11" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.0224624, 2.99991, -1.96371e-09, 2.99991, -0.0224622, -2.62261e-07, -2.62268e-07, 1.88435e-14, -3, 12.6312, 45.894, 66.1049)
 
-[node name="wall12" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall12" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.0224624, 2.99991, -1.96371e-09, 2.99991, -0.0224622, -2.62261e-07, -2.62268e-07, 1.88435e-14, -3, 8.379, 45.894, 66.1049)
 
-[node name="wall13" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall13" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.175306, 2.99487, -1.53257e-08, 2.99487, -0.175305, -2.6182e-07, -2.62268e-07, 1.91766e-14, -3, 3.04046, 45.877, 66.1049)
 
-[node name="wall14" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall14" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.907907, 2.85931, -7.93719e-08, 2.85931, -0.907906, -2.4997e-07, -2.62268e-07, 1.41403e-14, -3, 0.464115, 46.705, 66.1049)
 
-[node name="wall15" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall15" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.84781, 2.36338, -1.61541e-07, 2.36338, -1.84781, -2.06614e-07, -2.62268e-07, -2.4491e-15, -3, -1.70711, 48.4116, 66.1049)
 
-[node name="wall16" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall16" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(2.99999, 2.62268e-07, 2.62268e-07, 2.62268e-07, -2.99999, 0, 2.62268e-07, 2.29282e-14, -3, -1.60739, 51.1223, 66.1218)
 
 [node name="pipe10" parent="World Objects" instance=ExtResource("6_pkg7o")]
@@ -208,43 +206,43 @@ transform = Transform3D(0.0330816, -2.08273, 4.54545, 4.99937, 0.0794089, 0, -0.
 [node name="pipe12" parent="World Objects" instance=ExtResource("6_pkg7o")]
 transform = Transform3D(0.0330816, -2.08273, 4.54545, 4.99937, 0.0794089, 0, -0.0721899, 4.54488, 2.08299, 10.7196, 49.772, 53.6833)
 
-[node name="wall17" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall17" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(-0.682243, 1.159, 1.48029, -1.23508, 0.910965, -1.28247, -1.41744, -1.35162, 0.404975, 9.85661, 50.5465, 53.5615)
 
-[node name="wall18" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="wall18" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.16452, -0.733862, 1.45098, -0.981289, 1.10588, 1.34688, -1.29652, -1.49615, 0.283848, 12.0566, 52.0885, 53.464)
 
-[node name="wall19" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
-transform = Transform3D(1.47005, 1.34674, 0.158877, -0.804046, 1.05431, -1.49731, -1.092, 1.03669, 1.31637, 12.3858, 52.9422, 52.8406)
+[node name="wall19" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.47005, 1.34674, 0.158877, -0.804046, 1.05431, -1.49731, -1.092, 1.03669, 1.31637, 12.6222, 53.1473, 53.2264)
 
-[node name="wall20" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
-transform = Transform3D(1.98828, 0.197894, 0.0871375, 0.0469767, 0.391389, -1.96077, -0.211064, 1.95132, 0.384447, 14.3135, 54.5585, 53.8626)
+[node name="wall20" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.98828, 0.197894, 0.0871375, 0.0469767, 0.391389, -1.96077, -0.211064, 1.95132, 0.384447, 14.3135, 54.5585, 55.0588)
 
-[node name="wall21" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
-transform = Transform3D(1.59226, 0.397445, -1.14313, -1.19171, 0.185433, -1.59545, -0.211064, 1.95132, 0.384447, 15.274, 54.5585, 56.4086)
+[node name="wall21" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
+transform = Transform3D(1.59226, 0.397445, -1.14313, -1.19171, 0.185433, -1.59545, -0.211064, 1.95132, 0.384447, 15.274, 54.5585, 58.0659)
 
 [node name="shape-hollow-cylinder4" parent="World Objects" instance=ExtResource("7_gbfbk")]
 transform = Transform3D(-2.62268e-07, -17.803, 0, 6, -7.78194e-07, 0, 0, 0, 6, 39.7623, 55.8836, 58.7605)
 
-[node name="wall22" parent="World Objects" instance=ExtResource("18_lakw3")]
+[node name="wall22" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.959623, -2.83975, 0.122213, -2.82748, -0.966898, -0.265502, 0.290709, -0.0302572, -2.98573, 21.3098, 30.4674, 66.2396)
 
-[node name="WallGravity" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.904527, -1.78377, 0.000622788, -1.78375, -0.904518, -0.00993702, 0.00914433, 0.0039387, -1.99998, 44.706, 60.6708, 58.8329)
 
-[node name="WallGravity2" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity2" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.79771, -0.876465, 0.00649345, -0.876442, -1.79772, -0.00754767, 0.00914433, 0.0039387, -1.99998, 45.4435, 62.1618, 58.8329)
 
-[node name="WallGravity3" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity3" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.97206, -0.333028, 0.00836084, -0.333008, -1.97207, -0.00540634, 0.00914433, 0.0039387, -1.99998, 45.6393, 63.8755, 58.8329)
 
-[node name="WallGravity4" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity4" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.54556, 1.26932, 0.00956639, 1.26932, -1.54558, 0.00275979, 0.00914433, 0.0039387, -1.99998, 44.6338, 65.4892, 58.8329)
 
-[node name="WallGravity5" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity5" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(1.02104, 1.71972, 0.00805517, 1.71971, -1.02106, 0.00585205, 0.00914433, 0.0039387, -1.99998, 43.1889, 66.3261, 58.8329)
 
-[node name="WallGravity6" parent="World Objects" groups=["red"] instance=ExtResource("18_lakw3")]
+[node name="WallGravity6" parent="World Objects" groups=["green"] instance=ExtResource("18_lakw3")]
 transform = Transform3D(0.620109, 1.90143, 0.0065799, 1.90142, -0.620131, 0.00747243, 0.00914433, 0.0039387, -1.99998, 41.5327, 66.8672, 58.8329)
 
 [node name="MovingPlatform" parent="World Objects" instance=ExtResource("17_7t5mc")]
@@ -280,6 +278,9 @@ transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e
 [node name="CharacterBody3D" parent="World Objects/MovingPlatform2" index="2"]
 transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226593)
 
+[node name="Node3D" parent="World Objects" instance=ExtResource("17_lakw3")]
+transform = Transform3D(0.812765, -0.460873, -0.356383, 0, 0.61172, -0.791074, 0.582591, 0.642958, 0.497185, 12.1956, 52.7807, 53.821)
+
 [node name="Spawner" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("12_k3n1d")
@@ -311,8 +312,16 @@ transform = Transform3D(-0.0518656, 0, -1.99933, -0.0131551, -1.99996, 0.0003412
 [node name="Gravity" parent="MovingGravityPlatform2/Path3D" index="1"]
 transform = Transform3D(-0.999961, 0, -0.00305777, -4.65661e-10, 0.999989, 1.45519e-11, 0.00305776, -1.45519e-11, -0.999964, 0.00487137, 0, 0.0151577)
 
+[node name="wall" parent="MovingGravityPlatform2/Path3D/Gravity" index="0" groups=["green"]]
+
 [node name="CollisionShape3D" parent="MovingGravityPlatform2/Path3D/Gravity/wall/GravityBody" index="0"]
 transform = Transform3D(0.999913, -0.00304807, -0.00163614, 0.00305388, 0.999972, 0.00331669, 0.00162593, -0.00332189, 1, -0.313566, 0.465645, 0.262554)
+
+[node name="Bison1" parent="." instance=ExtResource("17_lakw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51864, 0.503613, -5.93711)
+
+[node name="Bison2" parent="." instance=ExtResource("17_lakw3")]
+transform = Transform3D(-0.99745, 0, 0.0713756, 0, 1, 0, -0.0713756, 0, -0.99745, 18.7365, 30.3929, 59.2798)
 
 [editable path="World Objects/shape-slope2"]
 [editable path="World Objects/MovingPlatform"]

@@ -127,11 +127,10 @@ func add_player(id):
 	var player_instance = player_scene.instantiate()
 	player_instance.name = str(id)
 	randomize()  # Seeds the random number generator
-
-	if randi() % 2 == 0:
-		add_to_group("green")
+	if id == 1:
+		player_instance.add_to_group("green")
 	else:
-		add_to_group("red")
+		player_instance.add_to_group("red")
 	player_instance.add_to_group('players')
 	player_instance.set_multiplayer_authority(id)
 	players[id] = player_instance
