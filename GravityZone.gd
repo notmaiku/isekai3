@@ -11,6 +11,8 @@ var colors = [
 	"green"
 ]
 
+var check_interval := 0.2 # seconds
+var time_accum := 0.0
 var check_timer: Timer
 
 var platform
@@ -20,7 +22,13 @@ func _ready():
 	if Refs.player_group == 'green':
 		$"../StaticBody3D".hide()
 
-func _process(_delta):
+func _process(delta):
+	time_accum += delta
+	if time_accum >= check_interval:
+		time_accum = 0.0
+		_check_overlapping_bodies()
+
+func _check_overlapping_bodies():
 	var bodies = get_overlapping_bodies()
 	var found = false
 	for body in bodies:
@@ -30,8 +38,7 @@ func _process(_delta):
 	if found:
 		Refs.exited_gravity_zone = false
 		Refs._on_global_timer_start()
-	else:
-		Refs.exited_gravity_zone = true
+	
 		
 func _on_body_entered(body: Node3D) -> void:
 	if !body.is_multiplayer_authority(): return

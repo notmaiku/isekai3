@@ -123,7 +123,7 @@ script = ExtResource("5_wdxp2")
 use_x_or_z = "z"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity/wall/GravityBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162462, 0.0137811, 0.56999)
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 1.44329e-14, -1.42109e-14, 1.30312e-14, 1, -0.295648, 0.455273, 0.497145)
 shape = SubResource("BoxShape3D_k0ggr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity"]

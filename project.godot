@@ -27,10 +27,6 @@ settings/stdout/print_fps=true
 
 project/assembly_name="FlipGoUp"
 
-[editor]
-
-movie_writer/disable_vsync=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/instant-realistic-light/plugin.cfg")

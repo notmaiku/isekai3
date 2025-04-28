@@ -1,16 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=20 format=3 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://d4bvot7tsjiio" path="res://scenes/objects/pipe_2.tscn" id="6_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://d0kcy6ojduptm" path="res://scenes/objects/shape_hollow_cylinder_2.tscn" id="7_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://jaapslabu57v" path="res://scenes/objects/floor_square_2.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://c7ji4pi8p1sne" path="res://scenes/objects/number_12.tscn" id="8_ioo17"]
 [ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://scenes/objects/wall_2.tscn" id="10_wse8f"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="12_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://cimex0y5fttpq" path="res://scenes/objects/number_double_8.tscn" id="13_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://scenes/objects/target.tscn" id="14_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://bhtgbtg41l5bg" path="res://scenes/objects/stairs_2.tscn" id="14_70uel"]
 [ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="14_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://cewcslhd0xm22" path="res://scenes/moving_gravity_platform.tscn" id="14_lakw3"]
 [ext_resource type="PackedScene" uid="uid://b60p63gxyx6yx" path="res://scenes/objects/PlayerTP.tscn" id="16_dss4m"]
@@ -48,9 +46,6 @@ data = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.488484, 0.872573, 0, -0.872573, 0.488484, 0, 9.52688, 8.38861)
 visible = false
-
-[node name="floor-square2" parent="." instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-4.37114e-07, -20.04, 0, 10, -8.75976e-07, 0, 0, 0, 20.04, 10.0068, 3.51375, -0.413892)
 
 [node name="Gravity" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93844, 7.59213, -26.8573)
@@ -130,9 +125,6 @@ transform = Transform3D(-0.118185, 0.00116675, -1.9965, -0.0232516, 1.99986, 0.0
 
 [node name="number-double-83" parent="World Objects" instance=ExtResource("13_2o6r5")]
 transform = Transform3D(3.7679, 0, 9.26299, 9.21893, 0.974092, -3.74998, -0.9023, 9.95244, 0.367028, 9.56421, 32.6554, -31.7865)
-
-[node name="stairs2" parent="World Objects" instance=ExtResource("14_70uel")]
-transform = Transform3D(2.91848, 0.636803, -0.277378, -0.669386, 2.8984, -0.388879, 0.185434, 0.440204, 2.96173, 26.7233, 9.9228, -2.40025)
 
 [node name="number-13" parent="World Objects" instance=ExtResource("8_ioo17")]
 transform = Transform3D(7.37685, -6.74689, 0.248092, -1.01968, -1.47663, -9.83767, 6.67399, 7.23181, -1.77726, 13.6808, 23.1246, -30.0622)
@@ -249,7 +241,7 @@ transform = Transform3D(1.02104, 1.71972, 0.00805517, 1.71971, -1.02106, 0.00585
 transform = Transform3D(0.620109, 1.90143, 0.0065799, 1.90142, -0.620131, 0.00747243, 0.00914433, 0.0039387, -1.99998, 41.5327, 66.8672, 58.8329)
 
 [node name="MovingPlatform" parent="World Objects" instance=ExtResource("17_7t5mc")]
-transform = Transform3D(-1, 1.50996e-07, 0, 6.45745e-08, 0.427658, -0.903941, -1.36491e-07, -0.903941, -0.427658, 25.4873, 13.8038, -2.69329)
+transform = Transform3D(-1, 1.50996e-07, 0, 6.45745e-08, 0.427658, -0.903941, -1.36491e-07, -0.903941, -0.427658, 27.4666, 13.8038, 3.46867)
 
 [node name="Path3D" parent="World Objects/MovingPlatform" index="1"]
 curve = SubResource("Curve3D_lakw3")
@@ -261,10 +253,10 @@ transform = Transform3D(3.68982e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-
 transform = Transform3D(3.68983e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 1.83421, 0.226595)
 
 [node name="pipe" parent="World Objects/MovingPlatform/CharacterBody3D" index="0"]
-transform = Transform3D(12.3634, -2.84217e-14, -2.38419e-06, 0, 5.22433, -2.6148e-12, -4.76837e-07, -3.97904e-13, 11.6125, 0, -2.49, 0)
+transform = Transform3D(12.3634, 8.52651e-14, -2.38419e-06, 2.27374e-13, 5.22433, -2.04636e-12, 0, -4.54747e-13, 11.6125, 0, -1.00552, 0)
 
 [node name="CollisionShape3D" parent="World Objects/MovingPlatform/CharacterBody3D" index="1"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+transform = Transform3D(2.5, 2.84217e-14, 0, 1.42109e-14, 2.5, 5.68434e-14, 0, 0, 2.5, 0, 1.58584, 4.76837e-07)
 
 [node name="target6" parent="World Objects" instance=ExtResource("14_2u3nc")]
 transform = Transform3D(-0.20354, 8.9977, 3.70201e-08, -8.9977, -0.20354, 2.13981e-05, 2.14279e-05, 6.24917e-07, 9, 33.6192, 61.557, 58.695)
@@ -306,11 +298,17 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.6995, 28.9518, 59.8646)
 [node name="MovingGravityPlatform" parent="." instance=ExtResource("14_lakw3")]
 transform = Transform3D(1, 0, 0, 0, 0.973944, 0.226787, 0, -0.226787, 0.973944, 0.381259, 0.84224, 3.11847)
 
+[node name="PathFollow3D" parent="MovingGravityPlatform/Path3D" index="0"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+
 [node name="Gravity" parent="MovingGravityPlatform/Path3D" index="1"]
 transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 5.96046e-08, 0.0151587)
 
 [node name="MovingGravityPlatform2" parent="." instance=ExtResource("14_lakw3")]
 transform = Transform3D(-0.0518656, 0, -1.99933, -0.0131551, -1.99996, 0.000341262, -1.99928, 0.0131595, 0.0518644, 41.6341, 66.6061, 59.2159)
+
+[node name="PathFollow3D" parent="MovingGravityPlatform2/Path3D" index="0"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
 
 [node name="Gravity" parent="MovingGravityPlatform2/Path3D" index="1"]
 transform = Transform3D(-0.999961, 0, -0.00305777, -4.65661e-10, 0.999989, 1.45519e-11, 0.00305776, -1.45519e-11, -0.999964, 0.00487137, 0, 0.0151577)
@@ -331,8 +329,33 @@ transform = Transform3D(-0.99745, 0, 0.0713756, 0, 1, 0, -0.0713756, 0, -0.99745
 [node name="PressurePlate" parent="." instance=ExtResource("19_pm21f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61233, 0.503613, -1.40437)
 
+[node name="button-floor-round2" parent="PressurePlate" index="0"]
+transform = Transform3D(0.909918, 0.410494, -0.0595334, -0.414789, 0.900497, -0.130598, 0, 0.143527, 0.989646, 26.7137, 18.9338, -11.8518)
+
+[node name="CollisionShape3D" parent="PressurePlate/button-floor-round2/button-floor-round/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5316, 28.6498, -4.54079)
+
+[node name="MovingGravityPlatform" parent="PressurePlate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2091, 17.5636, -9.07761)
+
+[node name="PathFollow3D" parent="PressurePlate/MovingGravityPlatform/Path3D" index="0"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00535752, 0, 0.173978)
+
+[node name="Gravity" parent="PressurePlate/MovingGravityPlatform/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00535774, 0, 0.173978)
+
+[node name="wall" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity" index="0"]
+transform = Transform3D(5.70412e-15, -1.31134e-07, 3, -3, -1.31134e-07, -2.79403e-17, 1.31134e-07, -3, -1.31134e-07, -0.167815, -0.0204345, -0.0589229)
+
+[node name="CollisionShape3D" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity/wall/GravityBody" index="0"]
+transform = Transform3D(1, 4.65661e-10, -7.10543e-15, 0, 1, 1.06165e-14, -7.10543e-15, 6.35603e-15, 1, -0.2438, 0.458724, 0.207456)
+
+[node name="CollisionShape3D" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity" index="1"]
+transform = Transform3D(5.71765e-15, -1.30385e-07, 3, -3, -1.31134e-07, 2.20109e-17, 1.31134e-07, -3, -1.30385e-07, -0.161871, 0.00272179, -0.0490437)
+
 [editable path="World Objects/shape-slope2"]
 [editable path="World Objects/MovingPlatform"]
 [editable path="World Objects/MovingPlatform2"]
 [editable path="MovingGravityPlatform"]
 [editable path="MovingGravityPlatform2"]
+[editable path="PressurePlate"]

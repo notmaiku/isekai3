@@ -92,12 +92,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider and collider is Area3D and collider.name == "gravity":
-			print("Collided with an Area3D named:", collider.name)
+	Refs.exited_gravity_zone = true
 
 	if move_direction.length_squared() > 0.01:
 		_last_movement_direction = move_direction
@@ -132,6 +127,7 @@ func _mouse_mode_change(_event):
 func _player_spawner(loc):
 	global_position = loc
 	up_direction = Vector3.UP
+	velocity = Vector3.ZERO
 
 
 func check_condition_every_second() -> void:
@@ -155,11 +151,14 @@ func HideObject(o_name: StringName):
 @rpc("any_peer", "call_local", "reliable")
 func TeleportPlayerLocal(new_position: Vector3) -> void:
 	global_position = new_position
+	velocity = Vector3.ZERO
 
 @rpc("any_peer", "call_remote", "reliable")
 func TeleportPlayerRemote(new_position: Vector3) -> void:
 	global_position = new_position
+	velocity = Vector3.ZERO
 	
 @rpc("authority", "call_local", "reliable")
 func TeleportAuthority(new_position: Vector3) -> void:
 	global_position = new_position
+	velocity = Vector3.ZERO
