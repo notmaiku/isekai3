@@ -346,6 +346,9 @@ transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0
 [node name="wall" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity" index="0"]
 transform = Transform3D(5.70412e-15, -1.31134e-07, 3, -3, -1.31134e-07, -2.79403e-17, 1.31134e-07, -3, -1.31134e-07, -0.167815, -0.0204345, -0.0589229)
 
+[node name="GravityBody" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity/wall" index="0"]
+use_x_or_z = "x"
+
 [node name="CollisionShape3D" parent="PressurePlate/MovingGravityPlatform/Path3D/Gravity/wall/GravityBody" index="0"]
 transform = Transform3D(1, 4.65661e-10, -7.10543e-15, 0, 1, 1.06165e-14, -7.10543e-15, 6.35603e-15, 1, -0.2438, 0.458724, 0.207456)
 
@@ -353,13 +356,13 @@ transform = Transform3D(1, 4.65661e-10, -7.10543e-15, 0, 1, 1.06165e-14, -7.1054
 transform = Transform3D(5.71765e-15, -1.30385e-07, 3, -3, -1.31134e-07, 2.20109e-17, 1.31134e-07, -3, -1.30385e-07, -0.161871, 0.00272179, -0.0490437)
 
 [node name="WallGravity" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(-1.31134e-07, -3, 0, 2.58794, -1.13122e-07, -1.51742, 1.51742, -6.63287e-08, 2.58794, 6.00091, 0.603612, -10.0865)
+transform = Transform3D(-1.31134e-07, 0, 3, -2.68042, 1.34735, -1.17165e-07, -1.34735, -2.68042, -5.88945e-08, 3.87273, 0.702615, -10.6922)
 
 [node name="WallGravity2" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(-1.31134e-07, -3, -5.39097e-15, 1.56151, -6.82557e-08, -2.56158, 2.56158, -1.1197e-07, 1.56151, 6.00091, 1.67823, -11.4558)
+transform = Transform3D(-1.31134e-07, 4.76138e-15, 3, -2.28333, 1.94587, -9.98073e-08, -1.94587, -2.28332, -8.50569e-08, 3.87273, 1.81128, -12.1706)
 
 [node name="WallGravity3" parent="." instance=ExtResource("18_lakw3")]
-transform = Transform3D(-1.31134e-07, -3, -5.23435e-15, 0.275756, -1.20537e-08, -2.9873, 2.9873, -1.30579e-07, 0.275756, 6.00091, 3.25611, -12.2431)
+transform = Transform3D(-1.31134e-07, 2.17807e-15, 3, -0.921722, 2.8549, -4.02897e-08, -2.8549, -0.921721, -1.24791e-07, 3.87273, 2.65639, -12.8936)
 
 [editable path="World Objects/shape-slope2"]
 [editable path="World Objects/MovingPlatform"]
