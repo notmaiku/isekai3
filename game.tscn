@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjxb4wc40jvh2"]
+[gd_scene load_steps=8 format=3 uid="uid://cjxb4wc40jvh2"]
 
-[ext_resource type="Script" uid="uid://buxvueei4j5ua" path="res://YTMulti.gd" id="1_boyg6"]
+[ext_resource type="Script" uid="uid://buxvueei4j5ua" path="res://multi_lobby.gd" id="1_boyg6"]
 [ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://scenes/player.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://baw61kjikc72d" path="res://scenes/world_objects_solo.tscn" id="3_7jktm"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="4_e8heu"]
 [ext_resource type="PackedScene" uid="uid://dfscpwvua44q" path="res://scenes/world.tscn" id="5_7jktm"]
 
@@ -24,6 +25,7 @@ point_count = 2
 [node name="Lobby" type="Node"]
 script = ExtResource("1_boyg6")
 player_scene = ExtResource("2_feb5d")
+single_p_scene = ExtResource("3_7jktm")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cx5rdb300w5m7")
@@ -55,51 +57,45 @@ layout_mode = 2
 text = "Join
 "
 
+[node name="SoloButton" type="Button" parent="Net/Options"]
+layout_mode = 2
+text = "Singleplayer
+"
+
 [node name="Refs" type="Node" parent="."]
 script = ExtResource("4_e8heu")
 
 [node name="Game" parent="." instance=ExtResource("5_7jktm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Path3D" parent="Game/World Objects/MovingPlatform" index="1"]
+[node name="Path3D" parent="Game/WorldMulti/MovingPlatform" index="1"]
 curve = SubResource("Curve3D_7jktm")
 
-[node name="PathFollow3D" parent="Game/World Objects/MovingPlatform/Path3D" index="0"]
-transform = Transform3D(3.68982e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 1.83421, 0.226595)
-
-[node name="CharacterBody3D" parent="Game/World Objects/MovingPlatform" index="2"]
+[node name="CharacterBody3D" parent="Game/WorldMulti/MovingPlatform" index="2"]
 transform = Transform3D(3.68983e-09, 0.999996, 5.9565e-08, -0.0367092, 5.96603e-08, -0.999322, -0.999326, 1.50077e-09, 0.0367091, 0.0148087, 1.83421, 0.226596)
 
-[node name="Path3D" parent="Game/World Objects/MovingPlatform2" index="1"]
+[node name="Path3D" parent="Game/WorldMulti/MovingPlatform2" index="1"]
 curve = SubResource("Curve3D_ryrav")
 
-[node name="PathFollow3D" parent="Game/World Objects/MovingPlatform2/Path3D" index="0"]
-transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226595)
+[node name="CharacterBody3D" parent="Game/WorldMulti/MovingPlatform2" index="2"]
+transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226593)
 
-[node name="PathFollow3D" parent="Game/MovingGravityPlatform/Path3D" index="0"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+[node name="WallGravity10" parent="Game/WorldMulti" index="65"]
+transform = Transform3D(-1.31134e-07, 1.7865e-14, 3, -1.81071, 2.39193, -7.91482e-08, -2.39193, -1.81071, -1.04555e-07, 3.8733, 5.90429, -19.2271)
 
-[node name="Gravity" parent="Game/MovingGravityPlatform/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+[node name="CollisionShape3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity" index="1"]
+transform = Transform3D(-0.0253447, -0.0831885, -0.996212, -0.850412, 0.525647, -0.0222588, 0.525508, 0.846625, -0.0840669, 0.0346727, -1.19743, 2.82516)
 
-[node name="PathFollow3D" parent="Game/MovingGravityPlatform2/Path3D" index="0"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
-
-[node name="PathFollow3D" parent="Game/PressurePlate/MovingGravityPlatform/Path3D" index="0"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00535752, 0, 0.173978)
-
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="JoinGame"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Net/Options/SoloButton" to="." method="_on_solo_button_pressed"]
 
 [editable path="Game"]
-[editable path="Game/World Objects/shape-slope2"]
-[editable path="Game/World Objects/wall22"]
-[editable path="Game/World Objects/MovingPlatform"]
-[editable path="Game/World Objects/MovingPlatform2"]
-[editable path="Game/MovingGravityPlatform"]
-[editable path="Game/MovingGravityPlatform2"]
-[editable path="Game/PressurePlate"]
+[editable path="Game/WorldMulti/MovingPlatform"]
+[editable path="Game/WorldMulti/MovingPlatform2"]
+[editable path="Game/WorldMulti/MovingGravityPlatform2"]
+[editable path="Game/WorldMulti/PressurePlate"]

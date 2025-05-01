@@ -80,3 +80,15 @@ func flip_direction(new_up_direction: Vector3, body: CharacterBody3D) -> void:
 
 	var rotation_difference := Quaternion(rotation_axis, angle_between)
 	body.quaternion = rotation_difference * body.quaternion
+
+func get_node_by_name(target, type) -> String:
+	var nodes_with_name = get_tree().root.find_children(target, str(type), true)
+	print(nodes_with_name)
+	if not nodes_with_name.is_empty():
+		for node in nodes_with_name:
+			print("Found node in tree: ", node.get_path())
+			return node.get_path()
+	else:
+		print("No nodes found in the tree with that name.")
+		return "Not Found"
+	return "Not Found"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx5rdb300w5m7"]
+[gd_scene load_steps=10 format=3 uid="uid://cx5rdb300w5m7"]
 
 [ext_resource type="Script" uid="uid://g0ikutd5i33x" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://addons/gdquest_gobot/gobot_skin.tscn" id="3_i3pqv"]
 [ext_resource type="Script" path="res://player_net.gd" id="3_smehm"]
 [ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_fjrip"]
+[ext_resource type="Script" uid="uid://bofkcts0yfsgq" path="res://scenes/flip.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://ljxom1r7uv7p" path="res://timer_g.gd" id="7_smehm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2els"]
@@ -65,6 +66,11 @@ ignore_time_scale = true
 script = ExtResource("7_smehm")
 
 [node name="Timer_C" type="Timer" parent="Refs"]
+
+[node name="Flip" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_tuyoq")
+player = NodePath("..")
+rotation = 180.0
 
 [connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
 [connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
