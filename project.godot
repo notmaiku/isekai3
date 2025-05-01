@@ -19,10 +19,6 @@ config/icon="uid://dhjwk5ln7q6qg"
 
 Refs="*res://refs.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [dotnet]
 
 project/assembly_name="FlipGoUp"

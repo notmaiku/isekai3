@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="18_pm21f"]
 [ext_resource type="Material" uid="uid://cdnedbb5tnoy4" path="res://red.tres" id="19_kpybi"]
 [ext_resource type="PackedScene" uid="uid://b8cn0aygg7bti" path="res://pressure_plate.tscn" id="19_pm21f"]
-[ext_resource type="Script" path="res://color_switcher.gd" id="20_ctatt"]
+[ext_resource type="Script" uid="uid://iedw6p6woo1y" path="res://color_switcher.gd" id="20_ctatt"]
 [ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="21_xgqkh"]
 
 [sub_resource type="Curve3D" id="Curve3D_lakw3"]

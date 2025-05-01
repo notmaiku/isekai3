@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfg8wx814y7np"
+path="res://.godot/imported/detail_overhangWide.obj-ecfabab0f17d1559be43b1e75977438f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/detail_overhangWide.obj-ecfabab0f17d1559be43b1e75977438f.mesh"]
+
+source_file="res://assets/kenney_city-kit-commercial/Models/OBJ format/detail_overhangWide.obj"
+dest_files=["res://.godot/imported/detail_overhangWide.obj-ecfabab0f17d1559be43b1e75977438f.mesh", "res://.godot/imported/detail_overhangWide.obj-ecfabab0f17d1559be43b1e75977438f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
