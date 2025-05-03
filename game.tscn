@@ -83,28 +83,16 @@ curve = SubResource("Curve3D_ryrav")
 [node name="PathFollow3D" parent="Game/WorldMulti/MovingPlatform2/Path3D" index="0"]
 transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226595)
 
-[node name="CharacterBody3D" parent="Game/WorldMulti/MovingPlatform2" index="2"]
-transform = Transform3D(3.68982e-09, 0.999998, 5.95651e-08, -0.0367092, 5.96604e-08, -0.999324, -0.999326, 1.50078e-09, 0.0367092, 0.0148087, 1.83421, 0.226593)
-
 [node name="PathFollow3D" parent="Game/WorldMulti/MovingGravityPlatform2/Path3D" index="0"]
 transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
 
-[node name="Gravity" parent="Game/WorldMulti/MovingGravityPlatform2/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305777, -4.65661e-10, 0.999989, 1.45519e-11, 0.00305776, -1.45519e-11, -0.999964, 0.00487137, 0, 0.0151577)
-
 [node name="PathFollow3D" parent="Game/WorldMulti/PressurePlate/MovingGravityPlatform/Path3D" index="0"]
 transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999988, 0, 0.00305775, 0, -0.999962, 0.00487185, 0, 0.0151589)
-
-[node name="Gravity" parent="Game/WorldMulti/PressurePlate/MovingGravityPlatform/Path3D" index="1"]
-transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999988, 0, 0.00305775, 0, -0.999962, 0.00487137, 0, 0.0151587)
 
 [node name="WallGravity10" parent="Game/WorldMulti" index="65"]
 transform = Transform3D(-1.31134e-07, 1.7865e-14, 3, -1.81071, 2.39193, -7.91482e-08, -2.39193, -1.81071, -1.04555e-07, 3.8733, 5.90429, -19.2271)
 
 [node name="PathFollow3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D" index="0"]
-transform = Transform3D(0.999552, 0.0225528, 0.0149923, 0, 0.553602, -0.832735, -0.0270799, 0.832451, 0.553384, -1.51612, 4.10919, 9.76498)
-
-[node name="Gravity" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D" index="1"]
 transform = Transform3D(0.999552, 0.0225528, 0.0149923, 0, 0.553602, -0.832735, -0.0270799, 0.832451, 0.553384, -1.51612, 4.10919, 9.76498)
 
 [node name="wall" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity" index="0"]
@@ -119,12 +107,12 @@ transform = Transform3D(1, 2.08616e-07, 1.11759e-08, -2.08616e-07, 1, -1.49012e-
 [node name="CollisionShape3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity" index="1"]
 transform = Transform3D(-0.0253447, -0.0831885, -0.996212, -0.850412, 0.525647, -0.0222588, 0.525508, 0.846625, -0.0840669, 0.0346727, -1.19743, 2.82516)
 
-[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
-[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Net/Options/JoinButton" to="." method="JoinGame"]
+[connection signal="pressed" from="Net/Options/JoinButton" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Net/Options/SoloButton" to="." method="_on_solo_button_pressed"]
 
 [editable path="Game"]
