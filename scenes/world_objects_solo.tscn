@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://baw61kjikc72d"]
+[gd_scene load_steps=29 format=3 uid="uid://baw61kjikc72d"]
 
 [ext_resource type="Texture2D" uid="uid://vl84n46cuefe" path="res://assets/textures/grass_alb-height.dds" id="1_pj4m0"]
+[ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="1_u5guf"]
 [ext_resource type="Texture2D" uid="uid://ct62dnbyf2p0q" path="res://assets/textures/grass_rough-hgt.dds" id="2_7h7mj"]
 [ext_resource type="Texture2D" uid="uid://cxm75ahjo5hmb" path="res://assets/textures/packed_albedo_height.png" id="3_vp4es"]
 [ext_resource type="Texture2D" uid="uid://b27mevjw4435r" path="res://assets/textures/packed_normal_roughness.png" id="4_2mj8h"]
@@ -8,6 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://dxd3g1ny1klky" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/building-type-b.glb" id="6_3gt4h"]
 [ext_resource type="PackedScene" uid="uid://dloeimdpil36f" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/building-type-c.glb" id="7_pjxif"]
 [ext_resource type="PackedScene" uid="uid://kwhvq2xnd8dw" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/building-type-d.glb" id="8_eslgs"]
+[ext_resource type="PackedScene" uid="uid://dq53oirgc48fv" path="res://assets/kenney_city-kit-roads/Models/GLB format/road-straight.glb" id="9_pjxif"]
+[ext_resource type="PackedScene" uid="uid://dmw1r0cnjmcym" path="res://assets/kenney_city-kit-roads/Models/GLB format/road-bend.glb" id="10_eslgs"]
+[ext_resource type="PackedScene" uid="uid://b7dsi2mkga81w" path="res://assets/kenney_city-kit-roads/Models/GLB format/road-roundabout.glb" id="11_e0y4f"]
+[ext_resource type="PackedScene" uid="uid://vxik6cloyacq" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/fence-3x2.glb" id="12_qd0eo"]
+[ext_resource type="PackedScene" uid="uid://6w22tg2hj3e2" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/fence-1x3.glb" id="13_n6iep"]
+[ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="14_4jmwv"]
+[ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://scenes/objects/target.tscn" id="15_04wtb"]
+[ext_resource type="PackedScene" uid="uid://dn3uweel3hxq0" path="res://scenes/objects/road_straight.tscn" id="16_q5f3s"]
+[ext_resource type="PackedScene" uid="uid://cycxaj8wlsf12" path="res://scenes/objects/barrier.tscn" id="17_oays4"]
+[ext_resource type="PackedScene" uid="uid://cltk3u0i1svsc" path="res://scenes/objects/planter.tscn" id="19_jx1mc"]
 
 [sub_resource type="Gradient" id="Gradient_7h7mj"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -32,6 +43,10 @@ noise = SubResource("FastNoiseLite_vp4es")
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_s2g2b"]
 _shader_parameters = {
+&"auto_base_texture": 1,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 0,
+&"auto_slope": 1.0,
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.87,
 &"depth_blur": 0.0,
@@ -50,9 +65,18 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_2mj8h"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
+&"world_noise_fragment_normals": false,
+&"world_noise_height": 64.0,
+&"world_noise_lod_distance": 7500.0,
+&"world_noise_max_octaves": 4,
+&"world_noise_min_octaves": 2,
+&"world_noise_offset": Vector3(0, 0, 0),
+&"world_noise_region_blend": 0.33,
+&"world_noise_scale": 5.0,
 &"world_space_normal_blend": true
 }
-world_background = 0
+world_background = 2
+auto_shader = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4atid"]
 transparency = 4
@@ -80,6 +104,7 @@ normal_texture = ExtResource("2_7h7mj")
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2mj8h"]
 name = "packed_albedo_height"
 id = 1
+albedo_color = Color(0.370362, 0.345434, 0.166366, 1)
 albedo_texture = ExtResource("3_vp4es")
 normal_texture = ExtResource("4_2mj8h")
 
@@ -90,27 +115,224 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 [node name="WorldSolo" type="Node3D"]
 
 [node name="SinglePlayerSpawn" type="Node" parent="."]
+script = ExtResource("1_u5guf")
 
 [node name="1" type="Marker3D" parent="SinglePlayerSpawn" groups=["single_spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.3447, 5.25746, -52.5552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.475, 1, -42.6723)
 
-[node name="Terrain3D" type="Terrain3D" parent="."]
+[node name="Suburbia Level 1" type="Node" parent="."]
+
+[node name="Course" type="Node" parent="Suburbia Level 1"]
+
+[node name="WallGravity" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.206238, 0.978502, 8.55434e-08, 0.978502, 0.206238, 1.80299e-08, 3.82137e-15, 8.74228e-08, -1, 27.6028, 0.0945127, -42.4962)
+
+[node name="WallGravity2" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.442746, 0.896616, 0.00743511, 0.896641, 0.442758, 3.87072e-08, -0.00329192, 0.00666664, -0.999972, 28.2047, 0.253542, -42.4962)
+
+[node name="WallGravity3" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.652006, 0.758214, 6.62852e-08, 0.758214, 0.652006, 5.70002e-08, 3.82137e-15, 8.74228e-08, -1, 28.7723, 0.554336, -42.4962)
+
+[node name="WallGravity4" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.652006, 0.758214, 6.62852e-08, 0.758214, 0.652006, 5.70002e-08, 3.82137e-15, 8.74228e-08, -1, 28.7723, 0.554336, -42.4962)
+
+[node name="WallGravity5" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.763751, 0.645511, 5.64324e-08, 0.645511, 0.763751, 6.67692e-08, 8.45415e-15, 8.74228e-08, -1, 29.1913, 0.949649, -42.4962)
+
+[node name="WallGravity6" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.93775, 0.347312, 3.0363e-08, 0.347312, 0.93775, 8.19807e-08, 5.74076e-15, 8.74228e-08, -1, 29.6382, 1.7116, -42.4962)
+
+[node name="WallGravity7" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.999535, -0.0305037, -2.66671e-09, -0.0305037, 0.999535, 8.73821e-08, 5.74076e-15, 8.74228e-08, -1, 29.7896, 2.53149, -42.4962)
+
+[node name="WallGravity8" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.923799, -0.13888, -2.66671e-09, -0.0281924, 4.55077, 8.73821e-08, 5.30578e-15, 3.98026e-07, -1, 29.7132, 5.16789, -42.498)
+
+[node name="WallGravity9" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.383051, 4.0788, -0.476746, 0.8389, 1.91072, -0.0040557, 0.0609847, -0.664341, -2.9387, 40.7205, 10.5178, -59.3895)
+
+[node name="WallGravity10" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.403379, 4.0788, -0.247808, 0.825082, 1.91072, -0.48846, -0.103563, -0.664341, -2.92631, 44.5093, 12.1977, -59.9907)
+
+[node name="WallGravity11" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.410623, 1.72952, 0.014787, 0.778624, 0.810193, -1.00581, -0.28166, -0.281698, -2.80204, 47.4171, 13.4569, -60.4274)
+
+[node name="WallGravity12" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.400128, 1.72952, 0.297505, 0.693765, 0.810193, -1.51925, -0.461289, -0.281698, -2.54296, 49.1552, 14.1905, -60.6623)
+
+[node name="WallGravity13" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.359216, 1.72952, 0.640985, 0.537034, 0.810193, -2.07599, -0.660877, -0.281698, -2.03536, 50.8826, 14.9048, -60.8469)
+
+[node name="WallGravity14" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-0.242668, 1.72952, 1.06711, 0.217293, 0.810193, -2.61004, -0.864925, -0.281698, -0.955109, 52.6752, 15.6625, -60.9797)
+
+[node name="WallGravity15" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.0839741, 1.79371, 1.06711, 0.346382, 0.582181, -2.61004, -0.852741, 0.413117, -0.955109, 54.3881, 16.3268, -60.9105)
+
+[node name="WallGravity16" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.49726, 1.47285, 1.06711, 0.438854, 0.148711, -2.61004, -0.643692, 1.23918, -0.955109, 55.8748, 16.6412, -60.1248)
+
+[node name="WallGravity17" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-4.56086e-08, -3.91717, 3.10738, 1.33184, -2.18557e-07, -1.42109e-14, 3.61801e-08, 3.10738, 3.91717, 54.0566, 13.5433, -56.7212)
+
+[node name="WallGravity21" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(-4.56086e-08, -3.91717, 3.10738, 1.33184, -2.18557e-07, -1.42109e-14, 3.61801e-08, 3.10738, 3.91717, 55.691, 13.5433, -58.0177)
+
+[node name="WallGravity18" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.474474, -3.48873, 3.10738, 1.18617, 2.27368, 5.96046e-08, -0.376387, 2.76751, 3.91717, 50.7286, 14.4969, -54.0812)
+
+[node name="WallGravity19" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.908393, -1.92718, 3.10738, 0.655241, 4.35302, 1.19209e-07, -0.720603, 1.52878, 3.91717, 48.478, 16.9956, -52.2959)
+
+[node name="WallGravity20" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.908393, -1.92718, 3.10738, 0.655241, 4.35302, 1.19209e-07, -0.720603, 1.52878, 3.91717, 48.478, 16.9956, -52.2959)
+
+[node name="target" parent="Suburbia Level 1/Course" instance=ExtResource("15_04wtb")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 34.8508, 6.86151, -42.6855)
+
+[node name="target3" parent="Suburbia Level 1/Course" instance=ExtResource("15_04wtb")]
+transform = Transform3D(4.17722, 0, -2.74788, 0, 5, 0, 2.74788, 0, 4.17722, 57.7279, 15.9471, -58.622)
+
+[node name="target2" parent="Suburbia Level 1/Course" instance=ExtResource("15_04wtb")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 34.8508, 6.86151, -185.127)
+
+[node name="road-straight2" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0651305, 0, 2.99929, 0, 3, 0, -2.99929, 0, -0.0651305, 32.8882, 6.613, -42.6336)
+
+[node name="road-straight3" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0651305, 0, 2.99929, 0, 3, 0, -2.99929, 0, -0.0651305, 32.8882, 6.613, -47.1372)
+
+[node name="road-straight4" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0651305, 0, 2.99929, 0.913978, 2.85732, 0.0198473, -2.85664, 0.914194, -0.0620328, 32.8882, 7.05572, -50.9164)
+
+[node name="road-straight7" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(2.02019, -0.232378, 2.66238, 1.21857, 2.88016, -0.169507, -3.76902, 0.806633, 1.37223, 33.5544, 7.99009, -55.0926)
+
+[node name="road-straight8" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(2.81699, -0.904528, 0.496364, 0.913978, 2.85732, 0.0198473, -0.47874, 0.132585, 2.95859, 37.3852, 9.24832, -58.7723)
+
+[node name="construction-barrier2" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 56.8858, 13.874, -55.3002)
+
+[node name="construction-barrier8" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 56.8912, 15.0515, -55.2994)
+
+[node name="construction-barrier4" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 58.6068, 13.8669, -56.6371)
+
+[node name="construction-barrier3" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 55.1404, 13.8811, -53.9443)
+
+[node name="construction-barrier6" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 55.1458, 15.0567, -53.9436)
+
+[node name="construction-barrier5" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 53.401, 13.8882, -52.5932)
+
+[node name="construction-barrier7" parent="Suburbia Level 1/Course" instance=ExtResource("17_oays4")]
+transform = Transform3D(-6.13457, 0.0458839, 7.89715, 0.0332645, 9.99989, -0.0322616, -7.89721, 0.00647888, -6.13466, 53.4064, 15.0493, -52.5924)
+
+[node name="background" type="Node" parent="Suburbia Level 1"]
+
+[node name="roads" type="Node" parent="Suburbia Level 1/background"]
+
+[node name="road-straight2" parent="Suburbia Level 1/background/roads" instance=ExtResource("9_pjxif")]
+transform = Transform3D(92.7694, 0, 0, 0, 10, 0, 0, 0, 10, 46.0794, 0, -42.6524)
+
+[node name="road-straight4" parent="Suburbia Level 1/background/roads" instance=ExtResource("9_pjxif")]
+transform = Transform3D(92.7694, 0, 0, 0, 10, 0, 0, 0, 10, 36.0962, 0, -97.6807)
+
+[node name="road-straight5" parent="Suburbia Level 1/background/roads" instance=ExtResource("9_pjxif")]
+transform = Transform3D(92.7694, 0, 0, 0, 10, 0, 0, 0, 10, 158.793, 0, -97.6807)
+
+[node name="road-straight3" parent="Suburbia Level 1/background/roads" instance=ExtResource("9_pjxif")]
+transform = Transform3D(-1.53682e-06, 0, -10, 0, 10, 0, 35.1584, 0, -4.37114e-07, 97.4325, 0, -65.1299)
+
+[node name="road-straight6" parent="Suburbia Level 1/background/roads" instance=ExtResource("9_pjxif")]
+transform = Transform3D(-1.53682e-06, 0, -10, 0, 10, 0, 35.1584, 0, -4.37114e-07, 97.4325, 0, -130.28)
+
+[node name="road-bend2" parent="Suburbia Level 1/background/roads" instance=ExtResource("10_eslgs")]
+transform = Transform3D(1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, 97.4291, 0, -42.6565)
+
+[node name="road-roundabout2" parent="Suburbia Level 1/background/roads" instance=ExtResource("11_e0y4f")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 97.4287, 0, -97.7019)
+
+[node name="homes" type="Node" parent="Suburbia Level 1/background"]
+
+[node name="building-type-a2" parent="Suburbia Level 1/background/homes" instance=ExtResource("5_2mj8h")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 27.6788, 0, -24.0744)
+
+[node name="building-type-b2" parent="Suburbia Level 1/background/homes" instance=ExtResource("6_3gt4h")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 29.6081, 0, -60.3738)
+
+[node name="building-type-c2" parent="Suburbia Level 1/background/homes" instance=ExtResource("7_pjxif")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 70.2628, 0, -25.3548)
+
+[node name="building-type-d2" parent="Suburbia Level 1/background/homes" instance=ExtResource("8_eslgs")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 72.821, 0, -58.9693)
+
+[node name="building-type-a3" parent="Suburbia Level 1/background/homes" instance=ExtResource("5_2mj8h")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 27.6788, 0, -83.5565)
+
+[node name="building-type-b3" parent="Suburbia Level 1/background/homes" instance=ExtResource("6_3gt4h")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 29.6081, 0, -122.185)
+
+[node name="building-type-c3" parent="Suburbia Level 1/background/homes" instance=ExtResource("7_pjxif")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 70.2628, 0, -84.3218)
+
+[node name="building-type-d3" parent="Suburbia Level 1/background/homes" instance=ExtResource("8_eslgs")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 72.821, 0, -118.718)
+
+[node name="building-type-a4" parent="Suburbia Level 1/background/homes" instance=ExtResource("5_2mj8h")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 121.229, 0, -81.2573)
+
+[node name="building-type-b4" parent="Suburbia Level 1/background/homes" instance=ExtResource("6_3gt4h")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 123.158, 0, -122.185)
+
+[node name="building-type-c4" parent="Suburbia Level 1/background/homes" instance=ExtResource("7_pjxif")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 163.813, 0, -82.5377)
+
+[node name="building-type-d4" parent="Suburbia Level 1/background/homes" instance=ExtResource("8_eslgs")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 166.371, 0, -118.718)
+
+[node name="planter2" parent="Suburbia Level 1/background/homes" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(6.28343, 0, -7.77936, 0, 10, 0, 7.77936, 0, 6.28343, 46.4951, 19.2776, -50.5279)
+
+[node name="planter4" parent="Suburbia Level 1/background/homes" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(6.28343, 0, -7.77936, 0, 10, 0, 7.77936, 0, 6.28343, 43.7345, 19.2776, -48.2981)
+
+[node name="planter5" parent="Suburbia Level 1/background/homes" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(6.28343, 0, -7.77936, 0, 10, 0, 7.77936, 0, 6.28343, 40.9195, 19.2776, -46.0244)
+
+[node name="planter6" parent="Suburbia Level 1/background/homes" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(6.28343, 0, -7.77936, 0, 10, 0, 7.77936, 0, 6.28343, 38.0018, 19.2776, -43.6678)
+
+[node name="planter3" parent="Suburbia Level 1/background/homes" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-0.029496, 0, 4.99991, 0, 5, 0, -4.99991, 0, -0.029496, 30.6023, 6.643, -42.5715)
+
+[node name="fences" type="Node" parent="Suburbia Level 1/background"]
+
+[node name="fence-3x22" parent="Suburbia Level 1/background/fences" instance=ExtResource("12_qd0eo")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 70.7743, 1.90735e-06, -17.6726)
+
+[node name="fence-3x23" parent="Suburbia Level 1/background/fences" instance=ExtResource("12_qd0eo")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 28.7223, 1.90735e-06, -17.6726)
+
+[node name="fence-3x24" parent="Suburbia Level 1/background/fences" instance=ExtResource("12_qd0eo")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 28.7223, 1.90735e-06, -63.0612)
+
+[node name="fence-3x25" parent="Suburbia Level 1/background/fences" instance=ExtResource("12_qd0eo")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 126.452, 1.90735e-06, -128.246)
+
+[node name="fence-3x26" parent="Suburbia Level 1/background/fences" instance=ExtResource("12_qd0eo")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 163.1, 1.90735e-06, -128.246)
+
+[node name="fence-1x32" parent="Suburbia Level 1/background/fences" instance=ExtResource("13_n6iep")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 69.9403, 0.0526066, -77.9894)
+
+[node name="Terrain3D" type="Terrain3D" parent="Suburbia Level 1/background"]
 data_directory = "res://terrain-data"
 material = SubResource("Terrain3DMaterial_s2g2b")
 assets = SubResource("Terrain3DAssets_eslgs")
 top_level = true
 metadata/_edit_lock_ = true
-
-[node name="Suburbia Level 1" type="Node" parent="."]
-
-[node name="building-type-a2" parent="Suburbia Level 1" instance=ExtResource("5_2mj8h")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 27.6788, 0, -24.0744)
-
-[node name="building-type-b2" parent="Suburbia Level 1" instance=ExtResource("6_3gt4h")]
-transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 29.6081, 0, -65.0026)
-
-[node name="building-type-c2" parent="Suburbia Level 1" instance=ExtResource("7_pjxif")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 70.2628, 0, -25.3548)
-
-[node name="building-type-d2" parent="Suburbia Level 1" instance=ExtResource("8_eslgs")]
-transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 72.821, 0, -61.5354)

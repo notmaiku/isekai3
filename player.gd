@@ -33,6 +33,7 @@ func _enter_tree():
 func _ready() -> void:
 	if !is_multi:
 		get_tree().root.find_child("WorldMulti", true, false).queue_free()
+		Refs._spawn_player(0, self)
 	world_environment = get_tree().root.find_child("WorldEnvironment", true, false)
 	Refs.player_group = get_groups()[0]
 	Refs.player_id = multiplayer.get_unique_id()

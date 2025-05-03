@@ -12,7 +12,7 @@ size = Vector3(0.310813, 1.0498, 0.991355)
 points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
 
 [node name="WallGravity" groups=["gravity_object"] instance=ExtResource("1_k0ggr")]
-transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wall" parent="." index="0"]
 transform = Transform3D(1, -7.10543e-15, 0, 0, 1, 0, 0, 0, 1, -2.16843e-08, -0.496078, 0)
@@ -28,11 +28,12 @@ collision_layer = 129
 script = ExtResource("2_qpegl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall/GravityBody" index="0"]
-transform = Transform3D(2.05524, -9.91207e-13, 0, -2.19558e-12, 0.931499, 0, 0, -1.08441e-10, 1.02114, 0, 0, 0)
+transform = Transform3D(-0.99995, 8.8298e-08, -0.0100355, 8.65422e-08, 1, 1.75396e-07, 0.0100355, 1.74519e-07, -0.99995, 0, 0, 0)
 shape = SubResource("BoxShape3D_k0ggr")
 
 [node name="Gravity" type="StaticBody3D" parent="wall" index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall/Gravity" index="0"]
 transform = Transform3D(1, -5.40347e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)

@@ -6,16 +6,16 @@ signal start_timerg
 signal stop_timerg
 signal reset_timerg
 signal spawn_player
+@export var World: PackedScene
 
 var timer_stopped = true
 var exited_gravity_zone = true
-var checkpoint = 1
+var checkpoint = 0
 const EPSILON: float = 0.0001
 var player_group
 var player_id
-@export var World: PackedScene
-
 var mouse_mode = Input.MOUSE_MODE_CAPTURED
+var is_multi
 
 func _on_global_timer_start():
 	emit_signal("start_timerg")

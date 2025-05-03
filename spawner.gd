@@ -1,8 +1,8 @@
 extends Node
+var spawn_collection
 
 func _ready():
 	$"/root/Refs".connect("spawn_player", _on_player_spawn_me)
-	
 	
 func _on_player_spawn_me(_location, player: CharacterBody3D, die):
 	var uid = multiplayer.get_unique_id()

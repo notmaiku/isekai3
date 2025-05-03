@@ -51,7 +51,7 @@ func _on_body_entered(body: Node3D) -> void:
 		Refs._on_global_timer_start()
 		var target_up_direction: Vector3
 		if use_x_or_z == 'x':
-			target_up_direction = - global_transform.basis.x.normalized()
+			target_up_direction = global_transform.basis.x.normalized()
 		else:
 			target_up_direction = - global_transform.basis.z.normalized()
 		Refs.flip_direction(target_up_direction, body)
