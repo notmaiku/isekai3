@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn3nr8j1amp58"]
+
+[ext_resource type="PackedScene" uid="uid://vt6p25sv8l4j" path="res://assets/proto/GLB format/animal-bison.glb" id="1_gil3p"]
+[ext_resource type="Script" uid="uid://bs08msskv23f1" path="res://lava.gd" id="2_jefjt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gil3p"]
+size = Vector3(0.6, 0.677246, 0.810913)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="animal-bison2" parent="." instance=ExtResource("1_gil3p")]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_jefjt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.00104721, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00104721, -0.170199, 0.388696, -0.0127896)
+shape = SubResource("BoxShape3D_gil3p")

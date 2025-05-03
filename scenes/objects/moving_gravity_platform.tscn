@@ -1,0 +1,142 @@
+[gd_scene load_steps=14 format=4 uid="uid://cewcslhd0xm22"]
+
+[ext_resource type="Material" uid="uid://cdnedbb5tnoy4" path="res://red.tres" id="2_lo75d"]
+[ext_resource type="Texture2D" uid="uid://ct4d13ctxcgq1" path="res://assets/proto/GLB format/Textures/colormap.png" id="3_tdy8n"]
+[ext_resource type="Script" uid="uid://iedw6p6woo1y" path="res://color_switcher.gd" id="4_nv7e7"]
+[ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="5_wdxp2"]
+
+[sub_resource type="Curve3D" id="Curve3D_e80p5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.00487185, 0, 0.0151589, 0, 0, 0, 0, 0, 0, 0.0171008, 0, 4.01418),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d2mc"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("3_tdy8n")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7aegq"]
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.5, 0.2, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAgAEAAAAAAAFAAMAAwAGAAIABwAFAAAAAwAFAAcAAAAEAAcABwAGAAMABwAEAAIAAgAGAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAD/////AAAAAP//AAAAAAAAAAD//wAAAAD//wAA//8AAAAA/////wAAAAAAAAAAAAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yok0c"]
+resource_name = "wall_wall"
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.5, 0.2, 1, 1),
+"attribute_data": PackedByteArray("/3dlxv93Zcb/d5j5/3eY+f93Zcb/d5j5/3eY+f93Zcb/d5j5/3eY+f93Zcb/d2XG/3dlxv93mPn/d5j5/3dlxv93mPn/d5j5/3eY+f93mPn/d2XG/3dlxv93Zcb/d2XG"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_6d2mc"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////////7//////AAD/v///AAAAAP+///8AAP///78AAP//AAD//wAAAAAAAP////8AAAAA////////AAD//wAAAAD///+/AAAAAAAA/78AAP//AAD/vwAA//////+/////////AID//wAA//8AgAAAAAD//wCAAAD/////AIAAAAAA////v///AAD///+///8AAAAA/78AAAAAAAD/vwAA//8AAP///////wAA/////////////wAA/////////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7aegq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
+size = Vector3(0.965219, 0.937248, 0.656279)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
+points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
+
+[sub_resource type="Animation" id="Animation_kwaf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5v52r"]
+resource_name = "moving_platform"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.166667, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jv0wd"]
+_data = {
+&"RESET": SubResource("Animation_kwaf8"),
+&"moving_platform": SubResource("Animation_5v52r")
+}
+
+[node name="MovingGravityPlatform" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_e80p5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../Gravity")
+
+[node name="Gravity" type="AnimatableBody3D" parent="Path3D"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+
+[node name="wall" type="MeshInstance3D" parent="Path3D/Gravity"]
+transform = Transform3D(1.8735e-15, -4.30737e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999999, -4.37722e-08, -0.167815, -0.0204345, -0.0589229)
+material_override = ExtResource("2_lo75d")
+mesh = SubResource("ArrayMesh_yok0c")
+skeleton = NodePath("")
+script = ExtResource("4_nv7e7")
+
+[node name="GravityBody" type="Area3D" parent="Path3D/Gravity/wall"]
+unique_name_in_owner = true
+transform = Transform3D(-1.77636e-14, -4.37114e-08, 1, -1, -4.37722e-08, 0, 4.37722e-08, -1, -4.37114e-08, -0.496428, 0.187341, 0.439966)
+collision_mask = 129
+script = ExtResource("5_wdxp2")
+use_x_or_z = "z"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity/wall/GravityBody"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 1.44329e-14, -1.42109e-14, 1.30312e-14, 1, -0.295648, 0.455273, 0.497145)
+shape = SubResource("BoxShape3D_k0ggr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Gravity"]
+transform = Transform3D(1.85962e-15, -4.23752e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999998, -4.37722e-08, -0.161847, 0.00272136, -0.0559998)
+shape = SubResource("ConvexPolygonShape3D_qpegl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/Gravity"]
+process_mode = 3
+physics_interpolation_mode = 1
+libraries = {
+&"": SubResource("AnimationLibrary_jv0wd")
+}
+autoplay = "moving_platform"
+
+[connection signal="body_entered" from="Path3D/Gravity/wall/GravityBody" to="Path3D/Gravity/wall/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="Path3D/Gravity/wall/GravityBody" to="Path3D/Gravity/wall/GravityBody" method="_on_body_exited"]

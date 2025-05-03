@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b60p63gxyx6yx"]
+
+[ext_resource type="PackedScene" uid="uid://bmdskrwm1rtea" path="res://assets/proto/GLB format/coin.glb" id="1_j8u5j"]
+[ext_resource type="Script" uid="uid://yulgux4su57w" path="res://PlayerTeleporter.cs" id="2_iv40p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu3hb"]
+
+[node name="coin2" instance=ExtResource("1_j8u5j")]
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+script = ExtResource("2_iv40p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0521302, 0)
+shape = SubResource("SphereShape3D_wu3hb")

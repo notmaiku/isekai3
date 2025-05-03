@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4bvot7tsjiio"]
+
+[ext_resource type="PackedScene" uid="uid://ddq18a5806b31" path="res://assets/proto/GLB format/pipe.glb" id="1_x63id"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x63id"]
+
+[node name="pipe2" instance=ExtResource("1_x63id")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.198754, 0, 0, 0, 0.491189, 0, 0, 0, 0.191003, 0, 0.505771, 0)
+shape = SubResource("CylinderShape3D_x63id")

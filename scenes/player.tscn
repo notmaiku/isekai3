@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx5rdb300w5m7"]
+
+[ext_resource type="Script" uid="uid://g0ikutd5i33x" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://addons/gdquest_gobot/gobot_skin.tscn" id="3_i3pqv"]
+[ext_resource type="Script" path="res://player_net.gd" id="3_smehm"]
+[ext_resource type="Script" uid="uid://220uvgnjgrww" path="res://refs.gd" id="6_fjrip"]
+[ext_resource type="Script" uid="uid://bofkcts0yfsgq" path="res://scenes/flip.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://ljxom1r7uv7p" path="res://timer_g.gd" id="7_smehm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2els"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qhqgy"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("GobotSkin:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" groups=["players"]]
+process_mode = 1
+collision_layer = 129
+floor_constant_speed = true
+platform_on_leave = 2
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.287597, 0)
+shape = SubResource("SphereShape3D_g2els")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557473, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.66884e-08, 0.952263, 0.30528, 8.32494e-08, 0.30528, -0.952263, 0, 0.48434, 0)
+shape = SubResource("SphereShape3D_qhqgy")
+spring_length = 2.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 5.32907e-15, 1.42109e-14, -1.77636e-15, 1, 2.98023e-08, -7.10543e-14, -2.98023e-08, 1, 0, 0, 0)
+near = 0.007
+
+[node name="GobotSkin" parent="." instance=ExtResource("3_i3pqv")]
+unique_name_in_owner = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g2els")
+script = ExtResource("3_smehm")
+
+[node name="PlayerNet" type="Node3D" parent="."]
+
+[node name="Refs" type="Node" parent="."]
+script = ExtResource("6_fjrip")
+
+[node name="Timer_G" type="Timer" parent="Refs"]
+unique_name_in_owner = true
+wait_time = 0.5
+ignore_time_scale = true
+script = ExtResource("7_smehm")
+
+[node name="Timer_C" type="Timer" parent="Refs"]
+
+[node name="Flip" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_tuyoq")
+player = NodePath("..")
+rotation = 180.0
+
+[connection signal="reset_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_reset_timerg"]
+[connection signal="start_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_start_timerg"]
+[connection signal="stop_timerg" from="Refs" to="Refs/Timer_G" method="_on_refs_stop_timerg"]
+[connection signal="timeout" from="Refs/Timer_G" to="." method="_on_timer_g_timeout"]
+[connection signal="timeout" from="Refs/Timer_G" to="Refs" method="_on_timer_g_timeout"]

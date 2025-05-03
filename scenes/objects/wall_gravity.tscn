@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dij6dwqdv8k54"]
+
+[ext_resource type="PackedScene" uid="uid://b6tqp5vtelf72" path="res://assets/proto/GLB format/wall.glb" id="1_k0ggr"]
+[ext_resource type="Material" uid="uid://cdnedbb5tnoy4" path="res://red.tres" id="2_lbr41"]
+[ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="2_qpegl"]
+[ext_resource type="Script" path="res://color_switcher.gd" id="3_rtct4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
+size = Vector3(0.310813, 1.0498, 0.991355)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpegl"]
+points = PackedVector3Array(0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 0, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, 0.1, 0, -0.5, -0.1, 0, -0.5)
+
+[node name="WallGravity" groups=["gravity_object"] instance=ExtResource("1_k0ggr")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="wall" parent="." index="0"]
+transform = Transform3D(1, -7.10543e-15, 0, 0, 1, 0, 0, 0, 1, -2.16843e-08, -0.496078, 0)
+material_override = ExtResource("2_lbr41")
+script = ExtResource("3_rtct4")
+
+[node name="GravityBody" type="Area3D" parent="wall" index="0"]
+unique_name_in_owner = true
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20219e-08, 0.503801, 0)
+disable_mode = 2
+collision_layer = 129
+script = ExtResource("2_qpegl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/GravityBody" index="0"]
+transform = Transform3D(-0.99995, 8.8298e-08, -0.0100355, 8.65422e-08, 1, 1.75396e-07, 0.0100355, 1.74519e-07, -0.99995, 0, 0, 0)
+shape = SubResource("BoxShape3D_k0ggr")
+
+[node name="Gravity" type="StaticBody3D" parent="wall" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/Gravity" index="0"]
+transform = Transform3D(1, -5.40347e-15, 0, 1.70198e-15, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qpegl")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+[connection signal="body_entered" from="wall/GravityBody" to="wall/GravityBody" method="_on_body_entered"]
+[connection signal="body_exited" from="wall/GravityBody" to="wall/GravityBody" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="wall/GravityBody" method="_on_timer_timeout"]

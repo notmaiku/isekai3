@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cycxaj8wlsf12"]
+
+[ext_resource type="PackedScene" uid="uid://dvg0d14o8wna1" path="res://assets/kenney_city-kit-roads/Models/FBX format/construction-barrier.fbx" id="1_hwpwa"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mtr4h"]
+points = PackedVector3Array(-0.0525, 0, -0.1125, -0.0525, 0.028746, -0.1125, 0.0525, 0, -0.1125, -0.0525, 0, 0.1125, -0.0337529, 0.11875, -0.1125, -0.0525, 0.028746, 0.1125, 0.0525, 0.028746, -0.1125, 0.0525, 0, 0.1125, 0.0337427, 0.11875, -0.1125, -0.0337529, 0.11875, 0.1125, 0.0525, 0.028746, 0.1125, 0.0337427, 0.11875, 0.1125)
+
+[node name="construction-barrier" instance=ExtResource("1_hwpwa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="construction-barrier" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="construction-barrier/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_mtr4h")
