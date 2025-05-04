@@ -18,7 +18,7 @@ cull_mode = 2
 albedo_texture = ExtResource("3_tdy8n")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7aegq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_7jwrj"]
 _surfaces = [{
 "aabb": AABB(-0.1, 0, -0.5, 0.2, 1, 1),
 "format": 34896613377,
@@ -48,7 +48,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/////////7//////AAD/v///AAAAAP+///8AAP///78AAP//AAD//wAAAAAAAP////8AAAAA////////AAD//wAAAAD///+/AAAAAAAA/78AAP//AAD/vwAA//////+/////////AID//wAA//8AgAAAAAD//wCAAAD/////AIAAAAAA////v///AAD///+///8AAAAA/78AAAAAAAD/vwAA//8AAP///////wAA/////////////wAA/////////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_7aegq")
+shadow_mesh = SubResource("ArrayMesh_7jwrj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
 size = Vector3(0.965219, 0.937248, 0.656279)
@@ -82,7 +82,7 @@ tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.166667, 4),
+"times": PackedFloat32Array(-0.166667, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]

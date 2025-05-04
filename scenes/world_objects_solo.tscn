@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://baw61kjikc72d"]
+[gd_scene load_steps=33 format=3 uid="uid://baw61kjikc72d"]
 
 [ext_resource type="Texture2D" uid="uid://vl84n46cuefe" path="res://assets/textures/grass_alb-height.dds" id="1_pj4m0"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="1_u5guf"]
@@ -16,9 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://6w22tg2hj3e2" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/fence-1x3.glb" id="13_n6iep"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="14_4jmwv"]
 [ext_resource type="PackedScene" uid="uid://c4qrlhkqr138h" path="res://scenes/objects/target.tscn" id="15_04wtb"]
-[ext_resource type="PackedScene" uid="uid://dn3uweel3hxq0" path="res://scenes/objects/road_straight.tscn" id="16_q5f3s"]
+[ext_resource type="PackedScene" uid="uid://dn3uweel3hxq0" path="res://scenes/road_straight.tscn" id="16_q5f3s"]
 [ext_resource type="PackedScene" uid="uid://cycxaj8wlsf12" path="res://scenes/objects/barrier.tscn" id="17_oays4"]
 [ext_resource type="PackedScene" uid="uid://cltk3u0i1svsc" path="res://scenes/objects/planter.tscn" id="19_jx1mc"]
+[ext_resource type="PackedScene" uid="uid://v6sd6ofn8t64" path="res://scenes/objects/tree_large.tscn" id="20_kfvtj"]
+[ext_resource type="PackedScene" uid="uid://cs1rp8nvax7on" path="res://scenes/objects/tree_small.tscn" id="21_ptx0o"]
+[ext_resource type="PackedScene" uid="uid://clwvo0dhhk3nw" path="res://scenes/objects/moving_tree.tscn" id="22_unvj7"]
+[ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://scenes/objects/wall_2.tscn" id="23_4kde1"]
 
 [sub_resource type="Gradient" id="Gradient_7h7mj"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -181,9 +185,6 @@ transform = Transform3D(0.474474, -3.48873, 3.10738, 1.18617, 2.27368, 5.96046e-
 [node name="WallGravity19" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(0.908393, -1.92718, 3.10738, 0.655241, 4.35302, 1.19209e-07, -0.720603, 1.52878, 3.91717, 48.478, 16.9956, -52.2959)
 
-[node name="WallGravity22" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
-transform = Transform3D(0.0108347, -1.08729, 3.10738, 1.33176, 0.0144119, 3.72529e-09, -0.0085954, 0.862517, 3.91717, 47.0498, 19.1402, -51.1748)
-
 [node name="WallGravity23" parent="Suburbia Level 1/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(0.324873, -3.45348, 2.85831, 1.23165, 0.0457755, -1.90186, 0.388954, 2.73955, 3.63497, 23.5279, 20.612, -38.2651)
 
@@ -213,9 +214,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 34.8508, 6.86151, -42.6855
 
 [node name="target3" parent="Suburbia Level 1/Course" instance=ExtResource("15_04wtb")]
 transform = Transform3D(4.17722, 0, -2.74788, 0, 5, 0, 2.74788, 0, 4.17722, 57.7279, 15.9471, -58.622)
-
-[node name="target2" parent="Suburbia Level 1/Course" instance=ExtResource("15_04wtb")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 34.8508, 6.86151, -185.127)
 
 [node name="road-straight2" parent="Suburbia Level 1/Course" instance=ExtResource("16_q5f3s")]
 transform = Transform3D(-0.0651305, 0, 2.99929, 0, 3, 0, -2.99929, 0, -0.0651305, 32.8882, 6.613, -42.6336)
@@ -359,13 +357,99 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="road-straight2" parent="." instance=ExtResource("16_q5f3s")]
-transform = Transform3D(2.41364, 0, 3.10225, 0, 5, 0, -1.90954, 0, 3.92123, 44.5109, 19.2774, -49.2255)
+transform = Transform3D(3.14924, 1.3945, 3.10225, -1.52797, 4.67314, -5.96046e-08, -2.49152, -1.10325, 3.92123, 45.8233, 19.5389, -50.2673)
 
 [node name="construction-barrier" parent="." instance=ExtResource("17_oays4")]
 transform = Transform3D(8.38024, 0, 5.45634, 0, 10, 0, -5.45634, 0, 8.38024, 29.0532, 25.9628, -30.179)
 
-[node name="construction-barrier3" parent="." instance=ExtResource("17_oays4")]
-transform = Transform3D(11.5023, 4.50012, -15.7304, -7.38474, 18.5865, -0.0826209, 14.6001, 5.85578, 12.351, 26.7316, 28.2284, -34.316)
-
 [node name="construction-barrier2" parent="." instance=ExtResource("17_oays4")]
 transform = Transform3D(8.38024, 0, 5.45634, 0, 10, 0, -5.45634, 0, 8.38024, 29.938, 25.9628, -30.7551)
+
+[node name="tree-large" parent="." instance=ExtResource("20_kfvtj")]
+transform = Transform3D(8.41435, 5.40358, 0, -0.661525, 1.03012, -9.92478, -5.36293, 8.35106, 1.22424, 30.8486, 27.2669, -27.8139)
+
+[node name="tree-small" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(8.37747, 5.37354, 0.971113, 0, 1.77841, -9.84059, -5.46058, 8.24393, 1.48986, 35.4228, 28.5256, -20.6157)
+
+[node name="tree-small2" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(5.13396, -8.5264, 0.971113, 1.77769, -0.0504009, -9.84059, 8.39537, 5.22475, 1.48986, 44.5756, 29.5934, -19.5291)
+
+[node name="tree-small3" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(9.28589, -2.81201, 2.42175, 1.43455, -3.29854, -9.33069, 3.42262, 9.01179, -2.65959, 45.9236, 31.4829, -24.869)
+
+[node name="tree-small4" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(8.89502, 3.87475, 2.42175, 3.22993, -1.58299, -9.33069, -3.23204, 9.08188, -2.65959, 43.1815, 32.4826, -30.8732)
+
+[node name="tree-small5" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(8.733, 4.83394, 0.606477, 3.59229, -5.54836, -7.50408, -3.29093, 6.77117, -6.58187, 40.2659, 34.7301, -36.157)
+
+[node name="tree-small6" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(8.733, 4.83394, 0.606477, 3.59229, -5.54836, -7.50408, -3.29093, 6.77117, -6.58187, 37.255, 37.8421, -40.7498)
+
+[node name="tree-small7" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(1.55189, 9.86021, 0.606477, 6.58471, -0.574805, -7.50408, -7.36432, 1.5639, -6.58187, 31.1444, 38.2096, -41.7318)
+
+[node name="tree-small9" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(-1.97031, 9.78519, 0.606477, 6.37426, 1.74859, -7.50408, -7.44893, -1.09195, -6.58187, 26.4039, 36.7923, -40.5527)
+
+[node name="tree-small8" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(1.55189, 9.86021, 0.606477, 6.58471, -0.574805, -7.50408, -7.36432, 1.5639, -6.58187, 20.4924, 37.5954, -42.0132)
+
+[node name="tree-small10" parent="." instance=ExtResource("21_ptx0o")]
+transform = Transform3D(1.51493, 7.32398, 6.6381, 9.88413, -1.18651, -0.946625, 0.0943093, 6.70459, -7.41887, 15.1172, 37.3038, -46.9736)
+
+[node name="road-straight3" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0457231, 0, -4.999, 0, 5, 0, 2.28968, 0, -0.099826, 14.9581, 34.6844, -51.2306)
+
+[node name="road-straight4" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0457231, 0, -4.999, 0, 5, 0, 2.28968, 0, -0.099826, 15.0529, 34.6844, -55.974)
+
+[node name="road-straight5" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0457231, 0, -4.999, 0, 5, 0, 2.28968, 0, -0.099826, 15.1529, 34.6844, -60.9848)
+
+[node name="road-straight6" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-0.0457231, 0, -4.999, 0, 5, 0, 2.28968, 0, -0.099826, 15.2371, 34.6964, -65.5478)
+
+[node name="MovingTree" parent="." instance=ExtResource("22_unvj7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.9064, 34.7844, -52.9659)
+
+[node name="Path3D" parent="MovingTree" index="0"]
+transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
+
+[node name="Gravity" parent="MovingTree/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151589)
+
+[node name="MovingTree2" parent="." instance=ExtResource("22_unvj7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.9064, 34.7844, -62.9229)
+
+[node name="Path3D" parent="MovingTree2" index="0"]
+transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
+
+[node name="Gravity" parent="MovingTree2/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487328, 0, 0.0151589)
+
+[node name="MovingTree3" parent="." instance=ExtResource("22_unvj7")]
+transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 18.0169, 34.7844, -58.0465)
+
+[node name="Path3D" parent="MovingTree3" index="0"]
+transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
+
+[node name="Gravity" parent="MovingTree3/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151589)
+
+[node name="MovingTree4" parent="." instance=ExtResource("22_unvj7")]
+transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 17.7603, 34.7844, -67.2175)
+
+[node name="Path3D" parent="MovingTree4" index="0"]
+transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
+
+[node name="Gravity" parent="MovingTree4/Path3D" index="1"]
+transform = Transform3D(-0.999961, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151591)
+
+[node name="wall2" parent="." instance=ExtResource("23_4kde1")]
+transform = Transform3D(-0.0190106, -5.29694, -4.0057, 4.9999, -0.0562295, 6.70552e-08, -0.0254482, -7.09062, 2.99239, 32.9824, 30.8557, -26.0369)
+
+[editable path="MovingTree"]
+[editable path="MovingTree2"]
+[editable path="MovingTree3"]
+[editable path="MovingTree4"]
