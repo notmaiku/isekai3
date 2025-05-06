@@ -100,13 +100,14 @@ _data = {
 curve = SubResource("Curve3D_e80p5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00582709, 0, 0.327533)
+progress = 0.307619
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 remote_path = NodePath("../../Gravity")
 
 [node name="Gravity" type="AnimatableBody3D" parent="Path3D"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00582709, 0, 0.327533)
 
 [node name="wall" type="MeshInstance3D" parent="Path3D/Gravity"]
 transform = Transform3D(1.8735e-15, -4.30737e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999999, -4.37722e-08, -0.167815, -0.0204345, -0.0589229)

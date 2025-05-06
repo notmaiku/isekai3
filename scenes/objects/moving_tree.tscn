@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://clwvo0dhhk3nw"]
+[gd_scene load_steps=11 format=4 uid="uid://clwvo0dhhk3nw"]
 
 [ext_resource type="Texture2D" uid="uid://b5db4vfwm6mg0" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/Textures/colormap.png" id="1_vau70"]
 
@@ -34,7 +34,24 @@ tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.166667, 0.5),
+"times": PackedFloat32Array(-0.166667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ca6m7"]
+resource_name = "taxis lvl 1"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -43,7 +60,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jv0wd"]
 _data = {
 &"RESET": SubResource("Animation_kwaf8"),
-&"moving_platform": SubResource("Animation_5v52r")
+&"moving_platform": SubResource("Animation_5v52r"),
+&"taxis lvl 1": SubResource("Animation_ca6m7")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feim6"]

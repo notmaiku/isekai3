@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://baw61kjikc72d"]
+[gd_scene load_steps=46 format=3 uid="uid://baw61kjikc72d"]
 
 [ext_resource type="Texture2D" uid="uid://vl84n46cuefe" path="res://assets/textures/grass_alb-height.dds" id="1_pj4m0"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="1_u5guf"]
@@ -23,6 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://cs1rp8nvax7on" path="res://scenes/objects/tree_small.tscn" id="21_ptx0o"]
 [ext_resource type="PackedScene" uid="uid://clwvo0dhhk3nw" path="res://scenes/objects/moving_tree.tscn" id="22_unvj7"]
 [ext_resource type="PackedScene" uid="uid://ddqxrblnaaohg" path="res://scenes/objects/wall_2.tscn" id="23_4kde1"]
+[ext_resource type="PackedScene" uid="uid://cqvbaguxltfte" path="res://assets/kenney_city-kit-roads/Models/GLB format/road-intersection.glb" id="24_fr80t"]
+[ext_resource type="PackedScene" uid="uid://c8p0yp8o0w3uk" path="res://scenes/objects/flag.tscn" id="25_mp8eg"]
+[ext_resource type="PackedScene" uid="uid://8ykfjpr8w8cp" path="res://taxi_car_p1.tscn" id="26_ca6m7"]
+[ext_resource type="PackedScene" uid="uid://dtij70fv8tv4v" path="res://road-bend.tscn" id="27_e0do7"]
+[ext_resource type="PackedScene" uid="uid://cewcslhd0xm22" path="res://scenes/objects/moving_gravity_platform.tscn" id="28_2n1uo"]
 
 [sub_resource type="Gradient" id="Gradient_7h7mj"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -116,13 +121,104 @@ normal_texture = ExtResource("4_2mj8h")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_3gt4h")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_pjxif"), SubResource("Terrain3DTextureAsset_2mj8h")])
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mp8eg"]
+data = PackedVector3Array(0.4, 0.01, 0.5, 0.4, 0.02, 0.5, 0.5, 0.02, 0.5, 0.4, 0.01, 0.5, 0.5, 0.02, 0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.4, 0.01, 0.5, -0.5, 0, 0.5, 0.3, 0.01, 0.5, 0.4, 0.01, 0.5, -0.3, 0.01, 0.5, 0.3, 0.01, 0.5, -0.5, 0, 0.5, -0.3, 0.01, 0.5, 0.01, 0.01, 0.5, 0.3, 0.01, 0.5, -0.3, 0.01, 0.5, -0.01, 0.01, 0.5, 0.01, 0.01, 0.5, -0.4, 0.01, 0.5, -0.3, 0.01, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0.02, 0.5, -0.4, 0.01, 0.5, -0.5, 0.02, 0.5, -0.4, 0.02, 0.5, -0.4, 0.01, 0.5, -0.5, 0.02, 0.4, -0.5, 0.02, 0.5, -0.5, 0, 0.5, -0.5, 0.01, 0.4, -0.5, 0.02, 0.4, -0.5, 0, 0.5, -0.5, 0.01, 0.3, -0.5, 0.01, 0.4, -0.5, 0, 0.5, -0.5, 0.01, 0.01, -0.5, 0.01, 0.3, -0.5, 0, 0.5, -0.5, 0.01, -0.01, -0.5, 0.01, 0.01, -0.5, 0, 0.5, -0.5, 0.01, -0.3, -0.5, 0.01, -0.01, -0.5, 0, 0.5, -0.5, 0.01, -0.4, -0.5, 0.01, -0.3, -0.5, 0, 0.5, -0.5, 0.01, -0.4, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0.02, -0.5, -0.5, 0.01, -0.4, -0.5, 0.02, -0.4, -0.5, 0.01, -0.4, -0.5, 0.02, -0.5, 0.5, 0.02, -0.4, 0.5, 0.02, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0.01, -0.4, 0.5, 0.02, -0.4, 0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0.01, -0.4, 0.5, 0, 0.5, 0.5, 0.01, -0.3, 0.5, 0.01, -0.4, 0.5, 0, 0.5, 0.5, 0.01, -0.01, 0.5, 0.01, -0.3, 0.5, 0, 0.5, 0.5, 0.01, 0.01, 0.5, 0.01, -0.01, 0.5, 0, 0.5, 0.5, 0.01, 0.3, 0.5, 0.01, 0.01, 0.5, 0, 0.5, 0.5, 0.01, 0.4, 0.5, 0.01, 0.3, 0.5, 0, 0.5, 0.5, 0.02, 0.4, 0.5, 0.01, 0.4, 0.5, 0, 0.5, 0.5, 0.02, 0.5, 0.5, 0.02, 0.4, 0.5, 0.01, 0.01, 0.5, 0.01, 0.3, 0.3, 0.01, 0.3, 0.3, 0.01, 0.3, 0.3, 0.01, 0.01, 0.5, 0.01, 0.01, 0.3, 0.01, 0.01, 0.3, 0.01, 0.3, -0.5, 0.01, -0.3, 0.3, 0.01, -0.01, 0.3, 0.01, 0.01, -0.5, 0.01, -0.3, 0.5, 0.01, -0.01, 0.3, 0.01, -0.01, -0.5, 0.01, -0.3, -0.5, 0.01, -0.3, 0.5, 0.01, -0.3, 0.5, 0.01, -0.01, 0.3, 0.01, 0.3, 0.3, 0.01, 0.5, -0.5, 0.01, -0.3, 0.3, 0.01, 0.5, 0.01, 0.01, 0.3, -0.5, 0.01, -0.3, 0.01, 0.01, 0.5, 0.01, 0.01, 0.3, 0.3, 0.01, 0.5, 0.01, 0.01, 0.3, -0.01, 0.01, 0.3, -0.5, 0.01, -0.3, -0.01, 0.01, 0.3, -0.3, 0.01, -0.01, -0.5, 0.01, -0.3, -0.3, 0.01, -0.01, -0.5, 0.01, -0.01, -0.5, 0.01, -0.3, -0.01, 0.01, 0.3, -0.01, 0.01, 0.5, -0.3, 0.01, -0.01, -0.3, 0.01, 0.3, -0.3, 0.01, -0.01, -0.01, 0.01, 0.5, -0.01, 0.01, 0.5, -0.3, 0.01, 0.5, -0.3, 0.01, 0.3, -0.3, 0.01, 0.3, -0.3, 0.01, 0.01, -0.3, 0.01, -0.01, -0.5, 0.01, 0.01, -0.3, 0.01, 0.01, -0.3, 0.01, 0.3, -0.3, 0.01, 0.3, -0.5, 0.01, 0.3, -0.5, 0.01, 0.01, -0.5, 0.02, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0.02, -0.5, -0.5, 0.02, -0.5, -0.5, 0.02, -0.5, 0.5, 0.02, -0.5, 0.5, 0.02, -0.4, 0.5, 0.02, -0.4, -0.5, 0.02, -0.4, -0.5, 0.02, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.02, 0.4, -0.5, 0.01, 0.4, -0.4, 0.01, 0.4, -0.4, 0.01, 0.4, -0.4, 0.02, 0.4, -0.5, 0.02, 0.4, 0.5, 0.02, -0.4, 0.5, 0.01, -0.4, -0.5, 0.01, -0.4, -0.5, 0.01, -0.4, -0.5, 0.02, -0.4, 0.5, 0.02, -0.4, -0.4, 0.02, 0.5, -0.4, 0.02, 0.4, -0.4, 0.01, 0.4, -0.4, 0.01, 0.4, -0.4, 0.01, 0.5, -0.4, 0.02, 0.5, -0.5, 0.02, 0.4, -0.4, 0.02, 0.4, -0.4, 0.02, 0.5, -0.4, 0.02, 0.5, -0.5, 0.02, 0.5, -0.5, 0.02, 0.4, 0.4, 0.02, 0.4, 0.5, 0.02, 0.4, 0.5, 0.02, 0.5, 0.5, 0.02, 0.5, 0.4, 0.02, 0.5, 0.4, 0.02, 0.4, 0.4, 0.02, 0.4, 0.4, 0.01, 0.4, 0.5, 0.01, 0.4, 0.5, 0.01, 0.4, 0.5, 0.02, 0.4, 0.4, 0.02, 0.4, 0.4, 0.01, 0.5, 0.4, 0.01, 0.4, 0.4, 0.02, 0.4, 0.4, 0.02, 0.4, 0.4, 0.02, 0.5, 0.4, 0.01, 0.5, -0.5, 0.01, -0.01, -0.3, 0.01, -0.01, -0.3, 0.01, 0.01, -0.3, 0.01, 0.01, -0.5, 0.01, 0.01, -0.5, 0.01, -0.01, -0.01, 0.01, 0.3, 0.01, 0.01, 0.3, 0.01, 0.01, 0.5, 0.01, 0.01, 0.5, -0.01, 0.01, 0.5, -0.01, 0.01, 0.3, 0.3, 0.01, -0.01, 0.5, 0.01, -0.01, 0.5, 0.01, 0.01, 0.5, 0.01, 0.01, 0.3, 0.01, 0.01, 0.3, 0.01, -0.01, 0.3, 0.01, 0.3, 0.5, 0.01, 0.3, 0.5, 0.01, 0.4, 0.5, 0.01, 0.4, 0.4, 0.01, 0.4, 0.3, 0.01, 0.3, 0.4, 0.01, 0.4, 0.4, 0.01, 0.5, 0.3, 0.01, 0.3, 0.4, 0.01, 0.5, 0.3, 0.01, 0.5, 0.3, 0.01, 0.3, -0.5, 0.01, -0.4, 0.5, 0.01, -0.4, 0.5, 0.01, -0.3, 0.5, 0.01, -0.3, -0.5, 0.01, -0.3, -0.5, 0.01, -0.4, -0.5, 0.01, 0.3, -0.3, 0.01, 0.3, -0.3, 0.01, 0.5, -0.3, 0.01, 0.5, -0.4, 0.01, 0.4, -0.5, 0.01, 0.3, -0.4, 0.01, 0.4, -0.5, 0.01, 0.4, -0.5, 0.01, 0.3, -0.4, 0.01, 0.5, -0.4, 0.01, 0.4, -0.3, 0.01, 0.5)
+
+[sub_resource type="Curve3D" id="Curve3D_2n1uo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.178674, -0.437229, 0.00553924, 0, 0, 0, 0, 0, 0, 5.68587, 1.8607, 0.51777),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_kwaf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5v52r"]
+resource_name = "moving_platform"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.166667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jv0wd"]
+_data = {
+&"RESET": SubResource("Animation_kwaf8"),
+&"moving_platform": SubResource("Animation_5v52r")
+}
+
+[sub_resource type="Animation" id="Animation_2n1uo"]
+resource_name = "platform"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.43333, 4, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.5, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_lhjr2"]
+resource_name = "part2"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.16667, 3.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhjr2"]
+_data = {
+&"part2": SubResource("Animation_lhjr2"),
+&"platform": SubResource("Animation_2n1uo")
+}
+
 [node name="WorldSolo" type="Node3D"]
 
 [node name="SinglePlayerSpawn" type="Node" parent="."]
 script = ExtResource("1_u5guf")
 
-[node name="1" type="Marker3D" parent="SinglePlayerSpawn" groups=["single_spawn"]]
+[node name="0" type="Marker3D" parent="SinglePlayerSpawn" groups=["single_spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.475, 1, -42.6723)
+
+[node name="1" type="Marker3D" parent="SinglePlayerSpawn" groups=["single_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.8158, -70.6734)
 
 [node name="Suburbia Level 1" type="Node" parent="."]
 
@@ -416,8 +512,11 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.9064, 34.7844, -52.9659)
 [node name="Path3D" parent="MovingTree" index="0"]
 transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
 
+[node name="PathFollow3D" parent="MovingTree/Path3D" index="0"]
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305775, 0, -0.999962, 0.00626435, 0, 0.470524)
+
 [node name="Gravity" parent="MovingTree/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151589)
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999962, 0.00626469, 0, 0.470524)
 
 [node name="MovingTree2" parent="." instance=ExtResource("22_unvj7")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.9064, 34.7844, -62.9229)
@@ -425,8 +524,12 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.9064, 34.7844, -62.9229)
 [node name="Path3D" parent="MovingTree2" index="0"]
 transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
 
+[node name="PathFollow3D" parent="MovingTree2/Path3D" index="0"]
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305775, 0, -0.999962, 0.00557031, 0, 0.243562)
+progress = 0.226353
+
 [node name="Gravity" parent="MovingTree2/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487328, 0, 0.0151589)
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999962, 0.00557041, 0, 0.243562)
 
 [node name="MovingTree3" parent="." instance=ExtResource("22_unvj7")]
 transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 18.0169, 34.7844, -58.0465)
@@ -434,8 +537,11 @@ transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 
 [node name="Path3D" parent="MovingTree3" index="0"]
 transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
 
+[node name="PathFollow3D" parent="MovingTree3/Path3D" index="0"]
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305775, 0, -0.999962, 0.00626435, 0, 0.470524)
+
 [node name="Gravity" parent="MovingTree3/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151589)
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999962, 0.00626469, 0, 0.470524)
 
 [node name="MovingTree4" parent="." instance=ExtResource("22_unvj7")]
 transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 17.7603, 34.7844, -67.2175)
@@ -443,13 +549,112 @@ transform = Transform3D(-4.97829, 0, 0.465416, 0, 5, 0, -0.465416, 0, -4.97829, 
 [node name="Path3D" parent="MovingTree4" index="0"]
 transform = Transform3D(-0.0252348, 0, 0.999682, 0, 1, 0, -0.999682, 0, -0.0252348, -0.44559, 0, 0.011248)
 
+[node name="PathFollow3D" parent="MovingTree4/Path3D" index="0"]
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305775, 0, -0.999962, 0.00626435, 0, 0.470524)
+
 [node name="Gravity" parent="MovingTree4/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487232, 0, 0.0151591)
+transform = Transform3D(-0.999959, 0, -0.00305776, 0, 0.999989, 0, 0.00305776, 0, -0.999962, 0.00626373, 0, 0.470524)
 
 [node name="wall2" parent="." instance=ExtResource("23_4kde1")]
 transform = Transform3D(-0.0190106, -5.29694, -4.0057, 4.9999, -0.0562295, 6.70552e-08, -0.0254482, -7.09062, 2.99239, 32.9824, 30.8557, -26.0369)
+
+[node name="road-intersection2" parent="." instance=ExtResource("24_fr80t")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 15.2263, 34.7464, -70.5735)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-intersection2/road-intersection" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-intersection2/road-intersection/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mp8eg")
+
+[node name="flag1" parent="." instance=ExtResource("25_mp8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.6098, -70.6734)
+
+[node name="road-straight7" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(32.4061, 0, 0, 0, 5, 0, 0, 0, 5, 33.832, 34.7508, -70.5685)
+
+[node name="S1CarStrip" parent="." instance=ExtResource("26_ca6m7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3408, 34.8112, -69.8471)
+
+[node name="S1CarStrip2" parent="." instance=ExtResource("26_ca6m7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 43.8094, 34.8112, -71.758)
+useCar = 1
+
+[node name="road-bend" parent="." instance=ExtResource("27_e0do7")]
+transform = Transform3D(-0.0958125, 0, 4.99908, 0, 5, 0, -4.99908, 0, -0.0958125, 15.3624, 35.7528, -79.9576)
+
+[node name="road-straight8" parent="." instance=ExtResource("16_q5f3s")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 15.2267, 34.752, -75.5715)
+
+[node name="MGPS13" parent="." instance=ExtResource("28_2n1uo")]
+transform = Transform3D(4.99949, 8.27312e-05, -1.07884e-05, 0, 4.99941, 7.52509e-06, -2.98023e-08, 1.19209e-07, 4.99955, 51.7689, 34.4254, -73.3823)
+
+[node name="MGPS11" parent="." instance=ExtResource("28_2n1uo")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 18.4702, 34.9042, -81.9328)
+
+[node name="Path3D" parent="MGPS11" index="0"]
+curve = SubResource("Curve3D_2n1uo")
+
+[node name="PathFollow3D" parent="MGPS11/Path3D" index="0"]
+transform = Transform3D(-0.092603, -0.381975, -0.91941, 1.48998e-08, 0.923358, -0.383632, 0.995613, -0.0355279, -0.0855153, 0.178674, -0.437229, 0.00553924)
+
+[node name="Gravity" parent="MGPS11/Path3D" index="1"]
+transform = Transform3D(-0.092603, -0.381975, -0.91941, 1.48998e-08, 0.923358, -0.383632, 0.995613, -0.0355279, -0.0855153, 0.178674, -0.43723, 0.00553894)
+
+[node name="wall" parent="MGPS11/Path3D/Gravity" index="0"]
+transform = Transform3D(1.8735e-15, -4.30737e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999999, -4.37722e-08, 0, 0, 0)
+
+[node name="GravityBody" parent="MGPS11/Path3D/Gravity/wall" index="0"]
+transform = Transform3D(-1.77663e-14, -4.37114e-08, 1, -1, -4.37114e-08, -1.96769e-14, 4.37114e-08, -1, -4.37114e-08, -0.546732, 0.240534, 0.423986)
+
+[node name="CollisionShape3D" parent="MGPS11/Path3D/Gravity/wall/GravityBody" index="0"]
+transform = Transform3D(1, 1.85185e-28, 1.42109e-14, 0, 1, -1.30312e-14, -1.42109e-14, 1.30312e-14, 1, -0.295648, 0.455273, 0.497145)
+
+[node name="CollisionShape3D" parent="MGPS11/Path3D/Gravity" index="1"]
+transform = Transform3D(1.85962e-15, -4.23752e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999998, -4.37722e-08, 0.00274874, 0.0322884, 0.0145008)
+
+[node name="AnimationPlayer" parent="MGPS11/Path3D/Gravity" index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_jv0wd"),
+&"s1_platform": SubResource("AnimationLibrary_lhjr2")
+}
+autoplay = "s1_platform/platform"
+
+[node name="MGPS12" parent="." instance=ExtResource("28_2n1uo")]
+transform = Transform3D(2.14483, -1.07138, -0.70843, 5.96046e-08, 1.3789, -2.08534, 1.28441, 1.78908, 1.183, 36.546, 38.7741, -81.0471)
+
+[node name="Path3D" parent="MGPS12" index="0"]
+curve = SubResource("Curve3D_2n1uo")
+
+[node name="PathFollow3D" parent="MGPS12/Path3D" index="0"]
+transform = Transform3D(-0.0926215, -0.381971, -0.91941, 4.47442e-05, 0.923357, -0.383632, 0.995611, -0.0355762, -0.0855153, 5.68587, 1.8607, 0.51777)
+progress = 5.98933
+
+[node name="Gravity" parent="MGPS12/Path3D" index="1"]
+transform = Transform3D(-0.0926216, -0.381971, -0.91941, 4.47333e-05, 0.923358, -0.383632, 0.995611, -0.0355762, -0.0855153, 5.68587, 1.8607, 0.517769)
+
+[node name="wall" parent="MGPS12/Path3D/Gravity" index="0"]
+transform = Transform3D(1.8735e-15, -4.30737e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999999, -4.37722e-08, 0, 0, 0)
+
+[node name="GravityBody" parent="MGPS12/Path3D/Gravity/wall" index="0"]
+transform = Transform3D(-1.77663e-14, -4.37114e-08, 1, -1, -4.37114e-08, -1.96769e-14, 4.37114e-08, -1, -4.37114e-08, -0.546732, 0.240534, 0.423986)
+
+[node name="CollisionShape3D" parent="MGPS12/Path3D/Gravity/wall/GravityBody" index="0"]
+transform = Transform3D(1, 1.85185e-28, 1.42109e-14, 0, 1, -1.30312e-14, -1.42109e-14, 1.30312e-14, 1, -0.295648, 0.455273, 0.497145)
+
+[node name="CollisionShape3D" parent="MGPS12/Path3D/Gravity" index="1"]
+transform = Transform3D(1.85962e-15, -4.23752e-08, 0.999998, -1, -4.37113e-08, 0, 4.37114e-08, -0.999998, -4.37722e-08, 0.00274874, 0.0322884, 0.0145008)
+
+[node name="AnimationPlayer" parent="MGPS12/Path3D/Gravity" index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_jv0wd"),
+&"s1_platform": SubResource("AnimationLibrary_lhjr2")
+}
+autoplay = "s1_platform/part2"
 
 [editable path="MovingTree"]
 [editable path="MovingTree2"]
 [editable path="MovingTree3"]
 [editable path="MovingTree4"]
+[editable path="road-intersection2"]
+[editable path="MGPS11"]
+[editable path="MGPS12"]
