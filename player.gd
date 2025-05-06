@@ -50,8 +50,9 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("reset"):
 		if !is_multiplayer_authority(): return
 		Refs._spawn_player(Refs.checkpoint, self)
-	if event.is_action_pressed("toggle_lumen"): # Replace "toggle_environment_lighting" with your desired input action
+	if event.is_action_pressed("toggle_lumen"):
 		world_environment.queue_free()
+		get_tree().root.find_child("DirectionalLight3D", true, false).show()
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
