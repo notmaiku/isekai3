@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://dfscpwvua44q"]
+[gd_scene load_steps=43 format=4 uid="uid://dfscpwvua44q"]
 
 [ext_resource type="MeshLibrary" uid="uid://2ee1c5l8vy1y" path="res://proto.tres" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://bjcsr3tsq1ha8" path="res://scenes/objects/shape_slope_2.tscn" id="5_dwbse"]
@@ -16,10 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://dn3nr8j1amp58" path="res://lava.tscn" id="17_lakw3"]
 [ext_resource type="PackedScene" uid="uid://dij6dwqdv8k54" path="res://scenes/objects/wall_gravity.tscn" id="18_lakw3"]
 [ext_resource type="Script" uid="uid://45la2npvrra7" path="res://PressureCollision.cs" id="18_oo54l"]
-[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="18_pm21f"]
 [ext_resource type="Material" uid="uid://cdnedbb5tnoy4" path="res://red.tres" id="19_kpybi"]
 [ext_resource type="PackedScene" uid="uid://b8cn0aygg7bti" path="res://pressure_plate.tscn" id="19_pm21f"]
-[ext_resource type="Script" path="res://color_switcher.gd" id="20_ctatt"]
+[ext_resource type="Script" uid="uid://iedw6p6woo1y" path="res://color_switcher.gd" id="20_ctatt"]
 [ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="21_xgqkh"]
 
 [sub_resource type="Curve3D" id="Curve3D_lakw3"]
@@ -297,11 +296,8 @@ _data = {
 
 [node name="World" type="Node3D"]
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("18_pm21f")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.488484, 0.872573, 0, -0.872573, 0.488484, 0, 9.52688, 8.38861)
-visible = false
 
 [node name="WorldMulti" type="Node3D" parent="."]
 
@@ -322,6 +318,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4339, 14.4802, 5.73696)
 
 [node name="0" parent="WorldMulti" instance=ExtResource("14_hiqwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.574233, -0.373808)
+visible = false
 
 [node name="2" parent="WorldMulti" instance=ExtResource("14_hiqwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7005, 27.2782, 59.9968)
@@ -507,10 +504,10 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.6995, 28.9518, 59.8646)
 transform = Transform3D(-0.0518656, 0, -1.99933, -0.0131551, -1.99996, 0.000341262, -1.99928, 0.0131595, 0.0518644, 41.6341, 66.6061, 59.2159)
 
 [node name="PathFollow3D" parent="WorldMulti/MovingGravityPlatform2/Path3D" index="0"]
-transform = Transform3D(-0.999961, 0, -0.00305777, 0, 0.999989, 0, 0.00305776, 0, -0.999964, 0.00487185, 0, 0.0151589)
+transform = Transform3D(-0.999862, 0, -0.0144056, 0, 0.999989, 0, 0.0144056, 0, -0.999865, 0.18612, 0, -1.3824)
 
 [node name="Gravity" parent="WorldMulti/MovingGravityPlatform2/Path3D" index="1"]
-transform = Transform3D(-0.999961, 0, -0.00305777, -4.65661e-10, 0.999989, 1.45519e-11, 0.00305776, -1.45519e-11, -0.999964, 0.00487137, 0, 0.0151577)
+transform = Transform3D(-0.999862, 0, -0.0144056, -4.65661e-10, 0.999989, 0, 0.0144056, -1.45519e-11, -0.999865, 0.186117, 0, -1.3824)
 
 [node name="wall" parent="WorldMulti/MovingGravityPlatform2/Path3D/Gravity" index="0" groups=["green"]]
 

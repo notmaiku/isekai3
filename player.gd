@@ -19,10 +19,12 @@ var _last_movement_direction := Vector3.BACK
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %GobotSkin
 @onready var ui = preload("res://ui.tscn")
+@onready var light_scene = preload("res://addons/instant-realistic-light/light_scene.tscn")
 @onready var timer_g: Timer = %Timer_G
 @onready var cooldown: Timer = %Timer_C
 
 var world_environment: WorldEnvironment
+var light_node
 
 
 var is_multi = true
@@ -34,7 +36,7 @@ func _ready() -> void:
 	if !is_multi:
 		get_tree().root.find_child("WorldMulti", true, false).queue_free()
 		Refs._spawn_player(0, self)
-	world_environment = get_tree().root.find_child("WorldEnvironment", true, false)
+	light_node = light_scene.instantiate()
 	Refs.player_group = get_groups()[0]
 	Refs.player_id = multiplayer.get_unique_id()
 	_camera.current = is_multiplayer_authority()
@@ -51,8 +53,14 @@ func _input(event: InputEvent) -> void:
 		if !is_multiplayer_authority(): return
 		Refs._spawn_player(Refs.checkpoint, self)
 	if event.is_action_pressed("toggle_lumen"):
-		world_environment.queue_free()
-		get_tree().root.find_child("DirectionalLight3D", true, false).show()
+		if get_node_or_null("LightScene"):
+			get_tree().root.find_child("DirectionalLight3D", true, false).show()
+			get_node("LightScene").queue_free()
+		else:
+			get_tree().root.find_child("DirectionalLight3D", true, false).hide()
+			light_node = light_scene.instantiate()
+			add_child(light_node)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (

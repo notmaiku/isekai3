@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://qm37l1mvjw3r"]
 
-[ext_resource type="Script" uid="uid://b8uf3xjicrk8b" path="res://camera.gd" id="1_dwbse"]
-[ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://player.tscn" id="2_fj7yv"]
+[ext_resource type="Script" path="res://camera.gd" id="1_dwbse"]
+[ext_resource type="PackedScene" uid="uid://cx5rdb300w5m7" path="res://scenes/player.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_036b0"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_dwbse"]
 [ext_resource type="MeshLibrary" uid="uid://cop5ahyb6xpmn" path="res://tiles.tres" id="5_036b0"]

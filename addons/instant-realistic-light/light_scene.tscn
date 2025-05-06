@@ -35,7 +35,7 @@ dof_blur_far_distance = 1.44
 dof_blur_near_distance = 0.01
 auto_exposure_min_sensitivity = 8.01
 
-[node name="WorldEnvironment" type="WorldEnvironment"]
+[node name="LightScene" type="WorldEnvironment"]
 environment = SubResource("Environment_f8w8m")
 camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
 
