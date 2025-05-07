@@ -37,6 +37,7 @@ func _ready() -> void:
 		get_tree().root.find_child("WorldMulti", true, false).queue_free()
 		Refs._spawn_player(0, self)
 	light_node = light_scene.instantiate()
+	get_tree().root.find_child("DirectionalLight3D", true, false).show()
 	Refs.player_group = get_groups()[0]
 	Refs.player_id = multiplayer.get_unique_id()
 	_camera.current = is_multiplayer_authority()

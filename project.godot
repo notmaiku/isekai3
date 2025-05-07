@@ -19,10 +19,6 @@ config/icon="uid://dhjwk5ln7q6qg"
 
 Refs="*res://refs.gd"
 
-[display]
-
-window/vsync/vsync_mode=0
-
 [dotnet]
 
 project/assembly_name="FlipGoUp"

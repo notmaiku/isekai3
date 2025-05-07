@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=4 uid="uid://8ykfjpr8w8cp"]
+[gd_scene load_steps=33 format=4 uid="uid://8ykfjpr8w8cp"]
 
 [ext_resource type="Texture2D" uid="uid://c33670u5g1m2w" path="res://assets/cars/GLB format/Textures/colormap.png" id="1_ixq6k"]
 [ext_resource type="Script" uid="uid://cgm1gppedhp22" path="res://TaxiCarP1.cs" id="1_jbynk"]
+[ext_resource type="Script" uid="uid://bs08msskv23f1" path="res://lava.gd" id="3_jbynk"]
 
 [sub_resource type="Curve3D" id="Curve3D_m5dyh"]
 _data = {
@@ -419,6 +420,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_73pyu")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_11xl2"]
+size = Vector3(0.927997, 0.866913, 2.04166)
+
 [node name="S1CarStrip" type="Node3D" node_paths=PackedStringArray("Cars")]
 script = ExtResource("1_jbynk")
 Cars = [NodePath("Path3D/Car/taxi-yellow"), NodePath("Path3D/Car/truck")]
@@ -428,14 +432,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70341, 0, 0)
 curve = SubResource("Curve3D_m5dyh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.000223072, -0.00261502, -0.999997, 0, 0.999977, -0.00261507, 0.999945, -5.8337e-07, -0.000223084, 1.16171, 0.0114105, 0.200964)
+transform = Transform3D(-0.000223191, -0.00261502, -0.999997, 0, 0.999977, -0.00261507, 0.999945, -5.83682e-07, -0.000223203, 1.16171, 0.0114105, 0.200964)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 remote_path = NodePath("../../Car")
 
 [node name="Car" type="AnimatableBody3D" parent="Path3D"]
-transform = Transform3D(-0.999997, -0.00261502, 0.000223116, -0.00261507, 0.999977, 1.14308e-10, -0.000223127, -5.8337e-07, -0.999945, 1.16171, 0.0114105, 0.200964)
+transform = Transform3D(-0.999997, -0.00261502, 0.000223235, -0.00261507, 0.999977, 1.14309e-10, -0.000223247, -5.83682e-07, -0.999945, 1.16171, 0.0114105, 0.200964)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/Car"]
 process_mode = 3
@@ -510,3 +514,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, 0.86)
 mesh = SubResource("ArrayMesh_7tp0o")
 skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.919, 0, 0)
+script = ExtResource("3_jbynk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.00132875, 0, -1.26885, 0, 1.26885, 0, 1.26885, 0, 0.00132875, -0.720847, 0.651894, 0.227574)
+shape = SubResource("BoxShape3D_11xl2")

@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=4 uid="uid://pxwf8dejcrs5"]
+
+[ext_resource type="Script" uid="uid://dey2xcf7jkhaa" path="res://rotating_pipe.gd" id="1_gpah2"]
+[ext_resource type="Texture2D" uid="uid://ct4d13ctxcgq1" path="res://assets/proto/GLB format/Textures/colormap.png" id="1_nkjja"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhqed"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("1_nkjja")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_er5ea"]
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.0866025, 0.2, 1, 0.173205),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAAGAAEABgAAAAMAAQAGAAcAAwAHAAYABwACAAEAAgAHAAMAAQACAAgAAwAIAAIAAQAJAAAAAwAAAAkACAAKAAEAAQAKAAkAAwALAAgACQALAAMABAAKAAgACgAEAAkACwAFAAgACAAFAAQABQALAAkACQAEAAUA"),
+"lods": [0.0549217, PackedByteArray("AQAEAAAAAwAAAAQAAQAAAAIAAwACAAAABAABAAUABQADAAQAAQACAAUAAwAFAAIA"), 0.0949069, PackedByteArray("AAABAAIAAQAAAAIAAgADAAAAAwACAAAA")],
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/78AAP//AAD/vwAAAAAAAP+///8AAAAA/7//////AAAAAAAA/38AAAAA////fwAA//8AAP9/AAD//////38AAP8///8AAAAA/z8AAP//AAD/PwAAAAAAAP8//////wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u1xej"]
+resource_name = "pipe_pipe"
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.0866025, 0.2, 1, 0.173205),
+"attribute_data": PackedByteArray("/5eYuf+XmLn/l2WG/5dlhv+XmLn/l5i5/5eYuf+XZYb/l2WG/5dlhv+XmLn/l2WG/5eYuf+XmLn/l5i5/5dlhv+XZYb/l2WG/5eYuf+XZYb/l2WG/5eYuf+XZYb/l2WG/5eYuf+XmLn/l2WG/5eYuf+XZYb/l5i5/5eYuf+XZYb/l5i5/5eYuf+XZYb/l2WG"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("BgAMAAQABAANAAYABAAOAA0ADgAFAA0ACQAPAAcABwAQAAkABwARABAAEQAIABAACgASABMAEwALAAoAFAAVAAEAAQACABQAFgAXABgAGAAZABYAAwAaABsAGwAAAAMAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"lods": [0.0549217, PackedByteArray("BAAFAAYABwAIAAkACgABAAsAAQACAAsACwADAAoAAQAAAAIAAwACAAAAAwAAAAoA"), 0.0949069, PackedByteArray("AAABAAIAAQAAAAIAAgADAAAAAwACAAAA")],
+"material": SubResource("StandardMaterial3D_nhqed"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("/78AAP//VJX/vwAAAACp6v+///8AAKnq/7//////VJX/vwAAAAD/vwAAAAD/f/+//78AAP///7//v////////wAA////f////7///wAA//8AAAAA/3//vwAA////f/+///8AAP9//7//PwAA////v/8/AAAAAP+///////9/////P///AAD///8//////////z8AAAAAqer/P///AACp6v8///8AAKnq/z8AAAAAqer//////3//v/+///8AAKnq/78AAAAAqer//wAA/3//v///////f/+///8AAP9//7//v/////9Ulf+/AAD//1SV/z8AAP//VJX/P/////9Ulf8/AAD//1SVAAAAAP9//78AAP///3//v/8//////1SV/38AAP9/AAD/fwAA/38AAAAA/38AAP9/AAD/f/9//7//f/+//3//v/9/////f///AAD/fwAA/38AAP9//3//v/9//7//f/+//3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_er5ea")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nkjja"]
+data = PackedVector3Array(0.05, 0, 0.0866, 0.1, 0, 0, 0.05, 0, -0.0866, 0.05, 0, -0.0866, -0.05, 0, 0.0866, 0.05, 0, 0.0866, 0.05, 0, -0.0866, -0.05, 0, -0.0866, -0.05, 0, 0.0866, -0.05, 0, -0.0866, -0.1, 0, 0, -0.05, 0, 0.0866, 0.05, 1, -0.0866, 0.1, 1, 0, 0.05, 1, 0.0866, 0.05, 1, 0.0866, -0.05, 1, -0.0866, 0.05, 1, -0.0866, 0.05, 1, 0.0866, -0.05, 1, 0.0866, -0.05, 1, -0.0866, -0.05, 1, 0.0866, -0.1, 1, 0, -0.05, 1, -0.0866, -0.1, 0, 0, -0.05, 0, -0.0866, -0.05, 1, -0.0866, -0.05, 1, -0.0866, -0.1, 1, 0, -0.1, 0, 0, -0.05, 1, -0.0866, -0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.05, 1, -0.0866, -0.05, 1, -0.0866, 0.1, 1, 0, 0.05, 1, -0.0866, 0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.1, 0, 0, 0.1, 1, 0, 0.05, 1, 0.0866, 0.1, 1, 0, 0.1, 0, 0, 0.1, 0, 0, 0.05, 0, 0.0866, 0.05, 1, 0.0866, 0.05, 1, 0.0866, 0.05, 0, 0.0866, -0.05, 0, 0.0866, -0.05, 0, 0.0866, -0.05, 1, 0.0866, 0.05, 1, 0.0866, -0.05, 0, 0.0866, -0.1, 0, 0, -0.1, 1, 0, -0.1, 1, 0, -0.05, 1, 0.0866, -0.05, 0, 0.0866)
+
+[sub_resource type="Animation" id="Animation_gpah2"]
+resource_name = "rotating normal"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nkjja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20dha"]
+_data = {
+&"RESET": SubResource("Animation_nkjja"),
+&"rotating normal": SubResource("Animation_gpah2")
+}
+
+[node name="rotating pipe" type="Node3D" node_paths=PackedStringArray("animator")]
+script = ExtResource("1_gpah2")
+animator = NodePath("AnimatableBody3D/AnimationPlayer")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="pipe" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("ArrayMesh_u1xej")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
+shape = SubResource("ConcavePolygonShape3D_nkjja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_20dha")
+}
