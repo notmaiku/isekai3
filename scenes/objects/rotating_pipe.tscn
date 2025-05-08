@@ -43,8 +43,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_er5ea")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nkjja"]
-data = PackedVector3Array(0.05, 0, 0.0866, 0.1, 0, 0, 0.05, 0, -0.0866, 0.05, 0, -0.0866, -0.05, 0, 0.0866, 0.05, 0, 0.0866, 0.05, 0, -0.0866, -0.05, 0, -0.0866, -0.05, 0, 0.0866, -0.05, 0, -0.0866, -0.1, 0, 0, -0.05, 0, 0.0866, 0.05, 1, -0.0866, 0.1, 1, 0, 0.05, 1, 0.0866, 0.05, 1, 0.0866, -0.05, 1, -0.0866, 0.05, 1, -0.0866, 0.05, 1, 0.0866, -0.05, 1, 0.0866, -0.05, 1, -0.0866, -0.05, 1, 0.0866, -0.1, 1, 0, -0.05, 1, -0.0866, -0.1, 0, 0, -0.05, 0, -0.0866, -0.05, 1, -0.0866, -0.05, 1, -0.0866, -0.1, 1, 0, -0.1, 0, 0, -0.05, 1, -0.0866, -0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.05, 1, -0.0866, -0.05, 1, -0.0866, 0.1, 1, 0, 0.05, 1, -0.0866, 0.05, 0, -0.0866, 0.05, 0, -0.0866, 0.1, 0, 0, 0.1, 1, 0, 0.05, 1, 0.0866, 0.1, 1, 0, 0.1, 0, 0, 0.1, 0, 0, 0.05, 0, 0.0866, 0.05, 1, 0.0866, 0.05, 1, 0.0866, 0.05, 0, 0.0866, -0.05, 0, 0.0866, -0.05, 0, 0.0866, -0.05, 1, 0.0866, 0.05, 1, 0.0866, -0.05, 0, 0.0866, -0.1, 0, 0, -0.1, 1, 0, -0.1, 1, 0, -0.05, 1, 0.0866, -0.05, 0, 0.0866)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gpah2"]
+height = 1.0
+radius = 0.1
 
 [sub_resource type="Animation" id="Animation_gpah2"]
 resource_name = "rotating normal"
@@ -96,8 +97,8 @@ mesh = SubResource("ArrayMesh_u1xej")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
-shape = SubResource("ConcavePolygonShape3D_nkjja")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.18196e-08, -0.00082621)
+shape = SubResource("CylinderShape3D_gpah2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
 libraries = {

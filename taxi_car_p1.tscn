@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_m5dyh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.16171, 0.0114105, 0.200964, 0, 0, 0, 0, 0, 0, 31.7896, 0.0915049, 0.207796),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.16171, 0.0114105, 0.200964, 0, 0, 0, 0, 0, 0, 30.3476, 0.0877339, 0.207474),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -515,10 +515,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, 0.86)
 mesh = SubResource("ArrayMesh_7tp0o")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.919, 0, 0)
+[node name="Area3D" type="Area3D" parent="Path3D/Car"]
+transform = Transform3D(-0.999996, -0.00261507, -0.000223246, -0.00261512, 1.00002, -5.83705e-07, 0.000223259, 1.14321e-10, -1.00005, -0.622626, -0.013039, 0.201114)
 script = ExtResource("3_jbynk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Car/Area3D"]
 transform = Transform3D(0.00132875, 0, -1.26885, 0, 1.26885, 0, 1.26885, 0, 0.00132875, -0.720847, 0.651894, 0.227574)
 shape = SubResource("BoxShape3D_11xl2")

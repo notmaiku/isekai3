@@ -597,7 +597,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.6098, -70.6734)
 transform = Transform3D(32.4061, 0, 0, 0, 5, 0, 0, 0, 5, 33.832, 34.7508, -70.5685)
 
 [node name="S1CarStrip" parent="Suburbia Level 2/Course" instance=ExtResource("26_ca6m7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.755, 34.8112, -69.8471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2748, 34.8112, -69.8471)
+
+[node name="PathFollow3D" parent="Suburbia Level 2/Course/S1CarStrip/Path3D" index="0"]
+transform = Transform3D(-0.000223072, -0.00261502, -0.999997, 0, 0.999977, -0.00261507, 0.999945, -5.8337e-07, -0.000223084, 1.16171, 0.0114105, 0.200964)
+
+[node name="Car" parent="Suburbia Level 2/Course/S1CarStrip/Path3D" index="1"]
+transform = Transform3D(-0.999997, -0.00261502, 0.000223116, -0.00261507, 0.999977, 1.14308e-10, -0.000223127, -5.8337e-07, -0.999945, 1.16171, 0.0114098, 0.200966)
 
 [node name="S1CarStrip2" parent="Suburbia Level 2/Course" instance=ExtResource("26_ca6m7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 43.6736, 34.8112, -71.758)
@@ -739,16 +745,48 @@ animation_name = "rotating normal"
 transform = Transform3D(3.75292, 0, 4.87047, 0, 5, 0, -16.1655, 0, 1.13071, 56.0608, 68.2404, -86.5303)
 
 [node name="rotating pipe2" parent="Suburbia Level 2/Course" instance=ExtResource("13_lpdjq")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 59.0551, 69.5477, -91.7183)
+transform = Transform3D(4.87725, 0, -1.1011, 0, 5, 0, 1.1011, 0, 4.87725, 59.0825, 68.699, -88.7215)
+animation_name = "rotating normal"
 
 [node name="rotating pipe3" parent="Suburbia Level 2/Course" instance=ExtResource("13_lpdjq")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 55.7969, 69.4508, -92.1257)
+transform = Transform3D(4.86857, 0, -1.13887, 0, 5, 0, 1.13887, 0, 4.86857, 54.1455, 68.6086, -89.8268)
+animation_name = "rotating normal"
+
+[node name="rotating pipe4" parent="Suburbia Level 2/Course" instance=ExtResource("13_lpdjq")]
+transform = Transform3D(4.86857, 0, -1.13887, 0, 5, 0, 1.13887, 0, 4.86857, 54.6502, 68.6484, -81.047)
+animation_name = "rotating normal"
+
+[node name="planter2" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(19.4004, 0, -4.86045, 0, 20, 0, 4.86045, 0, 19.4004, 53.5209, 67.4898, -75.5803)
+
+[node name="planter3" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-6.8404, -18.7938, -8.21505e-07, 7.64274e-14, 8.74228e-07, -20, 18.7939, -6.8404, -2.99004e-07, 51.8612, 65.5953, -68.9557)
+
+[node name="planter4" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-0.614261, -19.9906, -8.21505e-07, -2.73632e-07, 8.30301e-07, -20, 19.9906, -0.614261, -2.99004e-07, 50.4454, 65.5953, -62.0783)
+
+[node name="planter5" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-6.8404, -18.7938, -8.21505e-07, 7.64274e-14, 8.74228e-07, -20, 18.7939, -6.8404, -2.99004e-07, 46.0775, 65.5953, -53.065)
+
+[node name="planter6" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-13.1632, -14.9044, -2.14239, 5.79205, -2.38518, -18.9938, 13.899, -13.1214, 5.88618, 42.4973, 66.1347, -43.2285)
+
+[node name="planter7" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-6.49625, -18.7938, -2.14239, 6.26394, 7.15256e-07, -18.9938, 17.8483, -6.8404, 5.88618, 39.4081, 68.0321, -34.741)
+
+[node name="planter8" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-6.49625, 0.311085, -18.913, 6.26394, 18.9044, -1.8406, 17.8483, -6.52135, -6.23781, 32.829, 67.7761, -36.8796)
+
+[node name="planter9" parent="Suburbia Level 2/Course" instance=ExtResource("19_jx1mc")]
+transform = Transform3D(-6.49625, 0.311085, -18.913, 6.26394, 18.9044, -1.8406, 17.8483, -6.52135, -6.23781, 25.4946, 67.0624, -39.2986)
 
 [editable path="Suburbia Level 1/Course/MovingTree"]
 [editable path="Suburbia Level 1/Course/MovingTree2"]
 [editable path="Suburbia Level 1/Course/MovingTree3"]
 [editable path="Suburbia Level 1/Course/MovingTree4"]
 [editable path="Suburbia Level 2/Course/road-intersection2"]
+[editable path="Suburbia Level 2/Course/S1CarStrip"]
 [editable path="Suburbia Level 2/Course/MGPS13"]
 [editable path="Suburbia Level 2/Course/MGPS11"]
 [editable path="Suburbia Level 2/Course/MGPS12"]
+[editable path="Suburbia Level 2/Course/rotating pipe2"]
