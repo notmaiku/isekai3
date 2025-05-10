@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c34wipqt5i1sn"
 path.s3tc="res://.godot/imported/road-intersection-path.png-dd8f797c20a01fddcea3bfa5c0b3744e.s3tc.ctex"
+path.etc2="res://.godot/imported/road-intersection-path.png-dd8f797c20a01fddcea3bfa5c0b3744e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/kenney_city-kit-roads/Previews/road-intersection-path.png"
-dest_files=["res://.godot/imported/road-intersection-path.png-dd8f797c20a01fddcea3bfa5c0b3744e.s3tc.ctex"]
+dest_files=["res://.godot/imported/road-intersection-path.png-dd8f797c20a01fddcea3bfa5c0b3744e.s3tc.ctex", "res://.godot/imported/road-intersection-path.png-dd8f797c20a01fddcea3bfa5c0b3744e.etc2.ctex"]
 
 [params]
 
