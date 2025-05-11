@@ -105,6 +105,18 @@ transform = Transform3D(-1.31134e-07, 1.7865e-14, 3, -1.81071, 2.39193, -7.91482
 [node name="PathFollow3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D" index="0"]
 transform = Transform3D(0.999552, 0.0225528, 0.0149923, 0, 0.553602, -0.832735, -0.0270799, 0.832451, 0.553384, -1.51612, 4.10919, 9.76498)
 
+[node name="wall" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity" index="0"]
+transform = Transform3D(-0.00711041, -0.998903, 0.0462677, -0.873567, -0.0163126, -0.486431, 0.486654, -0.0438767, -0.872491, 0.484948, -0.903602, 3.26287)
+
+[node name="GravityBody" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity/wall" index="0"]
+transform = Transform3D(-9.31323e-09, -4.37114e-08, 1, -1, -4.37114e-08, -9.31323e-09, 4.37114e-08, -1, -4.37114e-08, -0.460353, 0.35834, -0.0557184)
+
+[node name="CollisionShape3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity/wall/GravityBody" index="0"]
+transform = Transform3D(1, 2.08616e-07, 1.11759e-08, -2.08616e-07, 1, -1.49012e-08, -1.11759e-08, 1.49012e-08, 1, -0.208026, -0.0768886, 0.0764051)
+
+[node name="CollisionShape3D" parent="Game/WorldMulti/PressurePlate2/MovingGravityPlatform/Path3D/Gravity" index="1"]
+transform = Transform3D(-0.0253447, -0.0831885, -0.996212, -0.850412, 0.525647, -0.0222588, 0.525508, 0.846625, -0.0840669, 0.0346727, -1.19743, 2.82516)
+
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="CreateGame"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="OnHostButtonPressed"]
 [connection signal="pressed" from="Net/Options/HostButton" to="." method="_on_host_pressed"]
