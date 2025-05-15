@@ -936,7 +936,7 @@ libraries = {
 autoplay = "rotating normal"
 
 [node name="wall2" parent="Suburbia Level 2/Course/rotating vertical gp8/AnimatableBody3D" instance=ExtResource("23_4kde1")]
-transform = Transform3D(0.0689053, -4.07194e-10, 0.997623, 5.14456e-10, 1, -1.17465e-09, -0.997623, -4.58128e-10, 0.0689054, -0.00577331, -0.463516, -0.00154018)
+transform = Transform3D(0.0689053, -4.07194e-10, 0.997623, 5.14456e-10, 1, -1.17465e-09, -0.997623, -4.58128e-10, 0.0689054, -0.00577331, -1.55631, -0.00154018)
 
 [node name="road-straight5" parent="Suburbia Level 2/Course" instance=ExtResource("16_q5f3s")]
 transform = Transform3D(8.07447, 0, 0, 0, 5, 0, 0, 0, 5, 35.4613, 66.455, -72.477)
@@ -1024,7 +1024,7 @@ transform = Transform3D(-0.639382, 4.6664, 1.67808, -4.95372, -0.678751, 0, 0.22
 transform = Transform3D(12.9189, 0, 1.02086, 0, 5, 0, -2.69443, 0, 4.89468, 101.334, 81.6993, -30.1661)
 
 [node name="road-straight8" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
-transform = Transform3D(12.9189, 0, 1.02086, 0, 5, 0, -2.69443, 0, 4.89468, 147.94, 97.5555, -32.6716)
+transform = Transform3D(12.9189, 0, 1.02086, 0, 5, 0, -2.69443, 0, 4.89468, 157.502, 97.5555, -34.6659)
 
 [node name="WallGravity17" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-3.38146, -3.5783, 0.872623, 3.63407, -3.43417, 0, 0.599347, 0.634235, 4.92326, 65.0097, 83.2612, -21.3439)
@@ -1060,13 +1060,13 @@ transform = Transform3D(-3.54509, -3.52596, 0, 3.52596, -3.54509, 0, 0, 0, 5, 11
 transform = Transform3D(-3.54509, -3.52596, 0, 3.52596, -3.54509, 0, 0, 0, 5, 117.609, 93.1999, -31.592)
 
 [node name="WallGravity4" parent="." instance=ExtResource("14_4jmwv")]
-transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.528, 94.9552, -31.592)
+transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.554, 98.8344, -31.592)
 
 [node name="WallGravity5" parent="." instance=ExtResource("14_4jmwv")]
-transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.567, 100.819, -31.592)
+transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.593, 104.698, -31.592)
 
 [node name="WallGravity6" parent="." instance=ExtResource("14_4jmwv")]
-transform = Transform3D(3.43214, -3.63599, 0, 3.63599, 3.43214, 0, 0, 0, 5, 128.187, 100.789, -31.592)
+transform = Transform3D(3.43214, -3.63599, 0, 3.63599, 3.43214, 0, 0, 0, 5, 135.968, 110.14, -31.592)
 
 [editable path="Suburbia Level 1/Course/MovingTree"]
 [editable path="Suburbia Level 1/Course/MovingTree2"]
