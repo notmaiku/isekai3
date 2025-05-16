@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6tqp5vtelf72" path="res://assets/proto/GLB format/wall.glb" id="1_k0ggr"]
 [ext_resource type="Material" uid="uid://cdnedbb5tnoy4" path="res://red.tres" id="2_lbr41"]
 [ext_resource type="Script" uid="uid://6fsoqrb7rwin" path="res://GravityZone.gd" id="2_qpegl"]
-[ext_resource type="Script" path="res://color_switcher.gd" id="3_rtct4"]
+[ext_resource type="Script" uid="uid://iedw6p6woo1y" path="res://color_switcher.gd" id="3_rtct4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0ggr"]
 size = Vector3(0.310813, 1.0498, 0.991355)
