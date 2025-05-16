@@ -277,6 +277,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.8158, -70.6734)
 [node name="2" type="Marker3D" parent="SinglePlayerSpawn"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 30.0712, 90.34, -71.3271)
 
+[node name="3" type="Marker3D" parent="SinglePlayerSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.523, 101.529, -74.7271)
+
 [node name="Suburbia Level 1" type="Node" parent="."]
 
 [node name="Course" type="Node" parent="Suburbia Level 1"]
@@ -717,7 +720,7 @@ transform = Transform3D(-0.105457, -0.365698, -0.924623, -1.48997e-08, 0.929788,
 progress = 0.0
 
 [node name="Gravity" parent="Suburbia Level 2/Course/MGPS12/Path3D" index="1"]
-transform = Transform3D(-0.105457, -0.365698, -0.924623, 2.98023e-08, 0.929788, -0.367758, 0.994325, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553894)
+transform = Transform3D(-0.105457, -0.365698, -0.924623, 0, 0.929788, -0.367758, 0.994325, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553894)
 
 [node name="wall" parent="Suburbia Level 2/Course/MGPS12/Path3D/Gravity" index="0"]
 transform = Transform3D(1.90137e-15, -4.37113e-08, 0.999998, -1, -4.37113e-08, -9.31343e-18, 4.37114e-08, -0.999999, -4.37113e-08, 0, 0, 0)
@@ -906,7 +909,7 @@ transform = Transform3D(0.0689053, -2.98023e-08, 0.997623, 0, 1, 2.98023e-08, -0
 transform = Transform3D(-7.75471, -1.9656, -0.030878, 0, 0.125658, -7.99901, 1.96584, -7.75375, -0.121805, 90.8676, 81.9253, -23.239)
 script = ExtResource("32_5m474")
 animator = NodePath("AnimatableBody3D/AnimationPlayer")
-speed = 0.19
+speed = 0.2
 animation_name = "rotating normal"
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Suburbia Level 2/Course/rotating vertical gp7"]
@@ -1026,6 +1029,69 @@ transform = Transform3D(12.9189, 0, 1.02086, 0, 5, 0, -2.69443, 0, 4.89468, 101.
 [node name="road-straight8" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
 transform = Transform3D(12.9189, 0, 1.02086, 0, 5, 0, -2.69443, 0, 4.89468, 157.502, 97.5555, -34.6659)
 
+[node name="road-straight9" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 165.694, 97.4234, -37.4014)
+
+[node name="road-straight10" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(1.69284, 0, 0, 0, 5, 0, 0, 0, 5.00001, 168.177, 97.3419, -37.4)
+
+[node name="road-straight11" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 171.109, 97.3352, -37.3999)
+
+[node name="road-straight12" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(1.87751, 0, 0, 0, 5, 0, 0, 0, 5.00001, 172.828, 97.3352, -37.3999)
+
+[node name="road-straight13" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 174.201, 97.8376, -37.3999)
+
+[node name="road-straight14" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 177.493, 97.8376, -37.3999)
+
+[node name="road-straight15" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(2.57636, 0, 0, 0, 5, 0, 0, 0, 5.00001, 180.142, 96.4262, -37.3999)
+
+[node name="road-straight16" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 183.193, 96.4262, -37.3999)
+
+[node name="road-straight17" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.68814, 0, 3.1812, 0, 5, 0, -0.567501, 0, 3.85746, 187.833, 96.4262, -37.3999)
+
+[node name="road-straight18" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(1.90291, 0, 3.1812, 0, 5, 0, -1.56931, 0, 3.85746, 190.048, 96.4262, -40.7252)
+
+[node name="road-straight19" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.68814, 0, 3.1812, 0, 5, 0, -0.567501, 0, 3.85746, 190.048, 96.4262, -46.489)
+
+[node name="road-straight20" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(1.95089, 0, 3.1812, 0, 5, 0, -1.60888, 0, 3.85746, 190.048, 96.4262, -51.7738)
+
+[node name="road-straight21" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.822892, 0, -1.92921, 0, 5, 0, 0.344156, 0, 4.61283, 190.048, 96.4262, -57.2323)
+
+[node name="road-straight22" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.822892, 0, -1.92921, 0, 5, 0, 0.344156, 0, 4.61283, 190.048, 96.8352, -62.9303)
+
+[node name="road-straight23" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(0.822892, 0, -1.92921, 0, 5, 0, 0.344156, 0, 4.61283, 185.43, 97.754, -62.3753)
+
+[node name="road-straight24" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(2.34863, 0, -1.92921, 0, 4.15313, 0, 0.982262, 0, 4.61283, 186.961, 97.3077, -61.627)
+
+[node name="road-straight25" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(5.72998, 0, -0.165998, 0, 5, 0, 2.39643, 0, 0.396909, 181.59, 98.2189, -62.9303)
+
+[node name="road-straight26" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(5.59532, 0.994153, -0.165998, -1.33857, 4.8825, -3.72529e-09, 2.34011, 0.415782, 0.396909, 175.243, 98.9637, -66.064)
+
+[node name="road-straight27" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(5.41839, 1.50042, -0.165998, -2.02023, 4.7281, 0, 2.26612, 0.627516, 0.396909, 168.406, 99.9218, -68.9234)
+
+[node name="road-straight28" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(5.46885, 1.37666, -0.165998, -1.85359, 4.77214, -3.72529e-09, 2.28722, 0.575755, 0.396909, 161.381, 100.488, -71.8618)
+
+[node name="road-straight29" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
+transform = Transform3D(5.72998, 0, -0.165998, 0, 5, 0, 2.39643, 0, 0.396909, 154.523, 101.415, -74.7271)
+
 [node name="WallGravity17" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-3.38146, -3.5783, 0.872623, 3.63407, -3.43417, 0, 0.599347, 0.634235, 4.92326, 65.0097, 83.2612, -21.3439)
 
@@ -1050,23 +1116,38 @@ autoplay = "rotating normal"
 [node name="wall2" parent="Suburbia Level 3/Course/rotating vertical gp2/AnimatableBody3D" instance=ExtResource("23_4kde1")]
 transform = Transform3D(0.0689053, -4.07194e-10, 0.997623, 5.14456e-10, 1, -1.17465e-09, -0.997623, -4.58128e-10, 0.0689054, -0.00577331, -0.463516, -0.00154018)
 
-[node name="WallGravity" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-3.54509, -3.52596, 0, 3.52596, -3.54509, 0, 0, 0, 5, 109.959, 83.8507, -31.592)
 
-[node name="WallGravity2" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity2" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-3.54509, -3.52596, 0, 3.52596, -3.54509, 0, 0, 0, 5, 114.712, 88.6303, -31.592)
 
-[node name="WallGravity3" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity3" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-3.54509, -3.52596, 0, 3.52596, -3.54509, 0, 0, 0, 5, 117.609, 93.1999, -31.592)
 
-[node name="WallGravity4" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity4" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.554, 98.8344, -31.592)
 
-[node name="WallGravity5" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity5" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(-4.99989, -0.0328989, 0, 0.0328989, -4.99989, 0, 0, 0, 5, 123.593, 104.698, -31.592)
 
-[node name="WallGravity6" parent="." instance=ExtResource("14_4jmwv")]
+[node name="WallGravity6" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
 transform = Transform3D(3.43214, -3.63599, 0, 3.63599, 3.43214, 0, 0, 0, 5, 135.968, 110.14, -31.592)
+
+[node name="WallGravity7" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(2.29126, -1.00007, 0, 1.00007, 2.29126, 0, 0, 0, 2.5, 150.573, 102.294, -76.0185)
+
+[node name="WallGravity8" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(2.5, 0.00445038, 0, -0.00445038, 2.5, 0, 0, 0, 2.5, 150.013, 103.576, -76.0185)
+
+[node name="WallGravity9" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(1.89317, 1.63276, 0, -1.63276, 1.89317, 0, 0, 0, 2.5, 150.292, 105.166, -76.0185)
+
+[node name="WallGravity10" parent="Suburbia Level 3/Course" instance=ExtResource("14_4jmwv")]
+transform = Transform3D(0.133585, 2.49643, 0, -2.49643, 0.133585, 0, 0, 0, 2.5, 152.156, 106.196, -76.0212)
+
+[node name="road-roundabout2" parent="Suburbia Level 3/Course" instance=ExtResource("12_y4do0")]
+transform = Transform3D(4.993, 0, 0, 0, 40, 0, 0, 0, 4.993, 154.939, 109.751, -76.094)
 
 [editable path="Suburbia Level 1/Course/MovingTree"]
 [editable path="Suburbia Level 1/Course/MovingTree2"]
