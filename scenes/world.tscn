@@ -508,7 +508,7 @@ transform = Transform3D(-0.999862, 0, -0.0144054, 0, 0.999989, 0, 0.0144054, 0, 
 progress = 0.0
 
 [node name="Gravity" parent="WorldMulti/MovingGravityPlatform2/Path3D" index="1"]
-transform = Transform3D(-0.999862, 0, -0.0144054, -9.31323e-10, 0.999989, 7.27596e-12, 0.0144054, -1.45519e-11, -0.999865, 0.187311, 0, -1.29977)
+transform = Transform3D(-0.999862, 0, -0.0144054, -9.31323e-10, 0.999989, 7.27596e-12, 0.0144054, -1.45519e-11, -0.999865, 0.181694, 0, -1.68955)
 
 [node name="wall" parent="WorldMulti/MovingGravityPlatform2/Path3D/Gravity" index="0" groups=["green"]]
 

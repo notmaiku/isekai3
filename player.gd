@@ -23,6 +23,7 @@ var _last_movement_direction := Vector3.BACK
 @onready var timer_g: Timer = %Timer_G
 @onready var cooldown: Timer = %Timer_C
 
+var UI_Menu
 var world_environment: WorldEnvironment
 var light_node
 
@@ -43,12 +44,14 @@ func _ready() -> void:
 	_camera.current = is_multiplayer_authority()
 	check_condition_every_second()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	add_child(ui.instantiate())
+	get_tree().root.find_child("UI", true, false).hide()
 
 
 func _input(event: InputEvent) -> void:
 	if !is_multiplayer_authority(): return
 	if event.is_action_pressed("ui_exit"):
-		add_child(ui.instantiate()) if !get_node_or_null("UI") else get_node("UI").queue_free()
+		show_hide_menu()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("reset"):
 		if !is_multiplayer_authority(): return
@@ -145,6 +148,12 @@ func _player_spawner(loc):
 	global_position = loc
 	up_direction = Vector3.UP
 	velocity = Vector3.ZERO
+	
+func show_hide_menu():
+	if !get_node_or_null("UI").visible:
+		get_node("UI").show() 
+	else:	
+		get_node("UI").hide()
 
 func check_condition_every_second() -> void:
 	while true:

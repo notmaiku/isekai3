@@ -5,3 +5,9 @@ func _on_refs_show_menu():
 		hide()
 	else:
 		show()
+
+func _process(delta: float) -> void:
+	print("checkpoint",Refs.checkpoint)
+	var unhide_levels = get_children()[0].get_children().filter(func(level): return int(level.name) < Refs.checkpoint)
+	for level in unhide_levels:
+		level.show()
