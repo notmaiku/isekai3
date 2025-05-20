@@ -279,7 +279,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.8158, -70.6734)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 30.0712, 90.34, -71.3271)
 
 [node name="3" type="Marker3D" parent="SinglePlayerSpawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.523, 101.529, -34.6446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.928, 97.8627, -34.6446)
 
 [node name="Suburbia Level 1" type="Node" parent="."]
 
