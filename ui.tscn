@@ -63,7 +63,6 @@ text = "Level 2"
 script = ExtResource("2_27fn8")
 
 [node name="3" type="Button" parent="Menu/LevelButtons"]
-visible = false
 layout_mode = 2
 text = "Level 3"
 script = ExtResource("2_27fn8")

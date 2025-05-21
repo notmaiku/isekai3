@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://baw61kjikc72d"]
+[gd_scene load_steps=58 format=3 uid="uid://baw61kjikc72d"]
 
 [ext_resource type="Texture2D" uid="uid://vl84n46cuefe" path="res://assets/textures/grass_alb-height.dds" id="1_pj4m0"]
 [ext_resource type="Script" uid="uid://wiv6iraj15ve" path="res://spawner.gd" id="1_u5guf"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://dey2xcf7jkhaa" path="res://rotating_pipe.gd" id="32_5m474"]
 [ext_resource type="PackedScene" uid="uid://d0kcy6ojduptm" path="res://scenes/objects/shape_hollow_cylinder_2.tscn" id="33_pmbod"]
 [ext_resource type="PackedScene" uid="uid://b5naqxfu64x1o" path="res://house1.tscn" id="34_ylwny"]
+[ext_resource type="Script" uid="uid://bbkvj6xprxy87" path="res://scenes/trigger-finish.gd" id="35_jxtkh"]
 
 [sub_resource type="Gradient" id="Gradient_7h7mj"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -264,6 +265,8 @@ _data = {
 &"rotating normal": SubResource("Animation_gpah2")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylwny"]
+
 [node name="WorldSolo" type="Node3D"]
 
 [node name="SinglePlayerSpawn" type="Node" parent="."]
@@ -279,7 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2004, 34.8158, -70.6734)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 30.0712, 90.34, -71.3271)
 
 [node name="3" type="Marker3D" parent="SinglePlayerSpawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.928, 97.8627, -34.6446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.928, 113.306, -82.3783)
 
 [node name="Suburbia Level 1" type="Node" parent="."]
 
@@ -669,11 +672,11 @@ transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 15.226
 transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 52.7964, 34.4254, -58.62)
 
 [node name="PathFollow3D" parent="Suburbia Level 2/Course/MGPS13/Path3D" index="0"]
-transform = Transform3D(-0.999856, 0, -0.0144053, 0, 0.999989, 0, 0.0144053, 0, -0.999861, 0.181695, 0, -1.68955)
+transform = Transform3D(-0.999855, 0, -0.0144053, 0, 0.999989, 0, 0.0144053, 0, -0.999861, 0.181695, 0, -1.68955)
 progress = 0.0
 
 [node name="Gravity" parent="Suburbia Level 2/Course/MGPS13/Path3D" index="1"]
-transform = Transform3D(-0.999856, 0, -0.0144053, 0, 0.999989, 0, 0.0144053, 0, -0.999861, 0.181698, 0, -1.68955)
+transform = Transform3D(-0.999855, 0, -0.0144053, 0, 0.999989, 0, 0.0144053, 0, -0.999861, 0.181698, 0, -1.68955)
 
 [node name="wall" parent="Suburbia Level 2/Course/MGPS13/Path3D/Gravity" index="0"]
 transform = Transform3D(1.90137e-15, -4.37113e-08, 0.999998, -1, -4.37113e-08, -9.31343e-18, 4.37114e-08, -0.999999, -4.37113e-08, -0.167815, -0.0204345, -0.0589229)
@@ -720,11 +723,11 @@ transform = Transform3D(2.14483, -1.07138, -0.70843, 5.96046e-08, 1.3789, -2.085
 curve = SubResource("Curve3D_2n1uo")
 
 [node name="PathFollow3D" parent="Suburbia Level 2/Course/MGPS12/Path3D" index="0"]
-transform = Transform3D(-0.105457, -0.365698, -0.924623, -1.48997e-08, 0.929788, -0.367758, 0.994325, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553924)
+transform = Transform3D(-0.105457, -0.365698, -0.924623, -1.48997e-08, 0.929788, -0.367758, 0.994324, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553924)
 progress = 0.0
 
 [node name="Gravity" parent="Suburbia Level 2/Course/MGPS12/Path3D" index="1"]
-transform = Transform3D(-0.105457, -0.365698, -0.924623, 0, 0.929788, -0.367758, 0.994325, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553894)
+transform = Transform3D(-0.105457, -0.365698, -0.924623, 5.96046e-08, 0.929788, -0.367758, 0.994324, -0.0387856, -0.0980646, 0.178674, -0.437229, 0.00553894)
 
 [node name="wall" parent="Suburbia Level 2/Course/MGPS12/Path3D/Gravity" index="0"]
 transform = Transform3D(1.90137e-15, -4.37113e-08, 0.999998, -1, -4.37113e-08, -9.31343e-18, 4.37114e-08, -0.999999, -4.37113e-08, 0, 0, 0)
@@ -1135,6 +1138,14 @@ transform = Transform3D(4.993, 0, 0, 0, 40, 0, 0, 0, 4.993, 154.939, 109.751, -7
 [node name="building-type-a2" parent="Suburbia Level 3/Course" instance=ExtResource("34_ylwny")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 138.658, 97.7408, -32.7356)
 
+[node name="Area3D" type="Area3D" parent="Suburbia Level 3/Course"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.939, 109.751, -76.094)
+script = ExtResource("35_jxtkh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suburbia Level 3/Course/Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_ylwny")
+
 [editable path="Suburbia Level 1/Course/WallGravity20"]
 [editable path="Suburbia Level 1/Course/MovingTree"]
 [editable path="Suburbia Level 1/Course/MovingTree2"]
@@ -1146,3 +1157,4 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 138.658, 97.7408, -32.7356
 [editable path="Suburbia Level 2/Course/MGPS11"]
 [editable path="Suburbia Level 2/Course/MGPS12"]
 [editable path="Suburbia Level 2/Course/rotating pipe2"]
+[editable path="Suburbia Level 3/Course/WallGravity10"]
