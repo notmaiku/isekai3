@@ -1139,7 +1139,7 @@ transform = Transform3D(4.993, 0, 0, 0, 40, 0, 0, 0, 4.993, 154.939, 109.751, -7
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 138.658, 97.7408, -32.7356)
 
 [node name="flag3" parent="Suburbia Level 3/Course" instance=ExtResource("25_mp8eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.1014, 178.796, -142.492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.502, 97.5555, -34.6659)
 
 [node name="Area3D" type="Area3D" parent="Suburbia Level 3/Course"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.939, 109.751, -76.094)
