@@ -50,7 +50,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if !is_multiplayer_authority(): return
-	if event.is_action_pressed("ui_exit"):
+	if event.is_action_pressed("ui_exit") && !get_tree().root.find_child("DirectionalLight3D", true, false):
 		show_hide_menu()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("reset"):
