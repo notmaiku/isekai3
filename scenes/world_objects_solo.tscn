@@ -1025,7 +1025,7 @@ transform = Transform3D(0.891961, 0, 0, 0, 5, 0, 0, 0, 5.00001, 165.694, 97.4234
 transform = Transform3D(1.69284, 0, 0, 0, 5, 0, 0, 0, 5.00001, 168.177, 97.3419, -37.4)
 
 [node name="road-straight11" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
-transform = Transform3D(0.891959, 0, 0.010821, 0, 5, 0, -0.00193039, 0, 5, 171.072, 97.8531, -37.3938)
+transform = Transform3D(0.891959, 0, 0.010821, 0, 5, 0, -0.00193039, 0, 5, 171.157, 97.8531, -37.394)
 
 [node name="road-straight12" parent="Suburbia Level 3/Course" instance=ExtResource("16_q5f3s")]
 transform = Transform3D(1.87751, 0, 0, 0, 5, 0, 0, 0, 5.00001, 172.828, 98.1032, -37.3999)
